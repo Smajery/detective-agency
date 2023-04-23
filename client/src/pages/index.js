@@ -1,11 +1,5 @@
-import MainContainer from 'components/MainContainer';
+import Home from '@/components/screens/home/Home';
 
-const Index = () => {
-    return (
-            <MainContainer keywords={'main page'}>
-                <h1>Main page</h1>
-            </MainContainer>
-    );
-};
-
-export default Index;
+export default function HomePage() {
+    return <Home/>
+}

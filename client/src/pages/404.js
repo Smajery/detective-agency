@@ -1,7 +1,5 @@
 import NotFound from '@/components/screens/404/NotFound';
 
-const ErrorPage = () => {
+export default function ErrorPage() {
     return <NotFound />
 };
-
-export default ErrorPage;

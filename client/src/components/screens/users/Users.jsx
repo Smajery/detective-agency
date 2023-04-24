@@ -8,9 +8,11 @@ const Users = ({users}) => {
         >
             <h1>Users list</h1>
             {users && users.length > 0 ? (
-                users.map(user =>
-                    <UserItem key={user.id} user={user}/>
-                )
+                users.map(user => (
+                    <UserItem key={user.id}
+                              user={user}
+                    />
+                ))
             ) : (
                 <div>Users not found</div>
             )}

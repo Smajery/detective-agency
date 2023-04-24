@@ -2,13 +2,22 @@ import Users from '@/components/screens/users/Users';
 import {UserService} from '@/services/user.service';
 
 export default function UsersPage({users}) {
-    return <Users users={users}/>;
+    return <Users users={users} />;
 }
 
-export const getServerSideProps = async () => {
-    const users = await UserService.getAll()
+// export const getServerSideProps = async () => {
+//     const users = await UserService.getAll()
+//
+//     return {
+//         props: {users}
+//     }
+// }
+
+export const getStaticProps = async () => {
+    const users = await UserService.getAll();
 
     return {
-        props: {users}
-    }
-}
+        props: {users},
+        revalidate: 60
+    };
+};

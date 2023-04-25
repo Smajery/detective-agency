@@ -1,9 +1,11 @@
 import Users from '@/components/screens/users/Users';
 import {UserService} from '@/services/user.service';
 
-export default function UsersPage({users}) {
+const UsersPage = ({users}) => {
     return <Users users={users} />;
 }
+
+export default UsersPage;
 
 // export const getServerSideProps = async () => {
 //     const users = await UserService.getAll()

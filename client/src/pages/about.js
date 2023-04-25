@@ -1,7 +1,9 @@
 import About from '@/components/screens/about/About';
 
-export default function AboutPage() {
+const AboutPage = () => {
     return <About />;
 }
+
+export default AboutPage;
 
 AboutPage.isOnlyUser = true

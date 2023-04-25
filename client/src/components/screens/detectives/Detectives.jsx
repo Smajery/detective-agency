@@ -1,12 +1,12 @@
 import Layout from '@/components/layout/Layout';
 import UserItem from '@/components/ui/user/UserItem';
 
-const Users = ({users}) => {
+const Detectives = ({users}) => {
     return (
-        <Layout title="Users"
-                description="Users list"
+        <Layout title="Detectives"
+                description="Detectives list"
         >
-            <h1>Users list</h1>
+            <h1>Detectives list</h1>
             {users && users.length > 0 ? (
                 users.map(user => (
                     <UserItem key={user.id}
@@ -14,10 +14,10 @@ const Users = ({users}) => {
                     />
                 ))
             ) : (
-                <div>Users not found</div>
+                <div>Detectives not found</div>
             )}
         </Layout>
     );
 };
 
-export default Users;
+export default Detectives;

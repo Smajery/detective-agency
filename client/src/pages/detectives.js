@@ -1,17 +1,17 @@
-import Users from '@/components/screens/users/Users';
+import Detectives from '@/components/screens/detectives/Detectives';
 import {UserService} from '@/services/user.service';
 
-const UsersPage = ({users}) => {
-    return <Users users={users} />;
+const DetectivesPage = ({users}) => {
+    return <Detectives users={users} />;
 }
 
-export default UsersPage;
+export default DetectivesPage;
 
 // export const getServerSideProps = async () => {
-//     const users = await UserService.getAll()
+//     const detectives = await UserService.getAll()
 //
 //     return {
-//         props: {users}
+//         props: {detectives}
 //     }
 // }
 

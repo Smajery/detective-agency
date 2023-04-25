@@ -24,6 +24,7 @@ const Meta = ({title, description, children}) => {
                           content="noindex, nofollow"
                     />
                 )}
+
             </Head>
             {children}
         </>

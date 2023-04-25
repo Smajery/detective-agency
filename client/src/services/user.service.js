@@ -12,6 +12,6 @@ export const UserService = {
                 id
             }
         })
-        return data
+        return data[0]
     }
 }

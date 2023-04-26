@@ -43,7 +43,7 @@ export const StyledSigninForm = styled.form`
     height: 40px;
     border: none;
     border-radius: 100px;
-    background-color: #333333;
+    background-color: ${props => props.theme.strongBackgroundColor};
     font-weight: bold;
     color: #FFFFFF;
     text-transform: uppercase;
@@ -63,7 +63,7 @@ export const StyledSigninForm = styled.form`
       color: #999999;
       
       &.active {
-        color: #333333;
+        color: ${props => props.theme.color};
         text-decoration: underline;
       }
 
@@ -77,7 +77,7 @@ export const StyledSigninForm = styled.form`
     .forgot-pass-text {
       color: #999999;
       &:hover {
-        color: #333333;
+        color: ${props => props.theme.color};
         text-decoration: underline;
       }
     }

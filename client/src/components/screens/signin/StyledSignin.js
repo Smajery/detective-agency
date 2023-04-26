@@ -18,10 +18,10 @@ export const StyledSignin = styled.div`
 
       a {
         color: #999999;
+        text-decoration: underline;
 
         &:hover {
-          color: #333333;
-          text-decoration: underline;
+          color: ${props => props.theme.color};
         }
       }
     }
@@ -33,6 +33,7 @@ export const StyledSignin = styled.div`
       .title {
         font-size: 25px;
         font-weight: 700;
+        color: ${props => props.theme.color};
       }
     }
 
@@ -82,7 +83,7 @@ export const StyledSignin = styled.div`
           cursor: pointer;
           
           &:hover {
-            color: #333333;
+            color: ${props => props.theme.color};;
           }
         }
       }

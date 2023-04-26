@@ -4,6 +4,7 @@ import {useRouter} from 'next/router';
 import {StyledContacts, StyledHeader, StyledLogo, StyledNavbar, StyledSubNavbar} from './StyledHeader';
 import {routes} from '@/utils/nav-routes';
 import {isEmptyArr} from '@/utils/is-empty-arr';
+import DarkModeButton from '@/components/btns/dark-mode/DarkModeButton';
 
 const Header = () => {
     const {pathname} = useRouter();
@@ -27,7 +28,7 @@ const Header = () => {
                 </StyledContacts>
                 <StyledNavbar>
                     {isEmptyArr(routes) && routes.map((route) =>
-                        <li className={route.path === '/signin' ? 'navbar__item navbar__item-signin' : 'navbar__item'}
+                        <li className='navbar-item'
                             key={route.id}
                         >
                             <Link
@@ -39,7 +40,7 @@ const Header = () => {
                             {isEmptyArr(route.subcategories) &&
                                 <StyledSubNavbar>
                                     {route.subcategories.map((subcategory) => (
-                                        <li className='subnavbar__item'
+                                        <li className="subnavbar__item"
                                             key={subcategory.id}
                                         >
                                             <Link href={`/services/#${subcategory.anchor}`}>
@@ -51,6 +52,14 @@ const Header = () => {
                             }
                         </li>
                     )}
+                    <li className='navbar-item dark-mode'>
+                        <DarkModeButton/>
+                    </li>
+                    <li className='navbar-item signin'>
+                        <Link href="/signin">
+                            Вхід
+                        </Link>
+                    </li>
                 </StyledNavbar>
             </div>
         </StyledHeader>

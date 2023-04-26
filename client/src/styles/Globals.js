@@ -23,13 +23,18 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-size: 16px;
-    background-color: #FFFFFF;
+    background-color: ${props => props.theme.backgroundColor};
+    color: ${props => props.theme.color};
     font-family: 'Titillium Web', sans-serif;
   }
 
   a {
     color: inherit;
     text-decoration: none;
+  }
+  
+  p {
+    color: inherit;
   }
 
   ul, li {

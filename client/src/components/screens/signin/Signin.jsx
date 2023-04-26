@@ -18,13 +18,13 @@ const Signin = () => {
                             Welcome again
                         </h1>
                     </div>
-                    <div className={'decor-text-container'}>
-                        <div className={'decor-text-box'}>
-                            <h2 className={'text'}>
-                                Or
-                            </h2>
-                        </div>
-                    </div>
+                    {/*<div className={'decor-text-container'}>*/}
+                    {/*    <div className={'decor-text-box'}>*/}
+                    {/*        <h2 className={'text'}>*/}
+                    {/*            Or*/}
+                    {/*        </h2>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                     <div className={'signin-container'}>
                         <SigninForm />
                     </div>

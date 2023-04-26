@@ -72,7 +72,7 @@ const SigninForm = () => {
     return (
         <StyledSigninForm onSubmit={handleSubmit}>
             <input type="text"
-                   placeholder="Nick or email"
+                   placeholder="Email"
                    value={emailValue}
                    onChange={handleEmailChange}
                    className={emailErrorValue !== '' ? 'input-item input-item_error': 'input-item'}
@@ -88,7 +88,7 @@ const SigninForm = () => {
                    placeholder="Password"
                    value={passwordValue}
                    onChange={handlePasswordChange}
-                   className={passwordValue !== '' ? 'input-item input-item_error': 'input-item'}
+                   className={passwordErrorValue !== '' ? 'input-item input-item_error': 'input-item'}
             />
             {passwordErrorValue !== '' &&
                 <div className='error-text-container'>

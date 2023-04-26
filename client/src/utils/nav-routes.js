@@ -14,5 +14,4 @@ export const routes = [
     {id: 3, path: '/help', title: 'Допомога'},
     {id: 4, path: '/feedbacks', title: 'Відгуки'},
     {id: 5, path: '/contacts', title: 'Контакти'},
-    {id: 6, path: '/signin', title: 'Вхід'},
 ];

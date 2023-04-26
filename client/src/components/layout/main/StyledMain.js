@@ -10,5 +10,4 @@ export const StyledWrapper = styled.div`
   width: 1240px;
   display: flex;
   justify-content: center;
-  color: #333333;
 `

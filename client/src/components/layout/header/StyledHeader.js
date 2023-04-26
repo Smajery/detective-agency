@@ -16,7 +16,7 @@ export const StyledHeader = styled.header`
   }
 
   a {
-    color: #737373;
+    color: #999999;
     transition: color .4s ease-in-out;
 
     &:hover, &.active {
@@ -54,22 +54,28 @@ export const StyledNavbar = styled.ul`
   display: flex;
   gap: 0 20px;
 
-  .navbar__item {
+  .navbar-item {
     display: flex;
+    align-items: center;
     position: relative;
+
+    &.signin {
+
+    }
+    
+    &.dark-mode {
+      margin: 0 15px;
+    }
 
     a {
       padding: 20px 0;
+    }
 
-      &:hover + ul {
-        display: flex;
-      }
+    &:hover > ul {
+      display: flex;
     }
   }
-
-  .navbar__item-login {
-    margin-left: 30px;
-  }
+  
 `;
 
 export const StyledSubNavbar = styled.ul`
@@ -80,14 +86,14 @@ export const StyledSubNavbar = styled.ul`
   border-bottom-left-radius: 15px;
   position: absolute;
   top: 100%;
-  
+
   &:hover {
     display: flex;
   }
 
   .subnavbar__item {
     min-width: 200px;
-    
+
     a {
       padding: 7px 15px;
       width: 100%;

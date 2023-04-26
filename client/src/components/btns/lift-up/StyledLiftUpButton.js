@@ -4,8 +4,8 @@ export const StyledLiftUpButton = styled.button`
   padding-bottom: 4px;
   width: 40px;
   height: 40px;
-  background: #FFFFFF;
-  border: 2px solid #333333;
+  background-color: ${props => props.theme.backgroundColor};
+  border: 2px solid ${props => props.theme.color};
   border-radius: 50%;
   font-size: 25px;
   position: fixed;

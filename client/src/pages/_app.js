@@ -1,11 +1,14 @@
 import AuthProvider from '@/components/providers/AuthProvider';
+import { Provider } from 'react-redux'
+import store from '@/store';
 
 const App = ({Component, pageProps}) => {
     return (
-        <AuthProvider Component={Component}>
-
-            <Component {...pageProps} />
-        </AuthProvider>
+        <Provider store={store}>
+            <AuthProvider Component={Component}>
+                <Component {...pageProps} />
+            </AuthProvider>
+        </Provider>
     );
 }
 

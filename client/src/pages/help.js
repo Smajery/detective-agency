@@ -5,3 +5,5 @@ const HelpPage = () => {
 };
 
 export default HelpPage;
+
+HelpPage.isOnlyUser = true

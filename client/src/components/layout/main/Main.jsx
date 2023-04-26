@@ -1,11 +1,11 @@
-import {StyledMain} from './StyledMain';
+import {StyledMain, StyledWrapper} from './StyledMain';
 
 const Main = ({children}) => {
     return (
         <StyledMain>
-            <div className='container'>
+            <StyledWrapper>
                 {children}
-            </div>
+            </StyledWrapper>
         </StyledMain>
     );
 };

@@ -5,5 +5,3 @@ const ServicesPage = () => {
 }
 
 export default ServicesPage;
-
-ServicesPage.isOnlyUser = true

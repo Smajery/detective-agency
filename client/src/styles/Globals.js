@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
     justify-content: space-between;
     min-height: 100vh;
   }
-  
+
   * {
     box-sizing: border-box;
     padding: 0;
@@ -31,11 +31,28 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
-  
+
   ul, li {
-    margin: 0;
-    padding: 0;
     list-style: none;
+  }
+
+  input {
+    border: none;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-decoration: none;
+  }
+
+  
+  button {
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: visible;
   }
 `;
 

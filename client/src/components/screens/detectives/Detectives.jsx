@@ -1,21 +1,24 @@
 import Layout from '@/components/layout/Layout';
 import UserItem from '@/components/ui/user/UserItem';
+import {StyledDetectives} from './StyledDetectives';
 
 const Detectives = ({users}) => {
     return (
         <Layout title="Detectives"
                 description="Detectives list"
         >
-            <h1>Detectives list</h1>
-            {users && users.length > 0 ? (
-                users.map(user => (
-                    <UserItem key={user.id}
-                              user={user}
-                    />
-                ))
-            ) : (
-                <div>Detectives not found</div>
-            )}
+            <StyledDetectives>
+                <h1>Detectives list</h1>
+                {users && users.length > 0 ? (
+                    users.map(user => (
+                        <UserItem key={user.id}
+                                  user={user}
+                        />
+                    ))
+                ) : (
+                    <div>Detectives not found</div>
+                )}
+            </StyledDetectives>
         </Layout>
     );
 };

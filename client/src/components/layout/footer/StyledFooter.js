@@ -6,6 +6,7 @@ export const StyledFooter = styled.footer`
   display: flex;
   justify-content: center;
   background-color: #333333;
+  border-top: 2px solid ${props => props.theme.footer.borderColor};
   color: #FFFFFF;
 
   .container {

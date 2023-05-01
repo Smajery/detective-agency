@@ -24,10 +24,12 @@ const LiftUpButton = () => {
     };
 
     useEffect(() => {
-        if(typeof window !== 'undefined') {
+        if (typeof window !== 'undefined') {
             window.addEventListener('scroll', handleScroll, {passive: true});
+
             return () => window.removeEventListener('scroll', handleScroll);
         }
+
     }, []);
 
     return (

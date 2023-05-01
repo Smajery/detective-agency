@@ -6,6 +6,7 @@ export const StyledHeader = styled.header`
   display: flex;
   justify-content: center;
   background-color: #333333;
+  border-bottom: 2px solid ${props => props.theme.header.borderColor};
   color: #FFFFFF;
 
   .container {

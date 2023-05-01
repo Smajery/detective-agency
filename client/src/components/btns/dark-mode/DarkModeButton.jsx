@@ -22,10 +22,8 @@ const DarkModeButton = () => {
 
     const turnOnDarkMode = () => {
         if (darkMode) {
-            document.body.classList.add('dark');
             btnRef.current.classList.add('active');
         } else {
-            document.body.classList.remove('dark');
             btnRef.current.classList.remove('active');
         }
     };

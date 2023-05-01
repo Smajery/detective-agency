@@ -2,18 +2,16 @@ import {StyledLiftUpButton} from './StyledLiftUpButton';
 import {useEffect, useState} from 'react';
 
 const LiftUpButton = () => {
-    const [isVisible, setIsVisible] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
 
     const handleScroll = () => {
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
         const windowHeight = window.innerHeight || document.documentElement.clientHeight;
         const scrollHeight = document.documentElement.scrollHeight;
 
-        if (scrollTop + windowHeight >= scrollHeight / 2) {
-            setIsVisible(true);
-        } else {
-            setIsVisible(false);
-        }
+        const isPageLongEnough = scrollHeight > windowHeight;
+
+        setIsVisible(isPageLongEnough && scrollTop > 0);
     };
 
     const scrollToTop = () => {

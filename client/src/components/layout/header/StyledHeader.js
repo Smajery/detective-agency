@@ -7,7 +7,7 @@ export const StyledHeader = styled.header`
   justify-content: center;
   background-color: #333333;
   border-bottom: 2px solid ${props => props.theme.header.borderColor};
-  color: #FFFFFF;
+  color: #999999;
 
   .container {
     width: 1240px;
@@ -17,7 +17,6 @@ export const StyledHeader = styled.header`
   }
 
   a {
-    color: #999999;
     transition: color .4s ease-in-out;
 
     &:hover, &.active {
@@ -33,6 +32,7 @@ export const StyledHeader = styled.header`
 
 export const StyledLogo = styled.div`
   display: flex;
+  color: #FFFFFF;
 
   p {
     font-weight: bold;
@@ -41,6 +41,10 @@ export const StyledLogo = styled.div`
       display: block;
       text-align: right;
       font-weight: 300;
+
+      a {
+        color: #999999
+      }
     }
   }
 `;
@@ -63,9 +67,14 @@ export const StyledNavbar = styled.ul`
     &.signin {
 
     }
-    
+
     &.dark-mode {
       margin: 0 15px;
+    }
+    
+    &.language-box {
+      display: flex;
+      gap: 0 5px;
     }
 
     a {
@@ -76,7 +85,7 @@ export const StyledNavbar = styled.ul`
       display: flex;
     }
   }
-  
+
 `;
 
 export const StyledSubNavbar = styled.ul`

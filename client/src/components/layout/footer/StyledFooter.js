@@ -13,6 +13,7 @@ export const StyledFooter = styled.footer`
     width: 1240px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
 `;
 

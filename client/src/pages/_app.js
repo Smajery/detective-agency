@@ -1,6 +1,7 @@
 import AuthProvider from '@/components/providers/AuthProvider';
 import {Provider} from 'react-redux';
 import store from '@/store';
+import i18n from '@/i18n';
 
 const App = ({Component, pageProps}) => {
     

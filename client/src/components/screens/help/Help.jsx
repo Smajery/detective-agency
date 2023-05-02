@@ -1,12 +1,17 @@
+import {useTranslation} from 'react-i18next';
+
 import Layout from '@/components/layout/Layout';
 import {StyledHelp} from './StyledHelp';
 
 const Help = () => {
+    const {t} = useTranslation();
     return (
-        <Layout title='Help' description='We are glad to help you!'>
-           <StyledHelp>
+        <Layout title={t('HelpPage.title')}
+                description={t('HelpPage.description')}
+        >
+            <StyledHelp>
 
-           </StyledHelp>
+            </StyledHelp>
         </Layout>
     );
 };

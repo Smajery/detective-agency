@@ -1,11 +1,14 @@
+import {useRouter} from 'next/router';
+import {useTranslation} from 'react-i18next';
+
 import Layout from '@/components/layout/Layout';
 import {StyledServices, StyledServicesList} from './StyledServices';
 import {routes} from '@/utils/nav-routes';
 import {isEmptyArr} from '@/utils/is-empty-arr';
-import {useRouter} from 'next/router';
 
 const Services = () => {
     const {pathname} = useRouter();
+    const {t} = useTranslation()
 
     const findCurrentPathObj = (array) => {
         return array.find((obj) => obj.path === pathname);
@@ -14,8 +17,8 @@ const Services = () => {
     const services = findCurrentPathObj(isEmptyArr(routes) && routes);
 
     return (
-        <Layout title="Services"
-                description="We love our customers"
+        <Layout title={t('ServicesPage.title')}
+                description={t('ServicesPage.description')}
         >
             <StyledServices>
                 <StyledServicesList>

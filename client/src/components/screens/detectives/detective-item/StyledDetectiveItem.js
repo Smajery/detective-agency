@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledUserItem = styled.div`
+export const StyledDetectiveItem = styled.div`
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;

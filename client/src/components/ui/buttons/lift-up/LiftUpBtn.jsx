@@ -1,7 +1,7 @@
-import {StyledLiftUpButton} from './StyledLiftUpButton';
+import {StyledLiftUpBtn} from './StyledLiftUpBtn';
 import {useEffect, useState} from 'react';
 
-const LiftUpButton = () => {
+const LiftUpBtn = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     const handleScroll = () => {
@@ -33,12 +33,12 @@ const LiftUpButton = () => {
     return (
         <>
             {isVisible && (
-                <StyledLiftUpButton onClick={scrollToTop}>
+                <StyledLiftUpBtn onClick={scrollToTop}>
                     ↑
-                </StyledLiftUpButton>
+                </StyledLiftUpBtn>
             )}
         </>
     );
 };
 
-export default LiftUpButton;
+export default LiftUpBtn;

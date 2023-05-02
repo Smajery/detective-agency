@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledDarkModeButton = styled.button`
+export const StyledChangeModeBtn = styled.button`
   padding: 5px;
   position: relative;
   width: 54px;

@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-export const StyledSignin = styled.div`
+export const StyledSignup = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   .container {
     width: 400px;
     display: flex;
@@ -67,11 +67,11 @@ export const StyledSignin = styled.div`
       }
     }
 
-    .signin-container {
+    .login-container {
       display: flex;
     }
 
-    .ask-signup-container {
+    .ask-signin-container {
       display: flex;
       justify-content: center;
 
@@ -81,7 +81,7 @@ export const StyledSignin = styled.div`
           font-weight: 600;
           text-decoration: underline;
           cursor: pointer;
-          
+
           &:hover {
             color: ${props => props.theme.color};;
           }

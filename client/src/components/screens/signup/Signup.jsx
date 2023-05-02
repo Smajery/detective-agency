@@ -1,17 +1,17 @@
-import {StyledSignin} from './StyledSignin';
 import Link from 'next/link';
 import {useTranslation} from 'react-i18next';
 
 import Layout from '@/components/layout/Layout';
-import SigninForm from './signin-from/SigninForm';
+import {StyledSignup} from './StyledSignup';
+import SignupForm from '@/components/screens/signup/signup-form/SignupForm';
 
-const Signin = () => {
+const Signup = () => {
     const {t} = useTranslation();
     return (
-        <Layout title={t('SigninPage.title')}
-                description={t('SigninPage.description')}
+        <Layout title={t('SignupPage.title')}
+                description={t('SignupPage.description')}
         >
-            <StyledSignin>
+            <StyledSignup>
                 <div className="container">
                     <div className="redirect-container">
                         <Link href={'/'}>
@@ -20,21 +20,21 @@ const Signin = () => {
                     </div>
                     <div className={'title-container'}>
                         <h1 className={'title'}>
-                            Ласкаво просимо знову
+                            Ласкаво просимо
                         </h1>
                     </div>
                     <div className={'signin-container'}>
-                        <SigninForm />
+                        <SignupForm />
                     </div>
-                    <div className={'ask-signup-container'}>
+                    <div className={'ask-signin-container'}>
                         <p className={'text'}>
-                            Немає облікового запису? <span><Link href={'/signup'}>Зареєструватися</Link></span>
+                            Вже маєте обліковий запис? <span><Link href={'/signin'}>Увійти</Link></span>
                         </p>
                     </div>
                 </div>
-            </StyledSignin>
+            </StyledSignup>
         </Layout>
     );
 };
 
-export default Signin;
+export default Signup;

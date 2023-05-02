@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledLiftUpButton = styled.button`
+export const StyledLiftUpBtn = styled.button`
   padding-bottom: 4px;
   width: 40px;
   height: 40px;

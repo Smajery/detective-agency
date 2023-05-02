@@ -7,7 +7,7 @@ export const StyledFooter = styled.footer`
   justify-content: center;
   background-color: #333333;
   border-top: 2px solid ${props => props.theme.footer.borderColor};
-  color: #FFFFFF;
+  color: #999999;
 
   .container {
     width: 1240px;

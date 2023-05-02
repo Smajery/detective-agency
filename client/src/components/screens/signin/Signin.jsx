@@ -7,6 +7,7 @@ import SigninForm from './signin-from/SigninForm';
 
 const Signin = () => {
     const {t} = useTranslation();
+
     return (
         <Layout title={t('SigninPage.title')}
                 description={t('SigninPage.description')}
@@ -15,12 +16,12 @@ const Signin = () => {
                 <div className="container">
                     <div className="redirect-container">
                         <Link href={'/'}>
-                            Ні, дякую
+                            {t('SigninPage.No, thanks')}
                         </Link>
                     </div>
                     <div className={'title-container'}>
                         <h1 className={'title'}>
-                            Ласкаво просимо знову
+                            {t('SigninPage.Welcome again')}
                         </h1>
                     </div>
                     <div className={'signin-container'}>
@@ -28,7 +29,8 @@ const Signin = () => {
                     </div>
                     <div className={'ask-signup-container'}>
                         <p className={'text'}>
-                            Немає облікового запису? <span><Link href={'/signup'}>Зареєструватися</Link></span>
+                            {t("SigninPage.Don't have an account")}
+                            <span><Link href={'/signup'}>{t('SigninPage.Sign up')}</Link></span>
                         </p>
                     </div>
                 </div>

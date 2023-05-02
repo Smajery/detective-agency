@@ -24,6 +24,10 @@
     }
   },
 
+  "footer": {
+    "copyright": "Copyright © 2023 «Dirk Gently's» Detective Agency. All rights reserved."
+  },
+
   "HomePage": {
     "title": "Home",
     "description": "Hello, our lovely customers!"
@@ -56,12 +60,30 @@
 
   "SigninPage": {
     "title": "Sign in",
-    "description": "Welcome again!"
+    "description": "Welcome again!",
+
+    "No, thanks": "No, thanks",
+    "Welcome again": "Welcome again",
+    "Don't have an account": "Don't have an account?",
+    "Sign in": "Sign in",
+    "Sign up": "Sign up",
+    "Password": "Password",
+    "Keep me logged in": "Keep me logged in",
+    "Forgot password": "Forgot password?"
   },
 
   "SignupPage": {
     "title": "Sign up",
-    "description": "Welcome!"
+    "description": "Welcome!",
+
+    "No, thanks": "No, thanks",
+    "Welcome": "Welcome",
+    "Do you have an account": "Do you have an account?",
+    "Sign in": "Sign in",
+    "Sign up": "Sign up",
+    "Password": "Password",
+    "Keep me logged in": "Keep me logged in",
+    "Forgot password": "Forgot password?"
   },
 
   "NotFoundPage": {

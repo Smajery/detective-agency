@@ -6,8 +6,22 @@ export const StyledSignupForm = styled.form`
   flex-direction: column;
   gap: 12px 0;
 
+  .input-password-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .password-security-btn {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      right: 12px;
+    }
+  }
+
   .input-item {
     padding: 0 20px;
+    width: 100%;
     height: 40px;
     border: none;
     border-radius: 100px;

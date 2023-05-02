@@ -1,8 +1,12 @@
 import Layout from '@/components/layout/Layout';
+import {useTranslation} from 'react-i18next';
 
 const Feedbacks = () => {
+    const {t} = useTranslation();
     return (
-        <Layout title='Feedbacks' description='Our feedbacks'>
+            <Layout title={t('FeedbacksPage.title')}
+                description={t('FeedbacksPage.description')}
+        >
             Feedbacks
         </Layout>
     );

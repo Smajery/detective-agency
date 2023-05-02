@@ -1,18 +1,22 @@
+import {useTranslation} from 'react-i18next';
+
 import Layout from '@/components/layout/Layout';
-import UserItem from '@/components/ui/user/UserItem';
+import DetectiveItem from '@/components/screens/detectives/detective-item/DetectiveItem';
 import {StyledDetectives} from './StyledDetectives';
 
 const Detectives = ({users}) => {
+    const {t} = useTranslation()
+
     return (
-        <Layout title="Detectives"
-                description="Detectives list"
+        <Layout title={t('DetectivesPage.title')}
+                description={t('DetectivesPage.description')}
         >
             <StyledDetectives>
                 <h1>Detectives list</h1>
                 {users && users.length > 0 ? (
                     users.map(user => (
-                        <UserItem key={user.id}
-                                  user={user}
+                        <DetectiveItem key={user.id}
+                                       user={user}
                         />
                     ))
                 ) : (

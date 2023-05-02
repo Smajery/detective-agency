@@ -1,11 +1,11 @@
 import Layout from '@/components/layout/Layout';
-import UserItem from '@/components/ui/user/UserItem';
+import DetectiveItem from '@/components/screens/detectives/detective-item/DetectiveItem';
 
 const User = ({user}) => {
     console.log(user)
     return (
         <Layout title={user.name} description={`${user.name} profile`}>
-            <UserItem user={user}/>
+            <DetectiveItem user={user}/>
         </Layout>
     );
 };

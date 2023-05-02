@@ -1,8 +1,8 @@
 import {useState} from 'react';
+import {StyledSignupForm} from './StyledSignupForm';
 import {emailPattern, passwordPattern} from '@/utils/auth-pattern';
-import {StyledSigninForm} from '@/components/screens/signin/signin-from/StyledSigninForm';
 
-const SigninForm = () => {
+const SignupForm = () => {
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
 
@@ -61,7 +61,7 @@ const SigninForm = () => {
 
         if (emailError === '' && passwordError === '') {
             try {
-                console.log('signin success!');
+                console.log('signup success!');
             } catch (error) {
                 console.error(error);
             }
@@ -70,7 +70,7 @@ const SigninForm = () => {
 
 
     return (
-        <StyledSigninForm onSubmit={handleSubmit}>
+        <StyledSignupForm onSubmit={handleSubmit}>
             <input type="text"
                    placeholder="E-mail"
                    value={emailValue}
@@ -97,27 +97,11 @@ const SigninForm = () => {
                     </p>
                 </div>
             }
-            <button className='signin-btn'>
-                Увійти
+            <button className='signup-btn'>
+                Зареєструватися
             </button>
-            <div className='signin-options'>
-                <label className={isKeepLoggedIn ? 'keep-log-text active' : 'keep-log-text'}>
-                    <input type="checkbox"
-                           name="keepLoggedIn"
-                           value="true"
-                           defaultChecked={isKeepLoggedIn}
-                           onChange={e => setIsKeepLoggedIn(e.target.checked)}
-                    />
-                    Залишити мене в системі
-                </label>
-                <a href={'/'}
-                   className={'forgot-pass-text'}
-                >
-                    Забули пароль?
-                </a>
-            </div>
-        </StyledSigninForm>
+        </StyledSignupForm>
     );
 };
 
-export default SigninForm;
+export default SignupForm;

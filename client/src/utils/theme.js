@@ -3,17 +3,33 @@ export const theme = {
         backgroundColor: '#333333',
         foregroundColor: '#FFFFFF',
         strongBackgroundColor: '#272727',
+
         color: '#FFFFFF',
         foreColor: '#333333',
 
+        header: {
+            borderColor: '#999999',
+        },
+
+        footer: {
+            borderColor: '#999999',
+        },
     },
 
     light: {
         backgroundColor: '#FFFFFF',
         foregroundColor: '#333333',
         strongBackgroundColor: '#333333',
+
         color: '#333333',
         foreColor: '#FFFFFF',
 
+        header: {
+            borderColor: '#333333',
+        },
+
+        footer: {
+            borderColor: '#333333',
+        },
     }
 }

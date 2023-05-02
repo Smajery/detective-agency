@@ -1,7 +1,7 @@
 import {useEffect, useRef} from 'react';
 import Image from 'next/image';
 
-import {StyledDarkModeButton} from '@/components/btns/dark-mode/StyledDarkModeButton';
+import {StyledChangeModeBtn} from '@/components/ui/buttons/dark-mode/StyledChangeModeBtn';
 import {useLocaleStorage} from '@/hooks/UseLocalStorage';
 import {useActions} from '@/hooks/UseActions';
 import {detectDarkMode} from '@/utils/detect-dark-mode';
@@ -9,7 +9,7 @@ import {detectDarkMode} from '@/utils/detect-dark-mode';
 import lightModeImg from '@/static/dark-mode/light-mode.svg';
 import darkModeImg from '@/static/dark-mode/dark-mode.svg';
 
-const DarkModeButton = () => {
+const ChangeModeBtn = () => {
     const [darkMode, setDarkMode] = useLocaleStorage('darkMode', detectDarkMode());
 
     const {setIsDarkMode} = useActions();
@@ -22,10 +22,8 @@ const DarkModeButton = () => {
 
     const turnOnDarkMode = () => {
         if (darkMode) {
-            document.body.classList.add('dark');
             btnRef.current.classList.add('active');
         } else {
-            document.body.classList.remove('dark');
             btnRef.current.classList.remove('active');
         }
     };
@@ -46,9 +44,9 @@ const DarkModeButton = () => {
     }, []);
 
     return (
-        <StyledDarkModeButton ref={btnRef}
-                              className={'btnDarkMode'}
-                              onClick={toggleDarkMode}
+        <StyledChangeModeBtn ref={btnRef}
+                             className={'btnDarkMode'}
+                             onClick={toggleDarkMode}
         >
             <Image src={lightModeImg}
                    alt="Light mode"
@@ -62,8 +60,8 @@ const DarkModeButton = () => {
                    height={20}
                    className='mode-icon'
             />
-        </StyledDarkModeButton>
+        </StyledChangeModeBtn>
     );
 };
 
-export default DarkModeButton;
+export default ChangeModeBtn;

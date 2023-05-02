@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
 
   html,
   body {
-    height: 100%;
+    min-height: 100%;
     overflow-x: hidden;
   }
 
@@ -32,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
-  
+
   p {
     color: inherit;
   }
@@ -49,7 +49,19 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
-  
+  select {
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+
   button {
     border: none;
     background-color: transparent;

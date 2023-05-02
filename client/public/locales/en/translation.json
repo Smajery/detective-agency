@@ -1,0 +1,72 @@
+{
+  "header": {
+    "logo": {
+      "title1": "Detective agency",
+      "title2": "«Dirk Gently's»"
+    },
+
+    "navbar": {
+      "Detectives": "Detectives",
+      "Services": "Services",
+      "Help": "Help",
+      "Feedbacks": "Feedbacks",
+      "Contacts": "Contacts",
+      "Sign in": "Sign in"
+    },
+
+    "subbar": {
+      "Services": {
+        "Search": "Search",
+        "Investigation": "Investigation",
+        "Observation": "Observation",
+        "Adultery": "Adultery"
+      }
+    }
+  },
+
+  "HomePage": {
+    "title": "Home",
+    "description": "Hello, our lovely customers!"
+  },
+
+  "DetectivesPage": {
+    "title": "Detectives",
+    "description": "Detectives list"
+  },
+
+  "ServicesPage": {
+    "title": "Services",
+    "description": "We love our customers"
+  },
+
+  "HelpPage": {
+    "title": "Help",
+    "description": "We are glad to help you!"
+  },
+
+  "FeedbacksPage": {
+    "title": "Feedbacks",
+    "description": "Our feedbacks"
+  },
+
+  "ContactsPage": {
+    "title": "Contacts",
+    "description": "Our contacts"
+  },
+
+  "SigninPage": {
+    "title": "Sign in",
+    "description": "Welcome again!"
+  },
+
+  "SignupPage": {
+    "title": "Sign up",
+    "description": "Welcome!"
+  },
+
+  "NotFoundPage": {
+    "title": "Not found",
+    "description": "404 - Page not found"
+  }
+
+}

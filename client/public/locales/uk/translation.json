@@ -1,0 +1,71 @@
+{
+  "header": {
+    "logo": {
+      "title1": "Детективне агентство",
+      "title2": "«Дірка Джентлі»"
+    },
+
+    "navbar": {
+      "Detectives": "Детективи",
+      "Services": "Послуги",
+      "Help": "Допомога",
+      "Feedbacks": "Відгуки",
+      "Contacts": "Контакти",
+      "Sign in": "Вхід"
+    },
+
+    "subbar": {
+      "Services": {
+        "Search": "Пошук",
+        "Investigation": "Розслідування",
+        "Observation": "Спостереження",
+        "Adultery": "Подружня зрада"
+      }
+    }
+  },
+
+  "HomePage": {
+    "title": "Додому",
+    "description": "Вітаю, наші любі клієнти!"
+  },
+
+  "DetectivesPage": {
+    "title": "Детективи",
+    "description": "Список детективів"
+  },
+
+  "ServicesPage": {
+    "title": "Послуги",
+    "description": "Ми любимо наших клієнтів"
+  },
+
+  "HelpPage": {
+    "title": "Допомога",
+    "description": "Ми раді Вам допомогти!"
+  },
+
+  "FeedbacksPage": {
+    "title": "Відгуки",
+    "description": "Наші відгуки"
+  },
+
+  "ContactsPage": {
+    "title": "Контакти",
+    "description": "Наші контакти"
+  },
+
+  "SigninPage": {
+    "title": "Вхід",
+    "description": "Ласкаво просимо знову!"
+  },
+
+  "SignupPage": {
+    "title": "Реєстрація",
+    "description": "Ласкаво просимо!"
+  },
+
+  "NotFoundPage": {
+    "title": "Не знайдено",
+    "description": "404 - Сторінка не знайдена"
+  }
+}

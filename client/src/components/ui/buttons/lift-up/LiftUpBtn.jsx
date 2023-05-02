@@ -1,19 +1,17 @@
-import {StyledLiftUpButton} from './StyledLiftUpButton';
+import {StyledLiftUpBtn} from './StyledLiftUpBtn';
 import {useEffect, useState} from 'react';
 
-const LiftUpButton = () => {
-    const [isVisible, setIsVisible] = useState(true);
+const LiftUpBtn = () => {
+    const [isVisible, setIsVisible] = useState(false);
 
     const handleScroll = () => {
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
         const windowHeight = window.innerHeight || document.documentElement.clientHeight;
         const scrollHeight = document.documentElement.scrollHeight;
 
-        if (scrollTop + windowHeight >= scrollHeight / 2) {
-            setIsVisible(true);
-        } else {
-            setIsVisible(false);
-        }
+        const isPageLongEnough = scrollHeight > windowHeight;
+
+        setIsVisible(isPageLongEnough && scrollTop > 0);
     };
 
     const scrollToTop = () => {
@@ -24,21 +22,23 @@ const LiftUpButton = () => {
     };
 
     useEffect(() => {
-        if(typeof window !== 'undefined') {
+        if (typeof window !== 'undefined') {
             window.addEventListener('scroll', handleScroll, {passive: true});
+
             return () => window.removeEventListener('scroll', handleScroll);
         }
+
     }, []);
 
     return (
         <>
             {isVisible && (
-                <StyledLiftUpButton onClick={scrollToTop}>
+                <StyledLiftUpBtn onClick={scrollToTop}>
                     ↑
-                </StyledLiftUpButton>
+                </StyledLiftUpBtn>
             )}
         </>
     );
 };
 
-export default LiftUpButton;
+export default LiftUpBtn;

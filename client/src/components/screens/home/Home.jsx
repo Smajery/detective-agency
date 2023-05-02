@@ -1,8 +1,14 @@
+import {useTranslation} from 'react-i18next';
+
 import Layout from '@/components/layout/Layout';
 
 const Home = () => {
+    const {t} = useTranslation();
+
     return (
-        <Layout title='Home' description='Hello, our lovely customers!'>
+        <Layout title={t('HomePage.title')}
+                description={t('HomePage.description')}
+        >
             Home page
         </Layout>
     );

@@ -78,6 +78,7 @@ export const StyledSignin = styled.div`
       .text {
         color: #999999;
         span {
+          margin-left: 5px;
           font-weight: 600;
           text-decoration: underline;
           cursor: pointer;

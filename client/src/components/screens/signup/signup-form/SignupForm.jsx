@@ -1,15 +1,21 @@
 import {useState} from 'react';
+import Image from 'next/image';
+import {useTranslation} from 'react-i18next';
+
 import {StyledSignupForm} from './StyledSignupForm';
 import {emailPattern, passwordPattern} from '@/utils/auth-pattern';
+import hiddenPasswordImg from '@/static/icons/eye-closed.svg';
+import shownPasswordImg from '@/static/icons/eye-open.svg';
 
 const SignupForm = () => {
+    const {t} = useTranslation()
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
 
     const [emailErrorValue, setEmailErrorValue] = useState('');
     const [passwordErrorValue, setPasswordErrorValue] = useState('');
 
-    const [isKeepLoggedIn, setIsKeepLoggedIn] = useState(true);
+    const [isHiddenPassword, setIsHiddenPassword] = useState(true)
 
     const handleEmailChange = (e) => {
         const emailInput = e.target.value;
@@ -84,12 +90,23 @@ const SignupForm = () => {
                     </p>
                 </div>
             }
-            <input type="password"
-                   placeholder="Пароль"
-                   value={passwordValue}
-                   onChange={handlePasswordChange}
-                   className={passwordErrorValue !== '' ? 'input-item input-item_error': 'input-item'}
-            />
+            <div className='input-password-box'>
+                <input type={isHiddenPassword ? 'password' : 'text'}
+                       placeholder={t('SignupPage.Password')}
+                       value={passwordValue}
+                       onChange={handlePasswordChange}
+                       className={passwordErrorValue !== '' ? 'input-item input-item_error': 'input-item'}
+                />
+                <button className="password-security-btn"
+                        onClick={() => setIsHiddenPassword(!isHiddenPassword)}
+                >
+                    <Image src={isHiddenPassword ? hiddenPasswordImg : shownPasswordImg}
+                           alt={'Shown password'}
+                           height={23}
+                           width={23}
+                    />
+                </button>
+            </div>
             {passwordErrorValue !== '' &&
                 <div className='error-text-container'>
                     <p className={'text'}>
@@ -98,7 +115,7 @@ const SignupForm = () => {
                 </div>
             }
             <button className='signup-btn'>
-                Зареєструватися
+                {t('SignupPage.Sign up')}
             </button>
         </StyledSignupForm>
     );

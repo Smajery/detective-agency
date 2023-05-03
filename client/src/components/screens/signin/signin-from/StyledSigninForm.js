@@ -5,10 +5,24 @@ export const StyledSigninForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 12px 0;
+  
+  .input-password-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+    
+    .password-security-btn {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      right: 12px;
+    }
+  }
 
   .input-item {
-    padding: 0 20px;
+    padding: 0 40px 0 20px;
     height: 40px;
+    width: 100%;
     border: none;
     border-radius: 100px;
     background-color: #f3f3f3;

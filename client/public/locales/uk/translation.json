@@ -24,6 +24,10 @@
     }
   },
 
+  "footer": {
+    "copyright": "Авторське право © 2023 Детективне агентство «Дірка Джентлі». Всі права захищені."
+  },
+
   "HomePage": {
     "title": "Додому",
     "description": "Вітаю, наші любі клієнти!"
@@ -56,12 +60,30 @@
 
   "SigninPage": {
     "title": "Вхід",
-    "description": "Ласкаво просимо знову!"
+    "description": "Ласкаво просимо знову!",
+
+    "No, thanks": "Ні, дякую",
+    "Welcome again": "Ласкаво просимо знову",
+    "Don't have an account": "Немає облікового запису?",
+    "Sign in": "Увійти",
+    "Sign up": "Зареєструватися",
+    "Password": "Пароль",
+    "Keep me logged in": "Залишити мене в системі",
+    "Forgot password": "Забули пароль?"
   },
 
   "SignupPage": {
     "title": "Реєстрація",
-    "description": "Ласкаво просимо!"
+    "description": "Ласкаво просимо!",
+
+    "No, thanks": "Ні, дякую",
+    "Welcome": "Ласкаво просимо",
+    "Do you have an account": "Вже маєте обліковий запис?",
+    "Sign in": "Увійти",
+    "Sign up": "Зареєструватися",
+    "Password": "Пароль",
+    "Keep me logged in": "Залишити мене в системі",
+    "Forgot password": "Забули пароль?"
   },
 
   "NotFoundPage": {

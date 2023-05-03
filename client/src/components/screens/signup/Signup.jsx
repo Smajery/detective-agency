@@ -15,12 +15,12 @@ const Signup = () => {
                 <div className="container">
                     <div className="redirect-container">
                         <Link href={'/'}>
-                            Ні, дякую
+                            {t('SignupPage.No, thanks')}
                         </Link>
                     </div>
                     <div className={'title-container'}>
                         <h1 className={'title'}>
-                            Ласкаво просимо
+                            {t('SignupPage.Welcome')}
                         </h1>
                     </div>
                     <div className={'signin-container'}>
@@ -28,7 +28,8 @@ const Signup = () => {
                     </div>
                     <div className={'ask-signin-container'}>
                         <p className={'text'}>
-                            Вже маєте обліковий запис? <span><Link href={'/signin'}>Увійти</Link></span>
+                            {t('SignupPage.Do you have an account')}
+                            <span><Link href={'/signin'}>{t('SignupPage.Sign in')}</Link></span>
                         </p>
                     </div>
                 </div>

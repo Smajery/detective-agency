@@ -8,15 +8,16 @@ class caseController {
             const delo = await Case.create({treatieId})
             return res.json(delo)
         } catch (e) {
-            next(ApiError.badRequest(e.message))
+            next(e)
         }
     }
+
     async getAll(req, res, next) {
         try {
             const delo = await Case.findAll()
             return res.json(delo)
         } catch (e) {
-            next(ApiError.badRequest(e.message))
+            next(e)
         }
     }
 
@@ -26,7 +27,7 @@ class caseController {
             const delo = await Case.findOne({ where: { id } });
             return res.json(delo);
         } catch (e) {
-            next(ApiError.badRequest(e.message))
+            next(e)
         }
     }
 
@@ -37,7 +38,7 @@ class caseController {
             await delo.destroy();
             return res.json({ message: `Case with id ${id} was deleted.` });
         } catch (e) {
-            next(ApiError.badRequest(e.message))
+            next(e)
         }
     }
 }

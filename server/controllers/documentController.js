@@ -45,7 +45,7 @@ class documentController {
             return res.json(document);
 
         } catch (e) {
-            next(ApiError.badRequest(e.message));
+            next(e)
         }
 
     }
@@ -60,7 +60,7 @@ class documentController {
             });
             return res.json(documents);
         } catch (e) {
-            next(ApiError.badRequest(e.message));
+            next(e)
         }
     }
 
@@ -76,7 +76,7 @@ class documentController {
             });
             return res.json(document);
         } catch (e) {
-            next(ApiError.badRequest(e.message));
+            next(e)
         }
     }
 
@@ -101,7 +101,7 @@ class documentController {
             await Document.destroy({where: {id}});
             return res.json({message: `Document with id ${id} was deleted.`});
         } catch (e) {
-            next(ApiError.badRequest(e.message));
+            next(e)
         }
     }
 }

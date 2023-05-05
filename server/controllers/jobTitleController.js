@@ -7,7 +7,7 @@ class jobTitleController {
             const jobTitle = await JobTitle.create({title, salary})
             return res.json(jobTitle)
         } catch (e) {
-            next(ApiError.badRequest(e.message))
+            next(e)
         }
     }
 
@@ -16,7 +16,7 @@ class jobTitleController {
             const jobTitle = await JobTitle.findAll()
             return res.json(jobTitle)
         } catch (e) {
-            next(ApiError.badRequest(e.message))
+            next(e)
         }
     }
 
@@ -26,7 +26,7 @@ class jobTitleController {
             const jobTitle = await JobTitle.findOne({ where: { id } });
             return res.json(jobTitle);
         } catch (e) {
-            next(ApiError.badRequest(e.message))
+            next(e)
         }
     }
 
@@ -37,7 +37,7 @@ class jobTitleController {
             await jobTitle.destroy();
             return res.json({ message: `Job title with id ${id} was deleted.` });
         } catch (e) {
-            next(ApiError.badRequest(e.message))
+            next(e)
         }
     }
 }

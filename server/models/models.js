@@ -12,7 +12,14 @@ const User = sequelize.define('user', {
         }
     },
     password: {type: DataTypes.STRING},
+    isActivated: {type: DataTypes.BOOLEAN, defaultValue: false},
+    activationLink: {type: DataTypes.STRING},
     role: {type: DataTypes.STRING, defaultValue: 'CLIENT'}
+});
+
+const Token = sequelize.define('token', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    refreshToken: {type: DataTypes.STRING, allowNull: false}
 });
 
 const Client = sequelize.define('client', {
@@ -95,6 +102,9 @@ const File = sequelize.define('file', {
     extension: {type: DataTypes.STRING, allowNull: false},
 })
 
+User.hasOne(Token)
+Token.belongsTo(User)
+
 User.hasOne(Client)
 Client.belongsTo(User)
 
@@ -124,6 +134,7 @@ File.belongsTo(Document)
 
 module.exports = {
     User,
+    Token,
     Client,
     Employee,
     JobTitle,

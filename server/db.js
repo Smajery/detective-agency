@@ -1,24 +1,24 @@
 const Pool = require("pg").Pool
 
 const chiefPool = new Pool({
-    user: process.env.POSTGES_CHIEF_USER,
-    password: process.env.DB_CHIEF_PASSWORD,
+    user: process.env.DB_USER_CHIEF,
+    password: process.env.DB_PASSWORD_CHIEF,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB_NAME
+});
+
+const seniorPool = new Pool({
+    user: process.env.DB_USER_SENIOR,
+    password: process.env.DB_PASSWORD_SENIOR,
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     database: process.env.DB_NAME
 });
 
 const detectivePool = new Pool({
-    user: process.DB_PASSWORD_DETECTIVE,
+    user: process.env.DB_USER_DETECTIVE,
     password: process.env.DB_PASSWORD_DETECTIVE,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    database: process.env.DB_NAME
-});
-
-const clientPool = new Pool({
-    user: process.env.DB_USER_CLIENT,
-    password: process.env.DB_PASSWORD_CLIENT,
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     database: process.env.DB_NAME
@@ -26,6 +26,6 @@ const clientPool = new Pool({
 
 module.exports = {
     chiefPool,
-    detectivePool,
-    clientPool
+    seniorPool,
+    detectivePool
 }

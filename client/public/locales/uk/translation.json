@@ -69,7 +69,11 @@
     "Sign up": "Зареєструватися",
     "Password": "Пароль",
     "Keep me logged in": "Залишити мене в системі",
-    "Forgot password": "Забули пароль?"
+    "Forgot password": "Забули пароль?",
+    "Email is empty": "Це поле є обов'язковим",
+    "Password is empty": "Це поле є обов'язковим",
+    "Incorrect email": "Невірний формат електронної пошти",
+    "Incorrect password": "Невірний формат пароля"
   },
 
   "SignupPage": {
@@ -83,7 +87,11 @@
     "Sign up": "Зареєструватися",
     "Password": "Пароль",
     "Keep me logged in": "Залишити мене в системі",
-    "Forgot password": "Забули пароль?"
+    "Forgot password": "Забули пароль?",
+    "Email is empty": "Це поле є обов'язковим",
+    "Password is empty": "Це поле є обов'язковим",
+    "Incorrect email": "Невірний формат електронної пошти",
+    "Incorrect password": "Невірний формат пароля"
   },
 
   "NotFoundPage": {

@@ -88,7 +88,7 @@ const SigninForm = () => {
             {emailErrorValue !== '' &&
                 <div className="error-text-container">
                     <p className={'text'}>
-                        {emailErrorValue}
+                        {t(`SigninPage.${emailErrorValue}`)}
                     </p>
                 </div>
             }
@@ -112,7 +112,7 @@ const SigninForm = () => {
             {passwordErrorValue !== '' &&
                 <div className="error-text-container">
                     <p className={'text'}>
-                        {passwordErrorValue}
+                        {t(`SigninPage.${passwordErrorValue}`)}
                     </p>
                 </div>
             }

@@ -69,7 +69,11 @@
     "Sign up": "Sign up",
     "Password": "Password",
     "Keep me logged in": "Keep me logged in",
-    "Forgot password": "Forgot password?"
+    "Forgot password": "Forgot password?",
+    "Email is empty": "Email is empty",
+    "Password is empty": "Password is empty",
+    "Incorrect email": "Incorrect email",
+    "Incorrect password": "Incorrect password"
   },
 
   "SignupPage": {
@@ -83,7 +87,11 @@
     "Sign up": "Sign up",
     "Password": "Password",
     "Keep me logged in": "Keep me logged in",
-    "Forgot password": "Forgot password?"
+    "Forgot password": "Forgot password?",
+    "Email is empty": "Email is empty",
+    "Password is empty": "Password is empty",
+    "Incorrect email": "Incorrect email",
+    "Incorrect password": "Incorrect password"
   },
 
   "NotFoundPage": {

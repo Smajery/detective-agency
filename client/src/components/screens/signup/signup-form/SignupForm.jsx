@@ -6,16 +6,17 @@ import {StyledSignupForm} from './StyledSignupForm';
 import {emailPattern, passwordPattern} from '@/utils/auth-pattern';
 import hiddenPasswordImg from '@/static/icons/eye-closed.svg';
 import shownPasswordImg from '@/static/icons/eye-open.svg';
+import {UserService} from '@/services/user.service';
 
 const SignupForm = () => {
-    const {t} = useTranslation()
+    const {t} = useTranslation();
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
 
     const [emailErrorValue, setEmailErrorValue] = useState('');
     const [passwordErrorValue, setPasswordErrorValue] = useState('');
 
-    const [isHiddenPassword, setIsHiddenPassword] = useState(true)
+    const [isHiddenPassword, setIsHiddenPassword] = useState(true);
 
     const handleEmailChange = (e) => {
         const emailInput = e.target.value;
@@ -66,11 +67,13 @@ const SignupForm = () => {
         setPasswordErrorValue(passwordError);
 
         if (emailError === '' && passwordError === '') {
-            try {
-                console.log('signup success!');
-            } catch (error) {
-                console.error(error);
-            }
+            UserService.registration(emailValue, passwordValue)
+                .then(
+                    () => console.log('Registration completed successfully!')
+                )
+                .catch(
+                    e => console.error(e.response.data.message)
+                )
         }
     };
 
@@ -81,21 +84,21 @@ const SignupForm = () => {
                    placeholder="E-mail"
                    value={emailValue}
                    onChange={handleEmailChange}
-                   className={emailErrorValue !== '' ? 'input-item input-item_error': 'input-item'}
+                   className={emailErrorValue !== '' ? 'input-item input-item_error' : 'input-item'}
             />
             {emailErrorValue !== '' &&
-                <div className='error-text-container'>
+                <div className="error-text-container">
                     <p className={'text'}>
                         {emailErrorValue}
                     </p>
                 </div>
             }
-            <div className='input-password-box'>
+            <div className="input-password-box">
                 <input type={isHiddenPassword ? 'password' : 'text'}
                        placeholder={t('SignupPage.Password')}
                        value={passwordValue}
                        onChange={handlePasswordChange}
-                       className={passwordErrorValue !== '' ? 'input-item input-item_error': 'input-item'}
+                       className={passwordErrorValue !== '' ? 'input-item input-item_error' : 'input-item'}
                 />
                 <button className="password-security-btn"
                         onClick={() => setIsHiddenPassword(!isHiddenPassword)}
@@ -108,13 +111,13 @@ const SignupForm = () => {
                 </button>
             </div>
             {passwordErrorValue !== '' &&
-                <div className='error-text-container'>
+                <div className="error-text-container">
                     <p className={'text'}>
                         {passwordErrorValue}
                     </p>
                 </div>
             }
-            <button className='signup-btn'>
+            <button className="signup-btn">
                 {t('SignupPage.Sign up')}
             </button>
         </StyledSignupForm>

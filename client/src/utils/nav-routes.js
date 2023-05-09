@@ -2,7 +2,7 @@ export const routes = [
     {id: 1, path: '/detectives', title: 'Detectives'},
     {
         id: 2,
-        path: '/services',
+        path: '/api',
         title: 'Services',
         subcategories: [
             {id: 1, anchor: 'search', title: 'Search'},

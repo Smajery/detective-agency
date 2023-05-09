@@ -1,5 +1,5 @@
 import Detectives from '@/components/screens/detectives/Detectives';
-import {UserService} from '@/services/user.service';
+import {UserService} from '@/api/user.service';
 
 const DetectivesPage = ({users}) => {
     return <Detectives users={users} />;

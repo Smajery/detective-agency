@@ -1,9 +1,17 @@
-import {$host} from '@/services/index';
+import {$host} from '@/api/index';
 import {API_USER} from '@/utils/api-routes';
 
 export const UserService = {
     async registration(email, password) {
         const {data} = await $host.post(API_USER + 'registration', {
+            email,
+            password
+        })
+        return data;
+    },
+
+    async login(email, password) {
+        const {data} = await $host.post(API_USER + 'login', {
             email,
             password
         })

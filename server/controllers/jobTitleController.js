@@ -1,4 +1,3 @@
-const {JobTitle} = require('../models/models')
 const ApiError = require('../error/ApiError')
 class jobTitleController {
     async create(req, res, next) {

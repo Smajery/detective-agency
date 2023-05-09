@@ -1,4 +1,3 @@
-const {Employee} = require('../models/models');
 const ApiError = require('../error/ApiError');
 
 class employeeController {

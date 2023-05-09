@@ -6,7 +6,7 @@ import {StyledSignupForm} from './StyledSignupForm';
 import {emailPattern, passwordPattern} from '@/utils/auth-pattern';
 import hiddenPasswordImg from '@/static/icons/eye-closed.svg';
 import shownPasswordImg from '@/static/icons/eye-open.svg';
-import {UserService} from '@/services/user.service';
+import {UserService} from '@/api/user.service';
 
 const SignupForm = () => {
     const {t} = useTranslation();
@@ -69,7 +69,11 @@ const SignupForm = () => {
         if (emailError === '' && passwordError === '') {
             UserService.registration(emailValue, passwordValue)
                 .then(
-                    () => console.log('Registration completed successfully!')
+                    () => {
+                        console.log('Registration completed successfully!')
+                        setEmailValue('')
+                        setPasswordValue('')
+                    }
                 )
                 .catch(
                     e => console.error(e.response.data.message)

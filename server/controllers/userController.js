@@ -60,23 +60,6 @@ class userController {
             next(e)
         }
     }
-
-    async getAll(req, res, next) {
-        try {
-            const users = await userService.getAllUsers();
-            return res.json(users)
-        } catch (e) {
-            next(e)
-        }
-    }
-
-    // async check(req, res, next) {
-    //     const {id} = req.query
-    //     if(!id) {
-    //         return next(ApiError.badRequest('ID not set'))
-    //     }
-    //     res.json(id)
-    // }
 }
 
 module.exports = new userController()

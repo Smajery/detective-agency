@@ -6,6 +6,7 @@ import {emailPattern, passwordPattern} from '@/utils/auth-pattern';
 import {StyledSigninForm} from '@/components/screens/signin/signin-from/StyledSigninForm';
 import shownPasswordImg from '@/static/icons/eye-open.svg';
 import hiddenPasswordImg from '@/static/icons/eye-closed.svg';
+import {UserService} from '@/api/user.service';
 
 const SigninForm = () => {
     const {t} = useTranslation();
@@ -68,11 +69,17 @@ const SigninForm = () => {
         setPasswordErrorValue(passwordError);
 
         if (emailError === '' && passwordError === '') {
-            try {
-                console.log('signin success!');
-            } catch (error) {
-                console.error(error);
-            }
+            UserService.login(emailValue, passwordValue)
+                .then(
+                    () => {
+                        console.log('Login completed successfully!')
+                        setEmailValue('')
+                        setPasswordValue('')
+                    }
+                )
+                .catch(
+                    e => console.error(e.response.data.message)
+                )
         }
     };
 

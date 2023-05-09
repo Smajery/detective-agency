@@ -1,4 +1,3 @@
-const {Client} = require('../models/models');
 const ApiError = require('../error/ApiError');
 
 class clientController {

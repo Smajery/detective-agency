@@ -1,5 +1,5 @@
 import User from '@/components/screens/user/User';
-import {UserService} from '@/services/user.service';
+import {UserService} from '@/api/user.service';
 
 export default function UserPage({user}) {
     return <User user={user} />;

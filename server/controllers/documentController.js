@@ -1,7 +1,6 @@
 const uuid = require('uuid');
 const path = require('path');
 const fs = require('fs');
-const {Document, File} = require('../models/models');
 const ApiError = require('../error/ApiError');
 
 class documentController {

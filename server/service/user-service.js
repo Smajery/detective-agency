@@ -1,24 +1,35 @@
-const {User} = require('../models/models');
+const {authPool} = require('../db');
 const ApiError = require('../error/ApiError');
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 const mailService = require('./mail-service');
 const tokenServise = require('./token-service');
 const UserDto = require('../dtos/user-dto');
+const {emailRegex} = require('../regex/regex')
 
 class UserService {
+
     async registration(email, password) {
-        const candidate = await User.findOne({where: {email}});
-        if (candidate) {
+        if(!emailRegex.test(email)) {
+            throw ApiError.BadRequest(`Incorrect email`);
+        }
+        const query = 'SELECT * FROM users WHERE email = $1';
+        const candidate = await authPool.query(query, [email]);
+        if (candidate.rows > 0) {
             throw ApiError.BadRequest(`User with e-mail: ${email} already exists`);
         }
+
         const hashPassword = await bcrypt.hash(password, 3);
         const activationLink = uuid.v4();
 
-        const user = await User.create({email, password: hashPassword, activationLink});
+        const insertQuery = {
+            text: 'INSERT INTO users (email, password, "activationLink", "createdAt", "updatedAt") VALUES ($1, $2, $3, CURRENT_DATE, CURRENT_DATE) RETURNING *',
+            values: [email, hashPassword, activationLink]
+        };
+        const result = await authPool.query(insertQuery);
         await mailService.sendActivationMail(email, `${process.env.API_URL}/api/user/activate/${activationLink}`);
 
-        const userDto = new UserDto(user);
+        const userDto = new UserDto(result.rows[0]);
         const tokens = tokenServise.generateTokens({...userDto});
         await tokenServise.saveToken(userDto.id, tokens.refreshToken);
 
@@ -26,29 +37,48 @@ class UserService {
     }
 
     async activate(activationLink) {
-        const user = await User.findOne({where: {activationLink}});
-        if (!user) {
-            throw ApiError.BadRequest('Invalid link');
+        const selectQuery = {
+            text: 'SELECT * FROM users WHERE "activationLink" = $1',
+            values: [activationLink]
+        };
+        const userData = await authPool.query(selectQuery);
+        if (!userData.rows) {
+            throw new ApiError.BadRequest('Invalid link');
         }
-        user.isActivated = true;
-        await user.save();
+        const updateUserQuery = {
+            text: 'UPDATE users SET "isActivated" = true WHERE "activationLink" = $1',
+            values: [activationLink]
+        };
+        await authPool.query(updateUserQuery);
     }
 
     async login(email, password) {
-        const user = await User.findOne({where: {email}});
-        if (!user) {
-            throw ApiError.BadRequest(`User with email: ${user.email} not found`);
+        if(!emailRegex.test(email)) {
+            throw ApiError.BadRequest(`Incorrect email`);
         }
+        const selectQuery = {
+            text: 'SELECT * FROM users WHERE email = $1',
+            values: [email]
+        };
+        const result = await authPool.query(selectQuery);
+        const user = result.rows[0];
+        if (!user) {
+            throw ApiError.BadRequest(`User with email: ${email} not found`);
+        }
+
         const isPassEquals = await bcrypt.compare(password, user.password);
         if (!isPassEquals) {
             throw ApiError.BadRequest(`Incorrect password`);
         }
+
         const userDto = new UserDto(user);
         const tokens = tokenServise.generateTokens({...userDto});
 
         await tokenServise.saveToken(userDto.id, tokens.refreshToken);
+
         return {...tokens, user: userDto};
     }
+
 
     async logout(refreshToken) {
         return await tokenServise.removeToken(refreshToken);
@@ -56,24 +86,35 @@ class UserService {
 
     async refresh(refreshToken) {
         if (!refreshToken) {
-            throw ApiError.Unauthorized();
+            throw ApiError.Unauthorized('Unauthorized');
         }
         const userData = tokenServise.validateRefreshToken(refreshToken);
-        const tokenFromDb = tokenServise.findToken(refreshToken);
+        const tokenFromDb = await tokenServise.findToken(refreshToken);
+
         if (!userData || !tokenFromDb) {
-            throw ApiError.Unauthorized();
+            throw ApiError.Unauthorized('Unauthorized');
         }
-        const user = await User.findOne({where: {id: userData.id}});
+
+        const selectQuery = {
+            text: 'SELECT * FROM users WHERE id = $1',
+            values: [userData.id]
+        }
+        const result = await authPool.query(selectQuery);
+        const user = result.rows[0];
+        console.log(user)
+
+        if (!user) {
+            throw ApiError.BadRequest(`User with id: ${userData.id} not found`);
+        }
+
         const userDto = new UserDto(user);
         const tokens = tokenServise.generateTokens({...userDto});
 
         await tokenServise.saveToken(userDto.id, tokens.refreshToken);
+
         return {...tokens, user: userDto};
     }
 
-    async getAllUsers() {
-        return await User.findAll();
-    }
 }
 
 module.exports = new UserService();

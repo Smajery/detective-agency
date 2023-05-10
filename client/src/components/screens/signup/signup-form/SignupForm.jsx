@@ -1,103 +1,94 @@
 import {useState} from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import {useTranslation} from 'react-i18next';
 
 import {StyledSignupForm} from './StyledSignupForm';
-import {emailPattern, passwordPattern} from '@/utils/auth-pattern';
+import {emailPattern, passwordPattern} from '@/utils/auth/patterns';
 import hiddenPasswordImg from '@/static/icons/eye-closed.svg';
 import shownPasswordImg from '@/static/icons/eye-open.svg';
+import {Auth} from '@/api/auth';
+import AuthModal from '@/components/ui/modals/auth-modal/AuthModal';
+import {checkSubmitAuth, emailValueChange, passwordValueChange} from '@/utils/auth/functions';
+import Loader from '@/components/ui/loader/Loader';
 
 const SignupForm = () => {
-    const {t} = useTranslation()
+    const {t} = useTranslation();
+
+    const [isLoading, setIsLoading] = useState(false);
+
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
 
     const [emailErrorValue, setEmailErrorValue] = useState('');
     const [passwordErrorValue, setPasswordErrorValue] = useState('');
 
-    const [isHiddenPassword, setIsHiddenPassword] = useState(true)
+    const [isHiddenPassword, setIsHiddenPassword] = useState(true);
+
+    const [isAuthModal, setIsAuthModal] = useState(false);
+    const [authModalText, setAuthModalText] = useState('');
+
+    const handleCloseAuthModal = () => {
+        setIsAuthModal(false);
+    };
 
     const handleEmailChange = (e) => {
-        const emailInput = e.target.value;
-        let emailError = '';
-        if (emailInput === '') {
-            emailError = 'Email is empty';
-        } else if (!emailPattern.test(emailInput)) {
-            emailError = 'Incorrect email';
-        }
-
-        setEmailValue(emailInput);
-        setTimeout(() => {
-            setEmailErrorValue(emailError);
-        }, 1000);
+        emailValueChange(e, setEmailValue, setEmailErrorValue);
     };
 
     const handlePasswordChange = (e) => {
-        const passwordInput = e.target.value;
-        let passwordError = '';
-        if (passwordInput === '') {
-            passwordError = 'Password is empty';
-        } else if (!passwordPattern.test(passwordInput)) {
-            passwordError = 'Incorrect password';
-        }
-
-        setPasswordValue(passwordInput);
-        setTimeout(() => {
-            setPasswordErrorValue(passwordError);
-        }, 1000);
+        passwordValueChange(e, setPasswordValue, setPasswordErrorValue);
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        let emailError = '';
-        let passwordError = '';
-        if (emailValue === '') {
-            emailError = 'Email is empty';
-        } else if (!emailPattern.test(emailValue)) {
-            emailError = 'Incorrect email';
+        if (!checkSubmitAuth(e, emailValue, passwordValue, setEmailErrorValue, setPasswordErrorValue)) {
+            return;
         }
-        if (passwordValue === '') {
-            passwordError = 'Password is empty';
-        } else if (!passwordPattern.test(passwordValue)) {
-            passwordError = 'Incorrect password';
-        }
+        setIsLoading(true);
+        Auth.registration(emailValue, passwordValue)
+            .then(() => {
+                setEmailValue('');
+                setPasswordValue('');
+                setAuthModalText('Registration success');
+                setIsAuthModal(true);
+            })
+            .catch(e => {
+                setAuthModalText(e.response.data.message);
+                setIsAuthModal(true);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
 
-        setEmailErrorValue(emailError);
-        setPasswordErrorValue(passwordError);
-
-        if (emailError === '' && passwordError === '') {
-            try {
-                console.log('signup success!');
-            } catch (error) {
-                console.error(error);
-            }
-        }
     };
-
 
     return (
         <StyledSignupForm onSubmit={handleSubmit}>
-            <input type="text"
-                   placeholder="E-mail"
+            <input className={emailErrorValue !== '' ? 'input-item input-item_error' : 'input-item'}
+                   type="text"
+                   placeholder={t('SignupPage.Email')}
+                   disabled={isLoading}
                    value={emailValue}
                    onChange={handleEmailChange}
-                   className={emailErrorValue !== '' ? 'input-item input-item_error': 'input-item'}
             />
             {emailErrorValue !== '' &&
-                <div className='error-text-container'>
+                <div className="error-text-container">
                     <p className={'text'}>
-                        {emailErrorValue}
+                        {t(`SigninPage.${emailErrorValue}`)}
                     </p>
                 </div>
             }
-            <div className='input-password-box'>
-                <input type={isHiddenPassword ? 'password' : 'text'}
+            <div className="input-password-box">
+                <input className={passwordErrorValue !== '' ? 'input-item input-item_error' : 'input-item'}
+                       type={isHiddenPassword ? 'password' : 'text'}
                        placeholder={t('SignupPage.Password')}
+                       disabled={isLoading}
                        value={passwordValue}
                        onChange={handlePasswordChange}
-                       className={passwordErrorValue !== '' ? 'input-item input-item_error': 'input-item'}
                 />
                 <button className="password-security-btn"
+                        disabled={isLoading}
+                        type="button"
                         onClick={() => setIsHiddenPassword(!isHiddenPassword)}
                 >
                     <Image src={isHiddenPassword ? hiddenPasswordImg : shownPasswordImg}
@@ -108,15 +99,32 @@ const SignupForm = () => {
                 </button>
             </div>
             {passwordErrorValue !== '' &&
-                <div className='error-text-container'>
+                <div className="error-text-container">
                     <p className={'text'}>
-                        {passwordErrorValue}
+                        {t(`SigninPage.${passwordErrorValue}`)}
                     </p>
                 </div>
             }
-            <button className='signup-btn'>
-                {t('SignupPage.Sign up')}
+            <button className="signup-btn"
+                    disabled={isLoading}
+                    type="submit"
+            >
+                {isLoading ? (
+                    <Loader type="auth" />
+                ) : (
+                    t('SignupPage.Sign up')
+                )}
             </button>
+            <div className={'ask-signin-container'}>
+                <p className={'text'}>
+                    {t('SignupPage.Do you have an account')}
+                    <span><Link href={'/signin'}>{t('SignupPage.Sign in')}</Link></span>
+                </p>
+            </div>
+            <AuthModal child={authModalText}
+                       isActive={isAuthModal}
+                       handleClose={handleCloseAuthModal}
+            />
         </StyledSignupForm>
     );
 };

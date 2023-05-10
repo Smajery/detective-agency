@@ -3,7 +3,7 @@ import Link from 'next/link';
 import {useTranslation} from 'react-i18next';
 
 import Layout from '@/components/layout/Layout';
-import SigninForm from './signin-from/SigninForm';
+import SigninForm from './signin-form/SigninForm';
 
 const Signin = () => {
     const {t} = useTranslation();
@@ -26,12 +26,6 @@ const Signin = () => {
                     </div>
                     <div className={'signin-container'}>
                         <SigninForm />
-                    </div>
-                    <div className={'ask-signup-container'}>
-                        <p className={'text'}>
-                            {t("SigninPage.Don't have an account")}
-                            <span><Link href={'/signup'}>{t('SigninPage.Sign up')}</Link></span>
-                        </p>
                     </div>
                 </div>
             </StyledSignin>

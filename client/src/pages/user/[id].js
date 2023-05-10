@@ -1,12 +1,12 @@
 import User from '@/components/screens/user/User';
-import {UserService} from '@/services/user.service';
+import {Auth} from '@/api/auth';
 
 export default function UserPage({user}) {
-    return <User user={user} />;
+    return <Auth user={user} />;
 };
 
 export const getStaticPaths = async () => {
-    const users = await UserService.getAll();
+    const users = await Auth.getAll();
 
     return {
         paths: users.map(user => ({
@@ -21,7 +21,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({
                                          params
                                      }) => {
-    const user = await UserService.getById(String(params?.id));
+    const user = await Auth.getById(String(params?.id));
 
     return {
         props: {user},

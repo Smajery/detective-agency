@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
-const {Token} = require('../models/models');
+const {authPool} = require('../db');
+const ApiError = require('../error/ApiError');
+const {resetWatchers} = require('nodemon/lib/monitor/watch');
 
 class TokenService {
     generateTokens(payload) {
@@ -28,22 +30,56 @@ class TokenService {
     }
 
     async saveToken(userId, refreshToken) {
-        const tokenData = await Token.findOne({where: {userId}});
-        if (tokenData) {
-            tokenData.refreshToken = refreshToken;
-            return tokenData.save();
+        const selectQuery = {
+            text: 'SELECT * FROM tokens WHERE "userId" = $1',
+            values: [userId]
+        };
+        const token = await authPool.query(selectQuery);
+        if (token.rows > 0) {
+            const updateQuery = {
+                text: 'UPDATE tokens SET "refreshToken" = $1 WHERE "userId" = $2 RETURNING *',
+                values: [refreshToken, userId]
+            };
+            const updatedToken = await authPool.query(updateQuery);
+            return updatedToken.rows[0];
         }
-        return await Token.create({userId: userId, refreshToken});
+        const insertQuery = {
+            text: 'INSERT INTO tokens ("userId", "refreshToken", "createdAt", "updatedAt") VALUES ($1, $2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) RETURNING *',
+            values: [userId, refreshToken]
+        };
+        const result = await authPool.query(insertQuery);
+        const tokenData = result.rows[0]
+        if(!tokenData) {
+            throw ApiError.BadRequest('Token was not added')
+        }
+        return tokenData;
     }
 
     async removeToken(refreshToken) {
-        const tokenData = await Token.findOne({where: {refreshToken}});
-        await tokenData.destroy();
+        const deleteQuery = {
+            text: 'DELETE FROM tokens WHERE "refreshToken" = $1 RETURNING *',
+            values: [refreshToken]
+        };
+        const result = await authPool.query(deleteQuery);
+        const tokenData = result.rows[0]
+        if(!tokenData) {
+            throw ApiError.BadRequest('Token not found')
+        }
         return tokenData;
     }
 
     async findToken(refreshToken) {
-        return await Token.findOne({where: {refreshToken}});
+        const selectQuery = {
+            text: 'SELECT * FROM tokens WHERE "refreshToken" = $1',
+            values: [refreshToken]
+        };
+        const result = await authPool.query(selectQuery);
+        console.log(result)
+        const tokenData = result.rows[0]
+        if(!tokenData) {
+            throw ApiError.BadRequest('Token not found')
+        }
+        return tokenData;
     }
 }
 

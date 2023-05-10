@@ -1,5 +1,5 @@
 import Detectives from '@/components/screens/detectives/Detectives';
-import {UserService} from '@/services/user.service';
+import {Auth} from '@/api/auth';
 
 const DetectivesPage = ({users}) => {
     return <Detectives users={users} />;
@@ -8,7 +8,7 @@ const DetectivesPage = ({users}) => {
 export default DetectivesPage;
 
 // export const getServerSideProps = async () => {
-//     const detectives = await UserService.getAll()
+//     const detectives = await Auth.getAll()
 //
 //     return {
 //         props: {detectives}
@@ -16,7 +16,7 @@ export default DetectivesPage;
 // }
 
 export const getStaticProps = async () => {
-    const users = await UserService.getAll();
+    const users = await Auth.getAll();
 
     return {
         props: {users},

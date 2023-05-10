@@ -4,6 +4,7 @@ import {useTranslation} from 'react-i18next';
 import Layout from '@/components/layout/Layout';
 import {StyledSignup} from './StyledSignup';
 import SignupForm from '@/components/screens/signup/signup-form/SignupForm';
+import Loader from '@/components/ui/loader/Loader';
 
 const Signup = () => {
     const {t} = useTranslation();
@@ -25,12 +26,6 @@ const Signup = () => {
                     </div>
                     <div className={'signin-container'}>
                         <SignupForm />
-                    </div>
-                    <div className={'ask-signin-container'}>
-                        <p className={'text'}>
-                            {t('SignupPage.Do you have an account')}
-                            <span><Link href={'/signin'}>{t('SignupPage.Sign in')}</Link></span>
-                        </p>
                     </div>
                 </div>
             </StyledSignup>

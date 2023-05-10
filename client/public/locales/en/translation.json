@@ -67,9 +67,14 @@
     "Don't have an account": "Don't have an account?",
     "Sign in": "Sign in",
     "Sign up": "Sign up",
+    "Email": "E-mail",
     "Password": "Password",
     "Keep me logged in": "Keep me logged in",
-    "Forgot password": "Forgot password?"
+    "Forgot password": "Forgot password?",
+    "Email is empty": "Email is empty",
+    "Password is empty": "Password is empty",
+    "Incorrect email": "Incorrect email",
+    "Incorrect password": "Incorrect password"
   },
 
   "SignupPage": {
@@ -81,14 +86,29 @@
     "Do you have an account": "Do you have an account?",
     "Sign in": "Sign in",
     "Sign up": "Sign up",
+    "Email": "E-mail",
     "Password": "Password",
     "Keep me logged in": "Keep me logged in",
-    "Forgot password": "Forgot password?"
+    "Forgot password": "Forgot password?",
+    "Email is empty": "Email is empty",
+    "Password is empty": "Password is empty",
+    "Incorrect email": "Incorrect email",
+    "Incorrect password": "Incorrect password"
   },
 
   "NotFoundPage": {
     "title": "Not found",
     "description": "404 - Page not found"
-  }
+  },
 
+  "MessagePage": {
+    "title": "Message",
+    "description": "Your message",
+    "Is activated": "Congratulations! You have been activated!"
+  },
+
+  "AuthModal": {
+    "Login success": "Login completed successfully!",
+    "Registration success": "Registration completed successfully!"
+  }
 }

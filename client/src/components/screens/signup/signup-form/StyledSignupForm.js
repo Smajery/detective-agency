@@ -3,10 +3,12 @@ import styled from 'styled-components';
 export const StyledSignupForm = styled.form`
   width: 100%;
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 12px 0;
 
   .input-password-box {
+    width: 100%;
     display: flex;
     align-items: center;
     position: relative;
@@ -44,6 +46,7 @@ export const StyledSignupForm = styled.form`
   }
 
   .error-text-container {
+    width: 100%;
     padding-left: 20px;
     display: flex;
 
@@ -53,6 +56,7 @@ export const StyledSignupForm = styled.form`
   }
 
   .signup-btn {
+    width: 100%;
     margin-top: 12px;
     height: 40px;
     border: none;
@@ -65,6 +69,27 @@ export const StyledSignupForm = styled.form`
 
     &:hover {
       background-color: #444444;
+    }
+  }
+
+  .ask-signin-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .text {
+      color: #999999;
+
+      span {
+        margin-left: 5px;
+        font-weight: 600;
+        text-decoration: underline;
+        cursor: pointer;
+
+        &:hover {
+          color: ${props => props.theme.color};;
+        }
+      }
     }
   }
 

@@ -70,24 +70,6 @@ export const StyledSignin = styled.div`
     .signin-container {
       display: flex;
     }
-
-    .ask-signup-container {
-      display: flex;
-      justify-content: center;
-
-      .text {
-        color: #999999;
-        span {
-          margin-left: 5px;
-          font-weight: 600;
-          text-decoration: underline;
-          cursor: pointer;
-          
-          &:hover {
-            color: ${props => props.theme.color};;
-          }
-        }
-      }
-    }
+    
   }
 `

@@ -8,10 +8,11 @@ const ChangeLngBtn = ({children, lng, active}) => {
     const {t, i18n} = useTranslation();
 
     const handleChangeLanguage = (language) => {
-        i18n.changeLanguage(language)
+        const currentLng = language !== 'null' ? language : 'uk'
+        i18n.changeLanguage(currentLng)
             .then(() => {
                 console.log('Language changed successfully');
-                localStorage.setItem('lng', language)
+                localStorage.setItem('lng', currentLng)
             })
             .catch((error) => {
                 console.error('Failed to initialize localization', error);

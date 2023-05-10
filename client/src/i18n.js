@@ -7,7 +7,7 @@ import translations_uk from '../public/locales/uk/translation.json';
 i18n.use(initReactI18next).init({
     lng: 'uk',
     fallbackLng: 'uk',
-    debug: true,
+    debug: false,
     detection: {
         order: ['queryString', 'cookie'],
         cache: ['cookie']

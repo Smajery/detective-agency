@@ -6,6 +6,7 @@ export const theme = {
 
         color: '#FFFFFF',
         foreColor: '#333333',
+        defaultColor: '#999999',
 
         header: {
             borderColor: '#999999',
@@ -23,6 +24,7 @@ export const theme = {
 
         color: '#333333',
         foreColor: '#FFFFFF',
+        defaultColor: '#999999',
 
         header: {
             borderColor: '#333333',

@@ -3,10 +3,12 @@ import styled from 'styled-components';
 export const StyledSigninForm = styled.form`
   width: 100%;
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 12px 0;
   
   .input-password-box {
+    width: 100%;
     display: flex;
     align-items: center;
     position: relative;
@@ -44,6 +46,7 @@ export const StyledSigninForm = styled.form`
   }
 
   .error-text-container {
+    width: 100%;
     padding-left: 20px;
     display: flex;
 
@@ -53,6 +56,7 @@ export const StyledSigninForm = styled.form`
   }
 
   .signin-btn {
+    width: 100%;
     margin-top: 12px;
     height: 40px;
     border: none;
@@ -69,6 +73,7 @@ export const StyledSigninForm = styled.form`
   }
 
   .signin-options {
+    width: 100%;
     display: flex;
     justify-content: space-between;
 
@@ -83,6 +88,7 @@ export const StyledSigninForm = styled.form`
       }
 
       input[type='checkbox'] {
+        margin-right: 5px;
         width: 16px;
         height: 16px;
         cursor: pointer;
@@ -94,6 +100,26 @@ export const StyledSigninForm = styled.form`
       &:hover {
         color: ${props => props.theme.color};
         text-decoration: underline;
+      }
+    }
+  }
+
+  .ask-signup-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .text {
+      color: #999999;
+      span {
+        margin-left: 5px;
+        font-weight: 600;
+        text-decoration: underline;
+        cursor: pointer;
+
+        &:hover {
+          color: ${props => props.theme.color};;
+        }
       }
     }
   }

@@ -44,7 +44,7 @@ class TokenService {
             return updatedToken.rows[0];
         }
         const insertQuery = {
-            text: 'INSERT INTO tokens ("userId", "refreshToken", "createdAt", "updatedAt") VALUES ($1, $2, CURRENT_DATE, CURRENT_DATE) RETURNING *',
+            text: 'INSERT INTO tokens ("userId", "refreshToken", "createdAt", "updatedAt") VALUES ($1, $2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) RETURNING *',
             values: [userId, refreshToken]
         };
         const result = await authPool.query(insertQuery);

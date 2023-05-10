@@ -67,6 +67,7 @@
     "Don't have an account": "Немає облікового запису?",
     "Sign in": "Увійти",
     "Sign up": "Зареєструватися",
+    "Email": "Е-пошта",
     "Password": "Пароль",
     "Keep me logged in": "Залишити мене в системі",
     "Forgot password": "Забули пароль?",
@@ -85,6 +86,7 @@
     "Do you have an account": "Вже маєте обліковий запис?",
     "Sign in": "Увійти",
     "Sign up": "Зареєструватися",
+    "Email": "Е-пошта",
     "Password": "Пароль",
     "Keep me logged in": "Залишити мене в системі",
     "Forgot password": "Забули пароль?",
@@ -97,5 +99,16 @@
   "NotFoundPage": {
     "title": "Не знайдено",
     "description": "404 - Сторінка не знайдена"
+  },
+
+  "MessagePage": {
+    "title": "Повідомлення",
+    "description": "Ваше повідомлення",
+    "Is activated": "Вітаю! Ви були активовані!"
+  },
+
+  "AuthModal": {
+    "Login success": "Вхід успішно завершено!",
+    "Registration success": "Реєстрацію успішно завершено!"
   }
 }

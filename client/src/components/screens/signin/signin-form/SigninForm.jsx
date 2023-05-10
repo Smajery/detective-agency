@@ -2,18 +2,21 @@ import {useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {useTranslation} from 'react-i18next';
+import {useRouter} from 'next/router';
 
-import {StyledSignupForm} from './StyledSignupForm';
 import {emailPattern, passwordPattern} from '@/utils/auth/patterns';
-import hiddenPasswordImg from '@/static/icons/eye-closed.svg';
+import {StyledSigninForm} from '@/components/screens/signin/signin-form/StyledSigninForm';
 import shownPasswordImg from '@/static/icons/eye-open.svg';
+import hiddenPasswordImg from '@/static/icons/eye-closed.svg';
 import {Auth} from '@/api/auth';
 import AuthModal from '@/components/ui/modals/auth-modal/AuthModal';
 import {checkSubmitAuth, emailValueChange, passwordValueChange} from '@/utils/auth/functions';
 import Loader from '@/components/ui/loader/Loader';
+import {setStorageItem} from '@/utils/storage';
 
-const SignupForm = () => {
+const SigninForm = () => {
     const {t} = useTranslation();
+    const router = useRouter();
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -23,6 +26,7 @@ const SignupForm = () => {
     const [emailErrorValue, setEmailErrorValue] = useState('');
     const [passwordErrorValue, setPasswordErrorValue] = useState('');
 
+    const [isKeepLoggedIn, setIsKeepLoggedIn] = useState(true);
     const [isHiddenPassword, setIsHiddenPassword] = useState(true);
 
     const [isAuthModal, setIsAuthModal] = useState(false);
@@ -45,12 +49,21 @@ const SignupForm = () => {
             return;
         }
         setIsLoading(true);
-        Auth.registration(emailValue, passwordValue)
-            .then(() => {
+        Auth.login(emailValue, passwordValue)
+            .then(data => {
+                const storage = isKeepLoggedIn ? localStorage : sessionStorage;
+                setStorageItem('accessToken', data.accessToken, storage);
+                setStorageItem('auth', 'true', storage);
                 setEmailValue('');
                 setPasswordValue('');
-                setAuthModalText('Registration success');
+                setAuthModalText('Login success');
                 setIsAuthModal(true);
+                router.push('/')
+                    .then(() => {
+                        setIsAuthModal(false);
+                        setAuthModalText('');
+                    });
+
             })
             .catch(e => {
                 setAuthModalText(e.response.data.message);
@@ -59,17 +72,16 @@ const SignupForm = () => {
             .finally(() => {
                 setIsLoading(false);
             });
-
     };
 
     return (
-        <StyledSignupForm onSubmit={handleSubmit}>
-            <input className={emailErrorValue !== '' ? 'input-item input-item_error' : 'input-item'}
-                   type="text"
+        <StyledSigninForm onSubmit={handleSubmit}>
+            <input type="text"
                    placeholder={t('SignupPage.Email')}
                    disabled={isLoading}
                    value={emailValue}
                    onChange={handleEmailChange}
+                   className={emailErrorValue !== '' ? 'input-item input-item_error' : 'input-item'}
             />
             {emailErrorValue !== '' &&
                 <div className="error-text-container">
@@ -79,12 +91,12 @@ const SignupForm = () => {
                 </div>
             }
             <div className="input-password-box">
-                <input className={passwordErrorValue !== '' ? 'input-item input-item_error' : 'input-item'}
-                       type={isHiddenPassword ? 'password' : 'text'}
-                       placeholder={t('SignupPage.Password')}
+                <input type={isHiddenPassword ? 'password' : 'text'}
+                       placeholder={t('SigninPage.Password')}
                        disabled={isLoading}
                        value={passwordValue}
                        onChange={handlePasswordChange}
+                       className={passwordErrorValue !== '' ? 'input-item input-item_error' : 'input-item'}
                 />
                 <button className="password-security-btn"
                         disabled={isLoading}
@@ -105,28 +117,44 @@ const SignupForm = () => {
                     </p>
                 </div>
             }
-            <button className="signup-btn"
-                    disabled={isLoading}
+            <button className="signin-btn"
                     type="submit"
+                    disabled={isLoading}
             >
                 {isLoading ? (
                     <Loader type="auth" />
                 ) : (
-                    t('SignupPage.Sign up')
+                    t('SigninPage.Sign in')
                 )}
             </button>
-            <div className={'ask-signin-container'}>
+            <div className="signin-options">
+                <label className={isKeepLoggedIn ? 'keep-log-text active' : 'keep-log-text'}>
+                    <input type="checkbox"
+                           name="keepLoggedIn"
+                           value="true"
+                           defaultChecked={isKeepLoggedIn}
+                           onChange={e => setIsKeepLoggedIn(e.target.checked)}
+                    />
+                    {t('SigninPage.Keep me logged in')}
+                </label>
+                <a href={'/'}
+                   className={'forgot-pass-text'}
+                >
+                    {t('SigninPage.Forgot password')}
+                </a>
+            </div>
+            <div className={'ask-signup-container'}>
                 <p className={'text'}>
-                    {t('SignupPage.Do you have an account')}
-                    <span><Link href={'/signin'}>{t('SignupPage.Sign in')}</Link></span>
+                    {t('SigninPage.Don\'t have an account')}
+                    <span><Link href={'/signup'}>{t('SigninPage.Sign up')}</Link></span>
                 </p>
             </div>
             <AuthModal child={authModalText}
                        isActive={isAuthModal}
                        handleClose={handleCloseAuthModal}
             />
-        </StyledSignupForm>
+        </StyledSigninForm>
     );
 };
 
-export default SignupForm;
+export default SigninForm;

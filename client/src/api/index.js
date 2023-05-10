@@ -1,21 +1,40 @@
 import axios from 'axios';
 
-const $host = axios.create({
+const $api = axios.create({
+    withCredentials: true,
     baseURL: process.env.API_URL
 })
 
 const $authHost = axios.create({
+    withCredentials: true,
     baseURL: process.env.REACT_APP_API_URL
 })
 
-const authInterceptor = config => {
-    config.headers.authorization = `Bearer ${localStorage.getItem('token')}`
+// Перехватывает запрос и помещает в его header токен
+const authInterceptorRequest = (config) => {
+    config.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`
     return config
 }
 
-$authHost.interceptors.request.use(authInterceptor)
-
-export {
-    $host,
-    $authHost
+const authInterceptorResponse = (config) => {
+    return config
 }
+
+$api.interceptors.request.use(authInterceptorRequest)
+
+$api.interceptors.response.use(authInterceptorResponse, async (error) => {
+    const originalRequest = error.config;
+    if(error.response.status === 401 && error.config && !error.config._isRetry) {
+        originalRequest._isRetry = true;
+        try {
+            const response = await axios.get(proces.env.API_URL + 'refresh', {withCredentials: true})
+            localStorage.setItem('accessToken', response.data.accessToken)
+            return $api.request(originalRequest);  
+        } catch (e) {
+            console.log('User is not authorized')
+        }
+    }
+    throw error;
+})
+
+export default $api

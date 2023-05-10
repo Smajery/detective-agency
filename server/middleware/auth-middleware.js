@@ -12,7 +12,7 @@ module.exports = function (req, res, next) {
         }
         const accessToken = authorizationHeader.split(' ')[1];
         if (!accessToken) {
-            return next(ApiError.Unauthorized("User is not authorized"));
+            return next(ApiError.Unauthorized("Auth is not authorized"));
         }
 
         const userData = tokenService.validateAccessToken(accessToken);

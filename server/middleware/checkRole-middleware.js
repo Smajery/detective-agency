@@ -14,7 +14,7 @@ module.exports = function (roles) {
 
             const accessToken = authorizationHeader.split(' ')[1];
             if(!accessToken) {
-                return next(ApiError.Unauthorized("User is not authorized"))
+                return next(ApiError.Unauthorized("Auth is not authorized"))
             }
 
             const userData = tokenService.validateAccessToken(accessToken);
@@ -28,7 +28,7 @@ module.exports = function (roles) {
             req.user = userData;
             next()
         } catch (e) {
-            return next(ApiError.Unauthorized("User is not authorized"))
+            return next(ApiError.Unauthorized("Auth is not authorized"))
         }
     }
 }

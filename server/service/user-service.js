@@ -5,12 +5,15 @@ const uuid = require('uuid');
 const mailService = require('./mail-service');
 const tokenServise = require('./token-service');
 const UserDto = require('../dtos/user-dto');
-const {emailRegex} = require('../regex/regex')
+const {emailRegex} = require('../regex/regex');
 
 class UserService {
+    constructor() {
+        setInterval(this.removeInactiveUsers.bind(this), 60 * 60 * 1000);
+    }
 
     async registration(email, password) {
-        if(!emailRegex.test(email)) {
+        if (!emailRegex.test(email)) {
             throw ApiError.BadRequest(`Incorrect email`);
         }
         const query = 'SELECT * FROM users WHERE email = $1';
@@ -23,7 +26,7 @@ class UserService {
         const activationLink = uuid.v4();
 
         const insertQuery = {
-            text: 'INSERT INTO users (email, password, "activationLink", "createdAt", "updatedAt") VALUES ($1, $2, $3, CURRENT_DATE, CURRENT_DATE) RETURNING *',
+            text: 'INSERT INTO users (email, password, "activationLink", "createdAt", "updatedAt") VALUES ($1, $2, $3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) RETURNING *',
             values: [email, hashPassword, activationLink]
         };
         const result = await authPool.query(insertQuery);
@@ -53,7 +56,7 @@ class UserService {
     }
 
     async login(email, password) {
-        if(!emailRegex.test(email)) {
+        if (!emailRegex.test(email)) {
             throw ApiError.BadRequest(`Incorrect email`);
         }
         const selectQuery = {
@@ -69,6 +72,9 @@ class UserService {
         const isPassEquals = await bcrypt.compare(password, user.password);
         if (!isPassEquals) {
             throw ApiError.BadRequest(`Incorrect password`);
+        }
+        if(!user.isActivated) {
+            throw ApiError.BadRequest(`Link is not activated`);
         }
 
         const userDto = new UserDto(user);
@@ -98,10 +104,9 @@ class UserService {
         const selectQuery = {
             text: 'SELECT * FROM users WHERE id = $1',
             values: [userData.id]
-        }
+        };
         const result = await authPool.query(selectQuery);
         const user = result.rows[0];
-        console.log(user)
 
         if (!user) {
             throw ApiError.BadRequest(`User with id: ${userData.id} not found`);
@@ -115,6 +120,18 @@ class UserService {
         return {...tokens, user: userDto};
     }
 
+    async removeInactiveUsers() {
+        try {
+            const deleteQuery = `DELETE FROM users WHERE "isActivated" = false AND CURRENT_TIMESTAMP - "updatedAt" > interval '1 hour'`;
+            const result = await authPool.query(deleteQuery);
+            if (result.rowCount > 0) {
+                console.log(`Removed ${result.rowCount} inactive users`);
+            }
+            await authPool.query('DELETE FROM tokens WHERE "userId" IS NULL');
+        } catch (e) {
+            console.error(`Error removing inactive users: ${e.message}`);
+        }
+    }
 }
 
 module.exports = new UserService();

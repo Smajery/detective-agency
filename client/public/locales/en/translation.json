@@ -67,6 +67,7 @@
     "Don't have an account": "Don't have an account?",
     "Sign in": "Sign in",
     "Sign up": "Sign up",
+    "Email": "E-mail",
     "Password": "Password",
     "Keep me logged in": "Keep me logged in",
     "Forgot password": "Forgot password?",
@@ -85,6 +86,7 @@
     "Do you have an account": "Do you have an account?",
     "Sign in": "Sign in",
     "Sign up": "Sign up",
+    "Email": "E-mail",
     "Password": "Password",
     "Keep me logged in": "Keep me logged in",
     "Forgot password": "Forgot password?",
@@ -97,6 +99,16 @@
   "NotFoundPage": {
     "title": "Not found",
     "description": "404 - Page not found"
-  }
+  },
 
+  "MessagePage": {
+    "title": "Message",
+    "description": "Your message",
+    "Is activated": "Congratulations! You have been activated!"
+  },
+
+  "AuthModal": {
+    "Login success": "Login completed successfully!",
+    "Registration success": "Registration completed successfully!"
+  }
 }

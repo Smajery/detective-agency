@@ -10,7 +10,7 @@ const Help = () => {
                 description={t('HelpPage.description')}
         >
             <StyledHelp>
-
+                Help
             </StyledHelp>
         </Layout>
     );

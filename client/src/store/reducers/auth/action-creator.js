@@ -2,18 +2,27 @@ import axios from 'axios';
 
 import {authSlice} from './AuthSlice';
 import {Auth} from '@/api/auth';
-import {setStorageItem} from '@/utils/storage';
+import {removeStorageItem, setStorageItem} from '@/utils/storage';
 import {API_USER} from '@/utils/api-routes';
 
 export const AuthActionCreator = {
     setIsAuth: boolean => dispatch => {
         dispatch(authSlice.actions.setIsAuth(boolean));
     },
+    setCurrentUser: user => dispatch => {
+        dispatch(authSlice.actions.setCurrentUser(user));
+    },
 
-    logout: () => async dispatch => {
+    signOut: () => async dispatch => {
         try {
             const response = await Auth.logout()
-            localStorage.removeItem('accessToken')
+            const storages = [localStorage, sessionStorage];
+            storages.forEach(storage => {
+                removeStorageItem('accessToken', storage);
+                removeStorageItem('auth', storage);
+                removeStorageItem('userRole', storage);
+            });
+            localStorage.setItem('userRole', 'USER')
             dispatch(AuthActionCreator.setIsAuth(false))
         } catch (e) {
             console.error(e.response.data.message)
@@ -24,6 +33,7 @@ export const AuthActionCreator = {
        try {
            const response = await axios.get(process.env.API_URL + API_USER + 'refresh', {withCredentials: true})
            localStorage.setItem('accessToken', response.data.accessToken)
+           localStorage.setItem('auth', true)
            dispatch(AuthActionCreator.setIsAuth(true))
        } catch (e) {
            console.error(e)

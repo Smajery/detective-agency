@@ -5,11 +5,6 @@ const $api = axios.create({
     baseURL: process.env.API_URL
 })
 
-const $authHost = axios.create({
-    withCredentials: true,
-    baseURL: process.env.REACT_APP_API_URL
-})
-
 // Перехватывает запрос и помещает в его header токен
 const authInterceptorRequest = (config) => {
     config.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`

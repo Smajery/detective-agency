@@ -22,11 +22,11 @@ const LiftUpBtn = () => {
     };
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            window.addEventListener('scroll', handleScroll, {passive: true});
+        if (typeof window === 'undefined') return;
 
-            return () => window.removeEventListener('scroll', handleScroll);
-        }
+        window.addEventListener('scroll', handleScroll, {passive: true});
+
+        return () => window.removeEventListener('scroll', handleScroll);
 
     }, []);
 

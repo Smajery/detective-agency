@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const StyledAuthModal = styled.div`
-  padding: 20px;
+export const StyledMessageModal = styled.div`
+  padding: 20px 30px;
   min-width: 400px;
   min-height: 100px;
   display: flex;
@@ -20,6 +20,7 @@ export const StyledAuthModal = styled.div`
   }
   
   .close-btn {
+    border: none;
     position: absolute;
     top: 3px;
     right: 10px;

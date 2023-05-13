@@ -14,6 +14,7 @@ export const StyledHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 0 20px;
   }
 
   a {
@@ -53,62 +54,5 @@ export const StyledContacts = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-`;
-
-export const StyledNavbar = styled.ul`
-  display: flex;
-  gap: 0 20px;
-
-  .navbar-item {
-    display: flex;
-    align-items: center;
-    position: relative;
-
-    &.signin {
-
-    }
-
-    &.dark-mode {
-      margin: 0 15px;
-    }
-    
-    &.language-box {
-      display: flex;
-      gap: 0 5px;
-    }
-
-    a {
-      padding: 20px 0;
-    }
-
-    &:hover > ul {
-      display: flex;
-    }
-  }
-
-`;
-
-export const StyledSubNavbar = styled.ul`
-  padding-bottom: 5px;
-  display: none;
-  flex-direction: column;
-  background-color: #333333;
-  border-bottom-left-radius: 15px;
-  position: absolute;
-  top: 100%;
-
-  &:hover {
-    display: flex;
-  }
-
-  .subnavbar__item {
-    min-width: 200px;
-
-    a {
-      padding: 7px 15px;
-      width: 100%;
-      display: block;
-    }
-  }
 `;
 

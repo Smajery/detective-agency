@@ -1,11 +1,11 @@
 import {useTranslation} from 'react-i18next';
-import {StyledAuthModal} from './StyledAuthModal';
+import {StyledMessageModal} from './StyledMessageModal';
 
-const AuthModal = ({child, isActive, handleClose}) => {
+const MessageModal = ({child, isActive, handleClose}) => {
     const {t} = useTranslation();
 
     return (
-        <StyledAuthModal className={isActive ? 'active' : ''}>
+        <StyledMessageModal className={isActive ? 'active' : ''}>
             <button
                 type="button"
                 className='close-btn'
@@ -14,8 +14,8 @@ const AuthModal = ({child, isActive, handleClose}) => {
                 х
             </button>
             {child !== '' && t(`AuthModal.${child}`)}
-        </StyledAuthModal>
+        </StyledMessageModal>
     );
 };
 
-export default AuthModal;
+export default MessageModal;

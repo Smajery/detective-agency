@@ -14,12 +14,12 @@ class UserService {
 
     async registration(email, password) {
         if (!emailRegex.test(email)) {
-            throw ApiError.BadRequest(`Incorrect email`);
+            throw ApiError.BadRequest('Invalid email');
         }
-        const query = 'SELECT * FROM users WHERE email = $1';
-        const candidate = await authPool.query(query, [email]);
-        if (candidate.rows > 0) {
-            throw ApiError.BadRequest(`User with e-mail: ${email} already exists`);
+        const selectQuery = 'SELECT * FROM users WHERE email = $1';
+        const candidate = await authPool.query(selectQuery, [email]);
+        if (candidate.rows.length > 0) {
+            throw ApiError.BadRequest('This user already exists');
         }
 
         const hashPassword = await bcrypt.hash(password, 3);
@@ -46,7 +46,7 @@ class UserService {
         };
         const userData = await authPool.query(selectQuery);
         if (!userData.rows) {
-            throw new ApiError.BadRequest('Invalid link');
+            throw ApiError.BadRequest('Invalid link');
         }
         const updateUserQuery = {
             text: 'UPDATE users SET "isActivated" = true WHERE "activationLink" = $1',
@@ -57,7 +57,7 @@ class UserService {
 
     async login(email, password) {
         if (!emailRegex.test(email)) {
-            throw ApiError.BadRequest(`Incorrect email`);
+            throw ApiError.BadRequest('Invalid email');
         }
         const selectQuery = {
             text: 'SELECT * FROM users WHERE email = $1',
@@ -66,15 +66,15 @@ class UserService {
         const result = await authPool.query(selectQuery);
         const user = result.rows[0];
         if (!user) {
-            throw ApiError.BadRequest(`User with email: ${email} not found`);
+            throw ApiError.BadRequest('No such user exists');
         }
 
         const isPassEquals = await bcrypt.compare(password, user.password);
         if (!isPassEquals) {
-            throw ApiError.BadRequest(`Incorrect password`);
+            throw ApiError.BadRequest('Invalid password');
         }
         if(!user.isActivated) {
-            throw ApiError.BadRequest(`Link is not activated`);
+            throw ApiError.BadRequest('Link is not activated');
         }
 
         const userDto = new UserDto(user);
@@ -109,7 +109,7 @@ class UserService {
         const user = result.rows[0];
 
         if (!user) {
-            throw ApiError.BadRequest(`User with id: ${userData.id} not found`);
+            throw ApiError.BadRequest('This user already exists');
         }
 
         const userDto = new UserDto(user);

@@ -9,14 +9,16 @@ import {StyledSigninForm} from '@/components/screens/signin/signin-form/StyledSi
 import shownPasswordImg from '@/static/icons/eye-open.svg';
 import hiddenPasswordImg from '@/static/icons/eye-closed.svg';
 import {Auth} from '@/api/auth';
-import AuthModal from '@/components/ui/modals/auth-modal/AuthModal';
+import MessageModal from '@/components/ui/modals/message-modal/MessageModal';
 import {checkSubmitAuth, emailValueChange, passwordValueChange} from '@/utils/auth/functions';
 import Loader from '@/components/ui/loader/Loader';
 import {setStorageItem} from '@/utils/storage';
+import {useActions} from '@/hooks/UseActions';
 
 const SigninForm = () => {
     const {t} = useTranslation();
-    const router = useRouter();
+    const {push} = useRouter();
+    const {setIsAuth} = useActions();
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -29,11 +31,11 @@ const SigninForm = () => {
     const [isKeepLoggedIn, setIsKeepLoggedIn] = useState(true);
     const [isHiddenPassword, setIsHiddenPassword] = useState(true);
 
-    const [isAuthModal, setIsAuthModal] = useState(false);
-    const [authModalText, setAuthModalText] = useState('');
+    const [isMessageModal, setIsMessageModal] = useState(false);
+    const [messageModalText, setMessageModalText] = useState('');
 
-    const handleCloseAuthModal = () => {
-        setIsAuthModal(false);
+    const handleCloseMessageModal = () => {
+        setIsMessageModal(false);
     };
 
     const handleEmailChange = (e) => {
@@ -54,20 +56,24 @@ const SigninForm = () => {
                 const storage = isKeepLoggedIn ? localStorage : sessionStorage;
                 setStorageItem('accessToken', data.accessToken, storage);
                 setStorageItem('auth', 'true', storage);
+                setStorageItem('userRole', data.user.role, storage);
+                setIsAuth(true);
+
                 setEmailValue('');
                 setPasswordValue('');
-                setAuthModalText('Login success');
-                setIsAuthModal(true);
-                router.push('/')
+                setMessageModalText('Login success');
+                setIsMessageModal(true);
+
+                push('/')
                     .then(() => {
-                        setIsAuthModal(false);
-                        setAuthModalText('');
+                        setIsMessageModal(false);
+                        setMessageModalText('');
                     });
 
             })
             .catch(e => {
-                setAuthModalText(e.response.data.message);
-                setIsAuthModal(true);
+                setMessageModalText(e.response.data.message);
+                setIsMessageModal(true);
             })
             .finally(() => {
                 setIsLoading(false);
@@ -149,9 +155,9 @@ const SigninForm = () => {
                     <span><Link href={'/signup'}>{t('SigninPage.Sign up')}</Link></span>
                 </p>
             </div>
-            <AuthModal child={authModalText}
-                       isActive={isAuthModal}
-                       handleClose={handleCloseAuthModal}
+            <MessageModal child={messageModalText}
+                          isActive={isMessageModal}
+                          handleClose={handleCloseMessageModal}
             />
         </StyledSigninForm>
     );

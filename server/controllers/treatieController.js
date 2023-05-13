@@ -1,16 +1,14 @@
 const { chiefPool } = require('../db');
-const ApiError = require('../error/ApiError');
+const ApiError = require('../error/ApiError')
+const treatieService = require('../service/treatie-service')
 
 class treatieController {
     async create(req, res, next) {
-        const {service, clientInfo, place, price, clientId} = req.body;
+        const {service, clientInfo, place} = req.body;
         try {
-            const insertQuery = {
-                text: 'INSERT INTO treaties (service, client_info, place, price, "clientId", "createdAt", "updatedAt") VALUES ($1, $2, $3, $4, $5, CURRENT_DATE, CURRENT_DATE) RETURNING *',
-                values: [service, clientInfo, place, price, clientId]
-            }
-            const result = await chiefPool.query(insertQuery);
-            return res.json(result.rows[0]);
+            const userData = req.user
+            const result = await treatieService.create(service, clientInfo, place, userData.id)
+            return res.json(result);
         } catch (e) {
             next(e);
         }
@@ -18,8 +16,9 @@ class treatieController {
 
     async getAll(req, res, next) {
         try {
-            const result = await chiefPool.query('SELECT * FROM treaties');
-            return res.json(result.rows);
+            const userData = req.user
+            const result = await treatieService.getAll(userData.id)
+            return res.json(result);
         } catch (e) {
             next(e);
         }

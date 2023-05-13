@@ -9,7 +9,7 @@ const App = ({Component, pageProps}) => {
 
     return (
         <Provider store={store}>
-            <AuthProvider Component={Component}>
+            <AuthProvider>
                 <Component {...pageProps} />
             </AuthProvider>
         </Provider>

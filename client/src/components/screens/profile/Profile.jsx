@@ -3,7 +3,7 @@ import {useTranslation} from 'react-i18next';
 
 import {StyledProfile} from './StyledProfile';
 import Layout from '@/components/layout/Layout';
-import {Treatie} from '@/api/treatie';
+import {Treaty} from '@/api/treaty';
 import {isEmptyArr} from '@/utils/is-empty-arr';
 
 const Profile = () => {
@@ -15,7 +15,7 @@ const Profile = () => {
 
     useEffect(() => {
         setIsLoading(true)
-        Treatie.getAll()
+        Treaty.getAll()
             .then(data => {
                 setTreaties(data)
             })

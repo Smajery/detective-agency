@@ -113,11 +113,11 @@
     "Is not activated": "You haven't registered or verified your email yet!"
   },
 
-  "TreatiePage": {
-    "title": "Treeatie",
-    "description": "Your treatie",
+  "TreatyPage": {
+    "title": "Treeaty",
+    "description": "Your treaty",
 
-    "Treatie": "Treatie",
+    "Treaty": "Treaty",
 
     "Services": "Services",
     "Select service": "Select service",

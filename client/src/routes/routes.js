@@ -1,5 +1,5 @@
 export const routes = [
-    {id: 0, path: '/treatie', title: 'Treatie', userRoles: ['CLIENT']},
+    {id: 0, path: '/treaty', title: 'Treatie', userRoles: ['CLIENT']},
     {id: 1, path: '/detectives', title: 'Detectives', userRoles: ['SENIOR', 'CHIEF']},
     {
         id: 2,

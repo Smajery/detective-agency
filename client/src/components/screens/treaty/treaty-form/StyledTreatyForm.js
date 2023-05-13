@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledTreatieForm = styled.form`
+export const StyledTreatyForm = styled.form`
   margin-top: 60px;
   padding: 20px;
   width: 560px;
@@ -12,7 +12,7 @@ export const StyledTreatieForm = styled.form`
   align-items: center;
   gap: 10px 0;
   
-  .treatie-title-box {
+  .treaty-title-box {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -75,7 +75,7 @@ export const StyledTreatieForm = styled.form`
     }
   }
 
-  .treatie-expl-text-box {
+  .treaty-expl-text-box {
     width: 100%;
 
     .exp-text {
@@ -87,7 +87,7 @@ export const StyledTreatieForm = styled.form`
     }
   }
 
-  .treatie-pd-text-box {
+  .treaty-pd-text-box {
     width: 100%;
 
     .pd-text {

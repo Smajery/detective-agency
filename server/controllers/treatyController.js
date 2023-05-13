@@ -1,8 +1,8 @@
 const { chiefPool } = require('../db');
 const ApiError = require('../error/ApiError')
-const treatieService = require('../service/treatie-service')
+const treatieService = require('../service/treaty-service')
 
-class treatieController {
+class treatyController {
     async create(req, res, next) {
         const {service, clientInfo, place} = req.body;
         try {
@@ -59,4 +59,4 @@ class treatieController {
     }
 }
 
-module.exports = new treatieController();
+module.exports = new treatyController();

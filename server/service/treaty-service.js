@@ -2,7 +2,7 @@ const {clientPool, authPool} = require('../db');
 const ApiError = require('../error/ApiError');
 const tokenService = require('./token-service');
 
-class TreatieService {
+class TreatyService {
 
     async create(service, clientInfo, place, userId) {
         const selectClientQuery = {
@@ -44,4 +44,4 @@ class TreatieService {
 
 }
 
-module.exports = new TreatieService();
+module.exports = new TreatyService();

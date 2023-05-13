@@ -20,12 +20,12 @@ const CitySelect = ({place, setPlace}) => {
         <StyledCitySelect value={place}
                           onChange={handleSelectCity}
         >
-            <option value=''>{t('TreatiePage.Select city')}</option>
+            <option value=''>{t('TreatyPage.Select city')}</option>
             {cities.map((service) => (
                 <option value={service.value}
                         key={service.id}
                 >
-                    {t(`TreatiePage.${service.title}`)}
+                    {t(`TreatyPage.${service.title}`)}
                 </option>
             ))}
         </StyledCitySelect>

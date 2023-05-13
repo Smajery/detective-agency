@@ -1,15 +1,15 @@
 import {useTranslation} from 'react-i18next';
 import {useState} from 'react';
 
-import {StyledTreatieForm} from '@/components/screens/treatie/treatie-form/StyledTreatieForm';
+import {StyledTreatyForm} from '@/components/screens/treaty/treaty-form/StyledTreatyForm';
 import ServiceSelect from './service-select/ServiceSelect';
-import CitySelect from '@/components/screens/treatie/treatie-form/city-select/CitySelect';
-import {Treatie} from '@/api/treatie';
+import CitySelect from '@/components/screens/treaty/treaty-form/city-select/CitySelect';
+import {Treaty} from '@/api/treaty';
 import Loader from '@/components/ui/loader/Loader';
 import MessageModal from '@/components/ui/modals/message-modal/MessageModal';
 
 
-const TreatieForm = () => {
+const TreatyForm = () => {
     const {t} = useTranslation();
 
     const [service, setService] = useState('');
@@ -73,7 +73,7 @@ const TreatieForm = () => {
         if (isAgreeError !== '' && serviceError !== '' && clientInfoError !== '' && placeError !== '') return;
 
         setIsLoading(true);
-        Treatie.create(service, clientInfo, place)
+        Treaty.create(service, clientInfo, place)
             .then(() => {
                 setService('');
                 setClientInfo('');
@@ -93,9 +93,9 @@ const TreatieForm = () => {
     };
 
     return (
-        <StyledTreatieForm onSubmit={handleSubmit}>
-            <div className='treatie-title-box'>
-                <h3>{t('TreatiePage.Treatie')}</h3>
+        <StyledTreatyForm onSubmit={handleSubmit}>
+            <div className='treaty-title-box'>
+                <h3>{t('TreatyPage.Treaty')}</h3>
             </div>
             <div className='infoarea-box'>
                 <textarea id='client-infoarea'
@@ -103,12 +103,12 @@ const TreatieForm = () => {
                           value={clientInfo}
                           onChange={handleClientInfo}
                           maxLength={maxChars}
-                          placeholder={t('TreatiePage.Enter your info here')}
+                          placeholder={t('TreatyPage.Enter your info here')}
                 />
                 <label htmlFor='client-infoarea'
                        className='infoarea-label'
                 >
-                    {t('TreatiePage.Remaining characters')}
+                    {t('TreatyPage.Remaining characters')}
                     <span className={remainingChars === 0 ? 'remaining-chars zero' : 'remaining-chars'}
                     >
                         {remainingChars}
@@ -118,7 +118,7 @@ const TreatieForm = () => {
                 {clientInfoError !== '' && (
                     <div className='error-text-box'>
                         <p className='error-text'>
-                            {t(`TreatiePage.${clientInfoError}`)}
+                            {t(`TreatyPage.${clientInfoError}`)}
                         </p>
                     </div>
                 )}
@@ -130,7 +130,7 @@ const TreatieForm = () => {
                 {placeError !== '' && (
                     <div className='error-text-box'>
                         <p className='error-text'>
-                            {t(`TreatiePage.${placeError}`)}
+                            {t(`TreatyPage.${placeError}`)}
                         </p>
                     </div>
                 )}
@@ -140,18 +140,18 @@ const TreatieForm = () => {
                 {serviceError !== '' && (
                     <div className='error-text-box'>
                         <p className='error-text'>
-                            {t(`TreatiePage.${serviceError}`)}
+                            {t(`TreatyPage.${serviceError}`)}
                         </p>
                     </div>
                 )}
             </div>
-            <div className='treatie-expl-text-box'>
+            <div className='treaty-expl-text-box'>
                 <p className='exp-text'>
                     <span className='ps-text'>
-                        {t('TreatiePage.Note')}
+                        {t('TreatyPage.Note')}
                     </span><br />
-                    • {t('TreatiePage.After sending the treatie')}<br />
-                    • {t('TreatiePage.After approved')}
+                    • {t('TreatyPage.After sending the treaty')}<br />
+                    • {t('TreatyPage.After approved')}
                 </p>
             </div>
             <div className='agree-box'>
@@ -163,13 +163,13 @@ const TreatieForm = () => {
                 <label htmlFor='agree-checkbox'
                        className='agree-text'
                 >
-                    {t('TreatiePage.I agree')}
+                    {t('TreatyPage.I agree')}
                 </label>
             </div>
             {isAgreeError !== '' && (
                 <div className='error-text-box'>
                     <p className='error-text'>
-                        {t(`TreatiePage.${isAgreeError}`)}
+                        {t(`TreatyPage.${isAgreeError}`)}
                     </p>
                 </div>
             )}
@@ -179,14 +179,14 @@ const TreatieForm = () => {
                 {isLoading ? (
                     <Loader />
                 ) : (
-                    t('TreatiePage.Submit')
+                    t('TreatyPage.Submit')
                 )}
             </button>
-            <div className='treatie-pd-text-box'>
+            <div className='treaty-pd-text-box'>
                 <p className='pd-text'>
-                    {t('TreatiePage.Submit privacity')}<br />
+                    {t('TreatyPage.Submit privacity')}<br />
                     <span className='privacy-text'>
-                        {t('TreatiePage.Personal information privacity')}
+                        {t('TreatyPage.Personal information privacity')}
                     </span>
                 </p>
             </div>
@@ -194,8 +194,8 @@ const TreatieForm = () => {
                           isActive={isMessageModal}
                           handleClose={handleCloseMessageModal}
             />
-        </StyledTreatieForm>
+        </StyledTreatyForm>
     );
 };
 
-export default TreatieForm;
+export default TreatyForm;

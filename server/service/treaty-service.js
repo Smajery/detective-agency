@@ -15,7 +15,7 @@ class TreatyService {
         }
         const clientId = client.rows[0].id
         const insertQuery = {
-            text: 'INSERT INTO treaties (service, client_info, place, "clientId", "createdAt", "updatedAt") VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) RETURNING *',
+            text: 'INSERT INTO treaties (service, "clientInfo", place, "clientId", "updatedAt") VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP(0)) RETURNING *',
             values: [service, clientInfo, place, clientId]
         };
         const result = await clientPool.query(insertQuery);

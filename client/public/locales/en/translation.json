@@ -137,7 +137,7 @@
     "Client info is empty": "You have not entered information",
 
     "Note": "Note:",
-    "After sending the treatie": "After sending the treatie, you will be contacted and the final cost will be discussed.",
+    "After sending the treaty": "After sending the treatie, you will be contacted and the final cost will be discussed.",
     "After approved": "When the contract is approved, it cannot be deleted.",
     "I agree": "I confirm that I have read and agree with the terms of this agreement.",
 
@@ -145,12 +145,44 @@
     "Remaining characters": "Remaining characters:",
     "Submit": "Submit",
     "Submit privacity": "By clicking the 'Submit' button, you consent to the processing of personal data.",
-    "Personal information privacity": "Your personal information will be transferred to the «Dirk Gently's Detective Agency» in order to study the information provided."
+    "Personal information privacity": "Your personal information will be transferred to the «Dirk Gently's» Detective Agency in order to study the information provided."
   },
 
   "ProfilePage": {
     "title": "Profile",
-    "description": "Your profile"
+    "description": "Your profile",
+
+    "Treaties are empty": "You haven't made any treaties yet",
+    "Treaties are not empty": "Your treaties:",
+    "Treaty": "Treaty",
+    "Information from you": "Information from you:",
+    "Your chosen city": "Your chosen city:",
+    "Your chosen service": "Your chosen service:",
+    "Status": "Status:",
+    "Price": "Price",
+    "Comment": "Comment:",
+    "The treaty has been rejected": "Your treaty has been rejected, for more information, please contact support, best regards, «Dirk Gently's» Detective Agency.",
+    "The treaty was created at": "The treaty was created at:",
+    "You have not chosen a treaty": "You have not chosen a treaty",
+    "status": {
+      "в очікуванні": "pending",
+      "виконано": "fulffiled",
+      "відхилено": "rejected",
+      "схвалено": "approved"
+    },
+    "city": {
+      "Одеса": "Odesa",
+      "Київ": "Kyiv",
+      "Донецьк": "Donetsk"
+    },
+    "service": {
+      "Пошук": "Search",
+      "Розслідування": "Investigation",
+      "Спостереження": "Observation",
+      "Подружня зрада": "Adultery"
+    },
+    "Delete": "Delete"
+
   },
 
   "AuthModal": {
@@ -161,6 +193,8 @@
     "No such user exists": "No such user exists",
     "Invalid password": "Invalid password",
     "Invalid email": "Invalid email",
-    "Link is not activated": "Link is not activated"
+    "Link is not activated": "Link is not activated",
+
+    "The treaty has been successfully created": "The treaty has been successfully created"
   }
 }

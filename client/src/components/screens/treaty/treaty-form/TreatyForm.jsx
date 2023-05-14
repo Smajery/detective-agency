@@ -78,10 +78,10 @@ const TreatyForm = () => {
                 setService('');
                 setClientInfo('');
                 setPlace('');
-                setIsAgreeError(false)
+                setIsAgree(false)
                 setRemainingChars(maxChars)
 
-                setMessageModalText('Договор был успешно создан');
+                setMessageModalText('The treaty has been successfully created');
                 setIsMessageModal(true)
             })
             .catch(e => {
@@ -155,7 +155,7 @@ const TreatyForm = () => {
                 </p>
             </div>
             <div className='agree-box'>
-                <input value={isAgree}
+                <input checked={isAgree}
                        onChange={e => setIsAgree(e.target.checked)}
                        type='checkbox'
                        id='agree-checkbox'

@@ -1,6 +1,5 @@
 import Detectives from '@/components/screens/detectives/Detectives';
 import {Auth} from '@/api/auth';
-import HelpPage from '@/pages/help';
 
 const DetectivesPage = ({users}) => {
     return <Detectives users={users} />;

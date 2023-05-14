@@ -27,11 +27,11 @@ export const theme = {
         defaultColor: '#999999',
 
         header: {
-            borderColor: '#333333',
+            borderColor: '#FFFFFF',
         },
 
         footer: {
-            borderColor: '#333333',
+            borderColor: '#FFFFFF',
         },
     }
 }

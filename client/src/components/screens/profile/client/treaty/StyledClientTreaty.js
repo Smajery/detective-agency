@@ -18,21 +18,6 @@ export const StyledClientTreaty = styled.div`
     justify-content: center;
     align-items: center;
     gap: 0 10px;
-    position: relative;
-
-    .treaty-delete-btn {
-      padding: 2px 10px;
-      border: 1px solid #333333;
-      position: absolute;
-      right: 0;
-      color: #cf1d00;
-      
-      &:hover {
-        color: #FFFFFF;
-        border: 1px solid #FFFFFF;
-        background-color: #cf1d00;
-      }
-    }
   }
 
   .about-box {
@@ -70,19 +55,77 @@ export const StyledClientTreaty = styled.div`
     }
 
     .price-text {
-      margin-left: auto;
+      margin: 0 auto 0;
+    }
+  }
+
+  .treaty-expl-text-box {
+    width: 100%;
+
+    .expl-text {
+      font-size: 14px;
+
+      .title {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .treaty-delete-btn {
+    margin-left: auto;
+    padding: 2px 10px;
+    border: 1px solid #333333;
+    color: #cf1d00;
+
+    &:hover {
+      color: #FFFFFF;
+      border: 1px solid #FFFFFF;
+      background-color: #cf1d00;
+    }
+  }
+
+  .is-paid-btn-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .cancel-btn {
+      padding: 2px 10px;
+      border: 1px solid #333333;
+      color: #cf1d00;
+
+      &:hover {
+        color: #FFFFFF;
+        border: 1px solid #FFFFFF;
+        background-color: #cf1d00;
+      }
     }
 
-    .treaty-expl-text-box {
-      width: 100%;
+    .confirm-btn {
+      padding: 2px 10px;
+      border: 1px solid #333333;
+      color: #008000;
 
-      .exp-text {
-        font-size: 14px;
-
-        .ps-text {
-          font-weight: bold;
-        }
+      &:hover {
+        color: #FFFFFF;
+        border: 1px solid #FFFFFF;
+        background-color: #008000;
       }
+    }
+  }
+
+  .is-paid-status-box {
+    width: 100%;
+    display: flex;
+
+    .is-paid-true {
+      margin-left: auto;
+      color: #008000;
+    }
+
+    .is-paid-false {
+      margin-right: auto;
+      color: #cf1d00;
     }
   }
 `;

@@ -1,6 +1,6 @@
 export const routes = [
     {id: 0, path: '/treaty', title: 'Treatie', userRoles: ['CLIENT']},
-    {id: 1, path: '/detectives', title: 'Detectives', userRoles: ['SENIOR', 'CHIEF']},
+    {id: 1, path: '/detectives', title: 'Detectives', userRoles: ['SENIOR']},
     {
         id: 2,
         path: '/services',
@@ -18,7 +18,7 @@ export const routes = [
     {id: 5, path: '/contacts', title: 'Contacts', userRoles: ['USER', 'CLIENT']},
     {id: 6, path: '/signin', title: 'Sign in', userRoles: ['USER']},
     {id: 7, path: '/', title: 'Home', isDefault: true},
-    {id: 8, path: '/profile', title: 'Profile', userRoles: ['CLIENT']},
+    {id: 8, path: '/profile', title: 'Profile', userRoles: ['CLIENT', 'CHIEF']},
     {id: 9, path: '/signup', title: 'Sign up', isDefault: true},
     {id: 10, path: '/message', title: 'Message', isDefault:true},
 ];

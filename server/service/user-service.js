@@ -26,7 +26,7 @@ class UserService {
         const activationLink = uuid.v4();
 
         const insertQuery = {
-            text: 'INSERT INTO users (email, password, "activationLink", "createdAt", "updatedAt") VALUES ($1, $2, $3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) RETURNING *',
+            text: 'INSERT INTO users (email, password, "activationLink") VALUES ($1, $2, $3) RETURNING *',
             values: [email, hashPassword, activationLink]
         };
         const result = await authPool.query(insertQuery);
@@ -122,7 +122,7 @@ class UserService {
 
     async removeInactiveUsers() {
         try {
-            const deleteQuery = `DELETE FROM users WHERE "isActivated" = false AND CURRENT_TIMESTAMP - "updatedAt" > interval '1 hour'`;
+            const deleteQuery = `DELETE FROM users WHERE "isActivated" = false AND CURRENT_TIMESTAMP(0) - "updatedAt" > interval '1 hour'`;
             const result = await authPool.query(deleteQuery);
             if (result.rowCount > 0) {
                 console.log(`Removed ${result.rowCount} inactive users`);

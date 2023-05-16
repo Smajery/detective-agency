@@ -3,7 +3,6 @@ import axios from 'axios';
 import {authSlice} from './AuthSlice';
 import {Auth} from '@/api/auth';
 import {removeStorageItem, setStorageItem} from '@/utils/storage';
-import {API_USER} from '@/utils/api-routes';
 
 export const AuthActionCreator = {
     setIsAuth: boolean => dispatch => {
@@ -31,7 +30,7 @@ export const AuthActionCreator = {
 
     checkAuth: () => async dispatch => {
        try {
-           const response = await axios.get(process.env.API_URL + API_USER + 'refresh', {withCredentials: true})
+           const response = await axios.get(process.env.API_URL + 'user/refresh', {withCredentials: true})
            localStorage.setItem('accessToken', response.data.accessToken)
            localStorage.setItem('auth', true)
            dispatch(AuthActionCreator.setIsAuth(true))

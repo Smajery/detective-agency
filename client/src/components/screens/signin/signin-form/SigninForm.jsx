@@ -9,7 +9,7 @@ import {StyledSigninForm} from '@/components/screens/signin/signin-form/StyledSi
 import shownPasswordImg from '@/static/icons/eye-open.svg';
 import hiddenPasswordImg from '@/static/icons/eye-closed.svg';
 import {Auth} from '@/api/auth';
-import MessageModal from '@/components/ui/modals/message-modal/MessageModal';
+import MessageModal from '@/components/ui/modals/message/MessageModal';
 import {checkSubmitAuth, emailValueChange, passwordValueChange} from '@/utils/auth/functions';
 import Loader from '@/components/ui/loader/Loader';
 import {setStorageItem} from '@/utils/storage';

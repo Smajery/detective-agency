@@ -9,7 +9,7 @@ import Footer from '@/components/layout/footer/Footer';
 import Main from '@/components/layout/main/Main';
 import Loader from '@/components/ui/loader/Loader';
 
-import {shouldDisplayFooter, shouldDisplayHeader} from '@/utils/display';
+import {shouldDisplayFooter, shouldDisplayHeader} from '@/utils/is-display';
 import Globals from '@/styles/Globals';
 import {theme} from '@/utils/theme';
 import {useActions} from '@/hooks/UseActions';

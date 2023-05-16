@@ -78,7 +78,7 @@ export const StyledTreatyForm = styled.form`
   .treaty-expl-text-box {
     width: 100%;
 
-    .exp-text {
+    .expl-text {
       font-size: 14px;
 
       .ps-text {

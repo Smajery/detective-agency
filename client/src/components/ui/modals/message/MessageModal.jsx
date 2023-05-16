@@ -13,7 +13,9 @@ const MessageModal = ({child, isActive, handleClose}) => {
             >
                 х
             </button>
-            {child !== '' && t(`AuthModal.${child}`)}
+            <p>
+                {child !== '' && t(`MessageModal.${child}`)}
+            </p>
         </StyledMessageModal>
     );
 };

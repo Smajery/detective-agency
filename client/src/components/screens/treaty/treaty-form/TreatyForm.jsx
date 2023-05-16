@@ -6,7 +6,7 @@ import ServiceSelect from './service-select/ServiceSelect';
 import CitySelect from '@/components/screens/treaty/treaty-form/city-select/CitySelect';
 import {Treaty} from '@/api/treaty';
 import Loader from '@/components/ui/loader/Loader';
-import MessageModal from '@/components/ui/modals/message-modal/MessageModal';
+import MessageModal from '@/components/ui/modals/message/MessageModal';
 
 
 const TreatyForm = () => {
@@ -146,7 +146,7 @@ const TreatyForm = () => {
                 )}
             </div>
             <div className='treaty-expl-text-box'>
-                <p className='exp-text'>
+                <p className='expl-text'>
                     <span className='ps-text'>
                         {t('TreatyPage.Note')}
                     </span><br />

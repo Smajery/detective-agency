@@ -1,19 +1,25 @@
 {
+  "meta": {
+    "title": "«Dirk Gently's» Detective Agency"
+  },
   "header": {
     "logo": {
       "title1": "Detective agency",
       "title2": "«Dirk Gently's»"
     },
-
     "navbar": {
+      "Home": "Home",
+      "Treatie": "Treatie",
       "Detectives": "Detectives",
       "Services": "Services",
       "Help": "Help",
       "Feedbacks": "Feedbacks",
       "Contacts": "Contacts",
-      "Sign in": "Sign in"
+      "Sign in": "Sign in",
+      "Log out": "Log out",
+      "Message": "Message",
+      "Profile": "Profile"
     },
-
     "subbar": {
       "Services": {
         "Search": "Search",
@@ -23,45 +29,36 @@
       }
     }
   },
-
   "footer": {
     "copyright": "Copyright © 2023 «Dirk Gently's» Detective Agency. All rights reserved."
   },
-
   "HomePage": {
     "title": "Home",
     "description": "Hello, our lovely customers!"
   },
-
   "DetectivesPage": {
     "title": "Detectives",
     "description": "Detectives list"
   },
-
   "ServicesPage": {
     "title": "Services",
     "description": "We love our customers"
   },
-
   "HelpPage": {
     "title": "Help",
     "description": "We are glad to help you!"
   },
-
   "FeedbacksPage": {
     "title": "Feedbacks",
     "description": "Our feedbacks"
   },
-
   "ContactsPage": {
     "title": "Contacts",
     "description": "Our contacts"
   },
-
   "SigninPage": {
     "title": "Sign in",
     "description": "Welcome again!",
-
     "No, thanks": "No, thanks",
     "Welcome again": "Welcome again",
     "Don't have an account": "Don't have an account?",
@@ -76,11 +73,9 @@
     "Incorrect email": "Incorrect email",
     "Incorrect password": "Incorrect password"
   },
-
   "SignupPage": {
     "title": "Sign up",
     "description": "Welcome!",
-
     "No, thanks": "No, thanks",
     "Welcome": "Welcome",
     "Do you have an account": "Do you have an account?",
@@ -95,20 +90,122 @@
     "Incorrect email": "Incorrect email",
     "Incorrect password": "Incorrect password"
   },
-
   "NotFoundPage": {
     "title": "Not found",
     "description": "404 - Page not found"
   },
-
   "MessagePage": {
     "title": "Message",
     "description": "Your message",
-    "Is activated": "Congratulations! You have been activated!"
+    "Is activated": "Congratulations! You have been activated!",
+    "Is not activated": "You haven't registered or verified your email yet!"
   },
-
-  "AuthModal": {
+  "TreatyPage": {
+    "title": "Treeaty",
+    "description": "Your treaty",
+    "Treaty": "Treaty",
+    "Services": "Services",
+    "Select service": "Select service",
+    "Search": "Search",
+    "Adultery": "Adultery",
+    "Investigation": "Investigation",
+    "Observation": "Observation",
+    "Select city": "Select city",
+    "Odesa": "Odesa",
+    "Kyiv": "Kyiv",
+    "Donetsk": "Donetsk",
+    "Place is empty": "You have not selected a city",
+    "Agree is empty": "You have not accepted the agreement",
+    "Service is empty": "You have not selected services",
+    "Client info is empty": "You have not entered information",
+    "Note": "Note:",
+    "After sending the treaty": "After sending the treatie, you will be contacted and the final cost will be discussed.",
+    "After approved": "When the contract is approved, it cannot be deleted.",
+    "I agree": "I confirm that I have read and agree with the terms of this agreement.",
+    "Enter your info here": "Enter your info here",
+    "Remaining characters": "Remaining characters:",
+    "Submit": "Submit",
+    "Submit privacity": "By clicking the 'Submit' button, you consent to the processing of personal data.",
+    "Personal information privacity": "Your personal information will be transferred to the «Dirk Gently's» Detective Agency in order to study the information provided."
+  },
+  "ProfilePage": {
+    "title": "Profile",
+    "description": "Your profile",
+    "ClientProfile": {
+      "Treaties are empty": "You haven't made any treaties yet",
+      "Treaties are not empty": "Your treaties:",
+      "Treaty": "Treaty",
+      "Information from you": "Information from you:",
+      "Your chosen city": "Your chosen city:",
+      "Your chosen service": "Your chosen service:",
+      "Status": "Status:",
+      "Price": "Price",
+      "Comment": "Comment:",
+      "The treaty has been rejected": "Your treaty has been rejected, for more information, please contact support, best regards, «Dirk Gently's» Detective Agency.",
+      "The treaty was created at": "The treaty was created at:",
+      "You have not chosen a treaty": "You have not chosen a treaty",
+      "status": {
+        "в очікуванні": "pending",
+        "виконано": "fulffiled",
+        "відхилено": "rejected",
+        "схвалено": "approved"
+      },
+      "city": {
+        "Одеса": "Odesa",
+        "Київ": "Kyiv",
+        "Донецьк": "Donetsk"
+      },
+      "service": {
+        "Пошук": "Search",
+        "Розслідування": "Investigation",
+        "Спостереження": "Observation",
+        "Подружня зрада": "Adultery"
+      },
+      "Delete": "Delete",
+      "Paid": "Paid",
+      "Not paid": "The payment was rejected",
+      "To reject": "To reject",
+      "To pay": "To pay"
+    },
+    "ChiefProfile": {
+      "title": "Chief Profile",
+      "description": "Your profile",
+      "Treaties": "Treaties",
+      "Employees": "Employees",
+      "Cases": "Cases",
+      "Documents": "Documents",
+      "Job titles": "Job titles",
+      "Detectives lists": "Detectives lists",
+      "Clients": "Clients",
+      "Files": "Files",
+      "status": {
+        "Select": "Select",
+        "pending": "pending",
+        "fulffiled": "fulffiled",
+        "rejected": "rejected",
+        "approved": "approved"
+      }
+    },
+    "If you see this page, then something went wrong": "If you see this page, then something went wrong"
+  },
+  "MessageModal": {
     "Login success": "Login completed successfully!",
-    "Registration success": "Registration completed successfully!"
+    "Registration success": "Registration completed successfully! A confirmation link has been sent to your email",
+    "Unexpected error": "Unexpected error!",
+    "This user already exists": "This user already exists",
+    "No such user exists": "No such user exists",
+    "Invalid password": "Invalid password",
+    "Invalid email": "Invalid email",
+    "Link is not activated": "Link is not activated",
+    "The treaty has been successfully created": "The treaty has been successfully created",
+    "Current treaty was deleted": "Current treaty was deleted",
+    "The treaty successfully paid": "The treaty successfully paid",
+    "The payment rejected": "The payment rejected"
+  },
+  "ConfirmModal": {
+    "Confirm the payment": "Are you sure you want to confirm the payment?",
+    "Cancel the payment": "Are you sure you want to cancel the payment?",
+    "Cancel": "No",
+    "Confirm": "Yes"
   }
 }

@@ -1,5 +1,6 @@
 const ApiError = require('../error/ApiError');
 const userService = require('../service/user-service');
+const clientService = require('../service/client-service');
 const {validationResult} = require('express-validator');
 const {authPool} = require('../db');
 
@@ -25,6 +26,9 @@ class userController {
             const {email, password} = req.body;
             const userData = await userService.login(email, password);
             res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true});
+            if (userData.user.role === 'CLIENT') {
+                await clientService.create(userData.user.email, userData.user.id);
+            }
             return res.json(userData);
         } catch (e) {
             next(e);

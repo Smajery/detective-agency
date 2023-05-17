@@ -1,19 +1,25 @@
 {
+  "meta": {
+    "title": "Детективне агентство «Дірка Джентлі»"
+  },
   "header": {
     "logo": {
       "title1": "Детективне агентство",
       "title2": "«Дірка Джентлі»"
     },
-
     "navbar": {
+      "Home": "Головна",
+      "Treatie": "Договір",
       "Detectives": "Детективи",
       "Services": "Послуги",
       "Help": "Допомога",
       "Feedbacks": "Відгуки",
       "Contacts": "Контакти",
-      "Sign in": "Вхід"
+      "Sign in": "Вхід",
+      "Log out": "Вихід",
+      "Message": "Повідомлення",
+      "Profile": "Профіль"
     },
-
     "subbar": {
       "Services": {
         "Search": "Пошук",
@@ -23,45 +29,36 @@
       }
     }
   },
-
   "footer": {
     "copyright": "Авторське право © 2023 Детективне агентство «Дірка Джентлі». Всі права захищені."
   },
-
   "HomePage": {
     "title": "Додому",
     "description": "Вітаю, наші любі клієнти!"
   },
-
   "DetectivesPage": {
     "title": "Детективи",
     "description": "Список детективів"
   },
-
   "ServicesPage": {
     "title": "Послуги",
     "description": "Ми любимо наших клієнтів"
   },
-
   "HelpPage": {
     "title": "Допомога",
     "description": "Ми раді Вам допомогти!"
   },
-
   "FeedbacksPage": {
     "title": "Відгуки",
     "description": "Наші відгуки"
   },
-
   "ContactsPage": {
     "title": "Контакти",
     "description": "Наші контакти"
   },
-
   "SigninPage": {
     "title": "Вхід",
     "description": "Ласкаво просимо знову!",
-
     "No, thanks": "Ні, дякую",
     "Welcome again": "Ласкаво просимо знову",
     "Don't have an account": "Немає облікового запису?",
@@ -76,11 +73,9 @@
     "Incorrect email": "Невірний формат електронної пошти",
     "Incorrect password": "Невірний формат пароля"
   },
-
   "SignupPage": {
     "title": "Реєстрація",
     "description": "Ласкаво просимо!",
-
     "No, thanks": "Ні, дякую",
     "Welcome": "Ласкаво просимо",
     "Do you have an account": "Вже маєте обліковий запис?",
@@ -95,20 +90,122 @@
     "Incorrect email": "Невірний формат електронної пошти",
     "Incorrect password": "Невірний формат пароля"
   },
-
   "NotFoundPage": {
     "title": "Не знайдено",
     "description": "404 - Сторінка не знайдена"
   },
-
   "MessagePage": {
     "title": "Повідомлення",
     "description": "Ваше повідомлення",
-    "Is activated": "Вітаю! Ви були активовані!"
+    "Is activated": "Вітаю! Ви були активовані!",
+    "Is not activated": "Ви ще не зареєструвалися або не підтвердили свою електронну адресу!"
   },
-
-  "AuthModal": {
+  "TreatyPage": {
+    "title": "Договір",
+    "description": "Ваш договір",
+    "Treaty": "Договір",
+    "Services": "Послуги",
+    "Select service": "Виберіть послугу",
+    "Search": "Пошук",
+    "Adultery": "Подружня зрада",
+    "Investigation": "Розслідування",
+    "Observation": "Спостереження",
+    "Select city": "Виберіть місто",
+    "Odesa": "Одеса",
+    "Kyiv": "Київ",
+    "Donetsk": "Донецьк",
+    "Place is empty": "Ви не обрали місто",
+    "Agree is empty": "Ви не ухвалили угоду",
+    "Service is empty": "Ви не вибрали послуги",
+    "Client info is empty": "Ви не ввели інформацію",
+    "Note": "Примітка:",
+    "After sending the treaty": "Після надсилання договору з вами зв'яжуться та обговорять підсумкову вартість.",
+    "After approved": "Після того, як договір буде схвалено, його не можна буде видалити.",
+    "I agree": "Я підтверджую, що ознакомлен і погоджений з умовами даного договору.",
+    "Enter your info here": "Введіть свою інформацію тут",
+    "Remaining characters": "Залишилось символів:",
+    "Submit": "Надіслати",
+    "Submit privacity": "Натискаючи кнопку «Надіслати», ви даєте згоду на обробку персональних даних.",
+    "Personal information privacity": "Вашу особисту інформацію буде передано \"Детективному агентству «Дірка Джентлі»\" з метою вивчення наданої інформації."
+  },
+  "ProfilePage": {
+    "title": "Профіль",
+    "description": "Ваш профіль",
+    "ClientProfile": {
+      "Treaties are empty": "Ви ще не уклали жодних договорів",
+      "Treaties are not empty": "Ваші договори:",
+      "Treaty": "Договір",
+      "Information from you": "Інформація від вас:",
+      "Your chosen city": "Вибране вами місто:",
+      "Your chosen service": "Вибрана вами послуга:",
+      "Status": "Стан:",
+      "Price": "Ціна:",
+      "Comment": "Коментар:",
+      "The treaty has been rejected": "Ваш договір відхилено, для отримання додаткової інформації звертайтеся до служби підтримки, з повагою, Детективне Агентство «Дірка Джентлі».",
+      "The treaty was created at": "Договір було укладено:",
+      "You have not chosen a treaty": "Ви не вибрали договір",
+      "status": {
+        "в очікуванні": "в очікуванні",
+        "виконано": "виконано",
+        "відхилено": "відхилено",
+        "схвалено": "схвалено"
+      },
+      "city": {
+        "Одеса": "Одеса",
+        "Київ": "Київ",
+        "Донецьк": "Донецьк"
+      },
+      "service": {
+        "Пошук": "Пошук",
+        "Розслідування": "Розслідування",
+        "Спостереження": "Спостереження",
+        "Подружня зрада": "Подружня зрада"
+      },
+      "Delete": "Видалити",
+      "Paid": "Сплачено",
+      "Not paid": "Платіж був відхилений",
+      "To reject": "Відхилити",
+      "To pay": "Сплатити"
+    },
+    "ChiefProfile": {
+      "title": "Профіль шефа",
+      "description": "Ваш профіль для керування",
+      "Treaties": "Договори",
+      "Employees": "Співробітники",
+      "Cases": "Справи",
+      "Documents": "Документи",
+      "Job titles": "Посади",
+      "Detectives lists": "Списки детективів",
+      "Clients": "Клієнти",
+      "Files": "Файли",
+      "status": {
+        "Select": "Виберіть",
+        "pending": "в очікуванні",
+        "fulffiled": "виконано",
+        "rejected": "відхилено",
+        "approved": "схвалено"
+      }
+    },
+    "If you see this page, then something went wrong": "Якщо ви бачите цю сторінку, то щось пішло не так"
+  },
+  "MessageModal": {
     "Login success": "Вхід успішно завершено!",
-    "Registration success": "Реєстрацію успішно завершено!"
+    "Registration success": "Реєстрацію успішно завершено! Посилання для підтвердження надіслано на вашу електронну пошту",
+    "Unexpected error": "Неочікувана помилка!",
+    "This user already exists": "Такий користувач вже існує",
+    "No such user exists": "Такого користувача не існує",
+    "Invalid password": "Невірний пароль",
+    "Invalid email": "Невірна електронна пошта",
+    "Link is not activated": "Посилання не активоване",
+    "The treaty has been successfully created": "Договір було успішно створено",
+    "Current treaty was deleted": "Вибраний договір був видалений",
+    "The treaty successfully paid": "Договір успішно сплачено",
+    "The payment rejected": "Платіж відхилений"
+  },
+  "ConfirmModal": {
+    "Confirm the payment": "Ви впевнені, що хочете підтвердити платіж?",
+    "Cancel the payment": "Ви впевнені, що бажаєте відхилити платіж?",
+    "Cancel": "Ні",
+    "Confirm": "Так"
   }
 }

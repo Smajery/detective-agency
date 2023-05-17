@@ -8,7 +8,7 @@ import {emailPattern, passwordPattern} from '@/utils/auth/patterns';
 import hiddenPasswordImg from '@/static/icons/eye-closed.svg';
 import shownPasswordImg from '@/static/icons/eye-open.svg';
 import {Auth} from '@/api/auth';
-import AuthModal from '@/components/ui/modals/auth-modal/AuthModal';
+import MessageModal from '@/components/ui/modals/message/MessageModal';
 import {checkSubmitAuth, emailValueChange, passwordValueChange} from '@/utils/auth/functions';
 import Loader from '@/components/ui/loader/Loader';
 
@@ -121,9 +121,9 @@ const SignupForm = () => {
                     <span><Link href={'/signin'}>{t('SignupPage.Sign in')}</Link></span>
                 </p>
             </div>
-            <AuthModal child={authModalText}
-                       isActive={isAuthModal}
-                       handleClose={handleCloseAuthModal}
+            <MessageModal child={authModalText}
+                          isActive={isAuthModal}
+                          handleClose={handleCloseAuthModal}
             />
         </StyledSignupForm>
     );

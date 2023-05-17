@@ -1,3 +1,5 @@
+import {useEffect} from 'react';
+
 import Message from '@/components/screens/message/Message';
 
 const MessagePage = () => {

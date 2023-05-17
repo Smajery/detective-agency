@@ -1,13 +1,11 @@
-import {StyledMain, StyledWrapper} from './StyledMain';
+import {StyledMain} from './StyledMain';
 import LiftUpBtn from '@/components/ui/buttons/lift-up/LiftUpBtn';
 
 const Main = ({children}) => {
     return (
         <StyledMain>
-            <StyledWrapper>
-                {children}
-                <LiftUpBtn />
-            </StyledWrapper>
+            {children}
+            <LiftUpBtn />
         </StyledMain>
     );
 };

@@ -1,5 +1,6 @@
 import $api from '@/api/index';
-import {API_USER} from '@/utils/api-routes';
+
+export const API_USER = 'user/'
 
 export const Auth = {
     async registration(email, password) {

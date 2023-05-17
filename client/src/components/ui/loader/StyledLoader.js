@@ -52,6 +52,12 @@ export const StyledRoller = styled.div`
           height: 30px;
           border: 5px dotted #FFFFFF;
         `;
+      case "treaties-list":
+        return css`
+          width: 30px;
+          height: 30px;
+          border: 5px dotted #FFFFFF;
+        `;
       default:
         return css`
           width: 40px;

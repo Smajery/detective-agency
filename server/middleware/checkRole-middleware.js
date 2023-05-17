@@ -9,7 +9,7 @@ module.exports = function (roles) {
         try {
             const authorizationHeader = req.headers.authorization;
             if(!authorizationHeader) {
-                return next(ApiError.Unauthorized("Access denied"))
+                return next(ApiError.Unauthorized("Token not found"))
             }
 
             const accessToken = authorizationHeader.split(' ')[1];
@@ -19,11 +19,11 @@ module.exports = function (roles) {
 
             const userData = tokenService.validateAccessToken(accessToken);
             if(!userData) {
-                return next(ApiError.Unauthorized("Access denied"))
+                return next(ApiError.Unauthorized("Your token has not been validated"))
             }
 
             if (!roles.includes(userData.role)) {
-                return next(ApiError.Unauthorized("Access denied"))
+                return next(ApiError.Unauthorized("Your role is not confirmed"))
             }
             req.user = userData;
             next()

@@ -1,8 +1,12 @@
 import Head from 'next/head';
+import {useTranslation} from 'react-i18next';
 
-const getTitle = (title) => `${title} | Detective Agency`;
+
 
 const Meta = ({title, description, children}) => {
+    const {t} = useTranslation()
+
+    const getTitle = (title) => `${title} | ${t('meta.title')}`;
     return (
         <>
             <Head>

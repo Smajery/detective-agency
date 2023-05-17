@@ -14,6 +14,7 @@ export const StyledSigninForm = styled.form`
     position: relative;
     
     .password-security-btn {
+      border: none;
       display: flex;
       align-items: center;
       position: absolute;

@@ -6,14 +6,24 @@ import {StyledNotFound} from '@/components/screens/404/StyledNotFound';
 import NotFoundImg from '@/static/404.jpeg';
 
 const NotFound = () => {
-    const {t} = useTranslation()
+    const {t} = useTranslation();
 
     return (
-        <Layout title={t('NotFoundPage.title')}
+        <Layout title={
+            typeof window === 'undefined' ? (
+                '...'
+            ) : (
+                t('NotFoundPage.title')
+            )}
                 description={t('NotFoundPage.description')}
         >
             <StyledNotFound>
-                <Image priority src={NotFoundImg} alt='' width={450} height={450}/>
+                <Image priority
+                       src={NotFoundImg}
+                       alt=""
+                       width={450}
+                       height={450}
+                />
             </StyledNotFound>
         </Layout>
     );

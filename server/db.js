@@ -32,9 +32,18 @@ const detectivePool = new Pool({
     database: process.env.PG_NAME
 });
 
+const clientPool = new Pool({
+    user: process.env.PG_USER_CLIENT,
+    password: process.env.PG_PASSWORD_CLIENT,
+    host: process.env.PG_HOST,
+    port: process.env.PG_PORT,
+    database: process.env.PG_NAME
+});
+
 module.exports = {
     authPool,
     chiefPool,
     seniorPool,
-    detectivePool
+    detectivePool,
+    clientPool
 }

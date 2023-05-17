@@ -4,8 +4,9 @@ import {format} from 'date-fns';
 import {isEmptyArr} from '@/utils/is-empty-arr';
 import {StyledTreatiesList} from './StyledTreatiesList';
 import TreatiesItem from './treaties-item/TreatiesItem';
+import SortingSelect from './sorting-select/SortingSelect';
 
-const TreatiesList = ({treaties}) => {
+const TreatiesList = ({treaties, sorting, setSorting}) => {
 
     return (
         <StyledTreatiesList>
@@ -26,8 +27,15 @@ const TreatiesList = ({treaties}) => {
 
                 </div>
             </div>
+            <div className='sorting-select-container'>
+                <SortingSelect sorting={sorting}
+                               setSorting={setSorting}
+                />
+            </div>
             {isEmptyArr(treaties) && treaties.map((treaty) => (
-                <TreatiesItem treaty={treaty} key={treaty.id}/>
+                <TreatiesItem treaty={treaty}
+                              key={treaty.id}
+                />
             ))}
         </StyledTreatiesList>
     );

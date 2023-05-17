@@ -4,13 +4,24 @@ import {StyledEmployeesSelect} from './StyledEmployeesSelect';
 import {Employee} from '@/api/employee';
 import {isEmptyArr} from '@/utils/is-empty-arr';
 
-const EmployeesSelect = ({employee, setEmployee, isEdit}) => {
+const EmployeesSelect = ({employee, setEmployee, isEdit, setCurrentEmployeeError, status}) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const [employees, setEmployees] = useState([]);
 
     const handleSelectEmployee = (e) => {
-        setEmployee(e.target.value);
+        const employeeInput = e.target.value
+        let newCurrentEmployeeError = ''
+        if (status === 'виконано' && employeeInput === '') {
+            newCurrentEmployeeError = 'Нельзя убрать ответственного детектива из завершенного договора'
+        }
+        if (employeeInput !== '') {
+            const currentEmployee = employees.find(empl => empl.id === Number(employeeInput))
+            setEmployee(currentEmployee);
+        } else {
+            setCurrentEmployeeError(newCurrentEmployeeError)
+            setEmployee({})
+        }
     };
 
     useEffect(() => {
@@ -28,17 +39,17 @@ const EmployeesSelect = ({employee, setEmployee, isEdit}) => {
     }, []);
 
     return (
-        <StyledEmployeesSelect value={employee}
+        <StyledEmployeesSelect value={employee?.id || ''}
                                onChange={handleSelectEmployee}
                                disabled={!isEdit}
                                $isEdit={isEdit}
         >
             <option value=''>Выберите</option>
-            {isEmptyArr(employees) && employees.map((employee) => (
-                <option value={employee.fullName}
-                        key={employee.id}
+            {isEmptyArr(employees) && employees.map((empl) => (
+                <option value={empl.id}
+                        key={empl.id}
                 >
-                    {employee.fullName}
+                    {empl.fullName}
                 </option>
             ))}
         </StyledEmployeesSelect>

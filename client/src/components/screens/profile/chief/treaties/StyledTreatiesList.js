@@ -41,4 +41,12 @@ export const StyledTreatiesList = styled.div`
       justify-content: flex-end;
     }
   }
+  
+  .sorting-select-container {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #333333;
+  }
 `;

@@ -45,32 +45,30 @@ const TreatyForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (typeof window === 'undefined') return;
-
-        let clientInfoError = '';
-        let placeError = '';
-        let serviceError = '';
-        let isAgreeError = '';
+        let newClientInfoError = '';
+        let newPlaceError = '';
+        let newServiceError = '';
+        let newIsAgreeError = '';
 
         if (clientInfo === '') {
-            clientInfoError = 'Client info is empty';
+            newClientInfoError = 'Client info is empty';
         }
         if (place === '') {
-            placeError = 'Place is empty';
+            newPlaceError = 'Place is empty';
         }
         if (service === '') {
-            serviceError = 'Service is empty';
+            newServiceError = 'Service is empty';
         }
         if (!isAgree) {
-            isAgreeError = 'Agree is empty';
+            newIsAgreeError = 'Agree is empty';
         }
 
-        setClientInfoError(clientInfoError);
-        setPlaceError(placeError);
-        setServiceError(serviceError);
-        setIsAgreeError(isAgreeError)
+        setClientInfoError(newClientInfoError);
+        setPlaceError(newPlaceError);
+        setServiceError(newServiceError);
+        setIsAgreeError(newIsAgreeError)
 
-        if (isAgreeError !== '' && serviceError !== '' && clientInfoError !== '' && placeError !== '') return;
+        if (newIsAgreeError !== '' || newServiceError !== '' || newClientInfoError !== '' || newPlaceError !== '') return;
 
         setIsLoading(true);
         Treaty.create(service, clientInfo, place)

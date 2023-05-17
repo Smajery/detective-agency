@@ -15,9 +15,10 @@ class treatyController {
     }
 
     async getAll(req, res, next) {
+        const {sorting} = req.query;
         try {
             const userData = req.user
-            const result = await treatyService.getAll(userData.id, userData.role)
+            const result = await treatyService.getAll(userData.id, userData.role, sorting)
             return res.json(result);
         } catch (e) {
             next(e);

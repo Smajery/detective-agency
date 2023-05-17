@@ -25,13 +25,15 @@ const ChiefProfile = () => {
     const [currentMenu, setCurrentMenu] = useState({});
     const [currentMenuContent, setCurrentMenuContent] = useState([]);
 
+    const [sortingValue, setSortingValue] = useState(null)
+
     useEffect(() => {
         if (Object.keys(currentMenu).length === 0) return;
         if (typeof currentMenu.model.getAll !== 'function') {
             return setCurrentMenuContent([]);
         }
         setIsLoading(true);
-        currentMenu.model.getAll()
+        currentMenu.model.getAll(sortingValue)
             .then(data => {
                 setCurrentMenuContent(data);
             })
@@ -43,7 +45,7 @@ const ChiefProfile = () => {
                 setIsLoading(false);
             });
 
-    }, [currentMenu]);
+    }, [currentMenu, sortingValue]);
 
     return (
         <Layout title={t('ProfilePage.ChiefProfile.title')}
@@ -69,7 +71,10 @@ const ChiefProfile = () => {
                 <div className='chief-menu-rightbar'>
                     <div className='rightbar-container'>
                         {currentMenu.title === 'Treaties' && (
-                            <TreatiesList treaties={currentMenuContent} />
+                            <TreatiesList treaties={currentMenuContent}
+                                          sorting={sortingValue}
+                                          setSorting={setSortingValue}
+                            />
                         )}
                     </div>
                 </div>

@@ -1,10 +1,11 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const StyledTreatiesItem = styled.form`
   padding: 0 20px;
   min-height: 40px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   border-bottom: 1px solid #333333;
   background-color: #FFFFFF;
   color: #333333;
@@ -38,6 +39,33 @@ export const StyledTreatiesItem = styled.form`
       width: 100px;
     }
 
+    .status-item {
+      ${(props) => {
+        switch (props.$status) {
+          case 'в очікуванні':
+            return css`
+              color: #ff8c00
+            `;
+          case 'схвалено':
+            return css`
+              color: #008000
+            `;
+          case 'виконано':
+            return css`
+              color: #0000ff
+            `;
+          case 'відхилено':
+            return css`
+              color: #cf1d00
+            `;
+          default:
+            return css`
+              color: inherit;
+            `;
+        }
+      }}
+    }
+
     .btn-box {
       width: 100px;
       display: flex;
@@ -51,16 +79,12 @@ export const StyledTreatiesItem = styled.form`
   }
 
   .treaty-content {
-    height: 0;
+    padding: 20px 0;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px 0;
     overflow: hidden;
-
-    &.shown {
-      padding: 20px 0;
-      height: calc(100% - 40px);
-    }
 
     .treaty-price-container {
       display: flex;
@@ -96,6 +120,12 @@ export const StyledTreatiesItem = styled.form`
       align-items: center;
       gap: 0 10px;
     }
+    
+    .treaty-client-container {
+      display: flex;
+      align-items: center;
+      gap: 0 10px;
+    }
 
     .treaty-client-info {
       width: 320px;
@@ -113,13 +143,9 @@ export const StyledTreatiesItem = styled.form`
       .client-info {
         padding: 5px 10px;
         width: 100%;
+        display: flex;
         border: 1px solid #333333;
         background-color: #FFFFFF;
-        display: none;
-
-        &.shown {
-          display: flex;
-        }
       }
 
       button {
@@ -137,6 +163,14 @@ export const StyledTreatiesItem = styled.form`
         padding: 0 10px;
         background-color: #FFFFFF;
       }
+    }
+  }
+
+  .error-text-box {
+    width: 100%;
+
+    .error-text {
+      color: #cf1d00;
     }
   }
 `;

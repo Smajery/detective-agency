@@ -28,25 +28,33 @@ export const StyledTreatiesList = styled.div`
     }
 
     .date-item-title {
-      width: 250px;
+      width: 200px;
     }
 
     .status-item-title {
       width: 100px;
     }
 
-    .btn-box-title {
-      width: 100px;
-      display: flex;
-      justify-content: flex-end;
+    .is-paid-item-title {
+      width: 120px;
     }
   }
   
   .sorting-select-container {
+    padding: 0 20px;
     height: 40px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     border-bottom: 1px solid #333333;
+  }
+  
+  .treaties {
+    display: flex;
+    flex-direction: column;
+    
+    .treaties-empty-title {
+      margin: 20px auto 0;
+    }
   }
 `;

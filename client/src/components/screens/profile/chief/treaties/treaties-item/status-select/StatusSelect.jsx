@@ -2,7 +2,7 @@ import {useTranslation} from 'react-i18next';
 
 import {StyledStatusSelect} from './StyledStatusSelect';
 
-const StatusSelect = ({status, setStatus, isEdit, setCurrentStatusError, isPaid}) => {
+const StatusSelect = ({status, setStatus, isEdit, setCurrentStatusError, isPaid, completedAt}) => {
     const {t} = useTranslation();
 
     const statuses = [
@@ -15,8 +15,10 @@ const StatusSelect = ({status, setStatus, isEdit, setCurrentStatusError, isPaid}
     const handleSelectStatus = (e) => {
         const statusInput = e.target.value
         let newCurrentStatusError = ''
-        if (isPaid && (statusInput === 'відхилено' || statusInput === 'в очікуванні')) {
-            newCurrentStatusError = 'Статус не может быть изменен на это значение после оплаты';
+        if (completedAt && statusInput !== 'виконано') {
+            newCurrentStatusError = 'Cannot be changed to this status after the end of the treaty';
+        } else if (isPaid && (statusInput === 'відхилено' || statusInput === 'в очікуванні')) {
+            newCurrentStatusError = 'Cannot be changed to this status after payment';
         }
         setCurrentStatusError(newCurrentStatusError)
         setStatus(statusInput);

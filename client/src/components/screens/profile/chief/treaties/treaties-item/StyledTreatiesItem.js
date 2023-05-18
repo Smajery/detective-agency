@@ -32,7 +32,7 @@ export const StyledTreatiesItem = styled.form`
     }
 
     .date-item {
-      width: 250px;
+      width: 200px;
     }
 
     .status-item {
@@ -66,15 +66,29 @@ export const StyledTreatiesItem = styled.form`
       }}
     }
 
-    .btn-box {
-      width: 100px;
-      display: flex;
-      justify-content: flex-end;
-
-      button {
-        padding: 0 10px;
-        background-color: #FFFFFF;
-      }
+    .is-paid-item-title {
+      width: 120px;
+      
+      ${(props) => {
+        switch (props.$isPaid) {
+          case null:
+            return css`
+              color: inherit;
+            `;
+          case true:
+            return css`
+              color: #008000
+            `;
+          case false:
+            return css`
+              color: #cf1d00
+            `;
+          default:
+            return css`
+              color: inherit;
+            `;
+        }
+      }}
     }
   }
 
@@ -82,95 +96,140 @@ export const StyledTreatiesItem = styled.form`
     padding: 20px 0;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 20px 0;
-    overflow: hidden;
 
-    .treaty-price-container {
-      display: flex;
-      align-items: center;
-      gap: 0 10px;
-
-      .treaty-price {
-        padding: 0 5px;
-        width: 70px;
-        border: none;
-        border-bottom: 1px solid #333333;
-        cursor: ${(props) => (props.$isEdit ? 'pointer' : 'default')};
-        outline: ${(props) => (props.$isEdit ? '' : 'none')};
-      }
-
-      .paid {
-        color: #008000;
-      }
-
-      .not-paid {
-        color: #cf1d00;
-      }
-    }
-
-    .treaty-employee-container {
-      display: flex;
-      align-items: center;
-      gap: 0 10px;
-    }
-    
-    .treaty-status-container {
-      display: flex;
-      align-items: center;
-      gap: 0 10px;
-    }
-    
-    .treaty-client-container {
-      display: flex;
-      align-items: center;
-      gap: 0 10px;
-    }
-
-    .treaty-client-info {
-      width: 320px;
+    .left-side {
+      max-width: 370px;
       display: flex;
       flex-direction: column;
-      gap: 10px 0;
+      gap: 20px 0;
 
-      .client-info-title {
+      .error-text-box {
+        width: 100%;
+
+        .error-text {
+          color: #cf1d00;
+        }
+      }
+      
+      .treaty-price-container {
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        gap: 0 10px;
+
+        .treaty-price {
+          padding: 0 5px;
+          width: 70px;
+          border: none;
+          border-bottom: 1px solid #333333;
+          cursor: ${(props) => (props.$isEdit ? 'pointer' : 'default')};
+          outline: ${(props) => (props.$isEdit ? '' : 'none')};
+        }
+
+        .paid {
+          color: #008000;
+        }
+
+        .not-paid {
+          color: #cf1d00;
+        }
+      }
+
+      .treaty-employee-container {
+        display: flex;
         align-items: center;
         gap: 0 10px;
       }
 
-      .client-info {
-        padding: 5px 10px;
-        width: 100%;
+      .treaty-status-container {
         display: flex;
-        border: 1px solid #333333;
-        background-color: #FFFFFF;
+        align-items: center;
+        gap: 0 10px;
       }
 
-      button {
-        padding: 0 10px;
-        background-color: #FFFFFF;
+      .treaty-client-container {
+        display: flex;
+        align-items: center;
+        gap: 0 10px;
       }
+
+      .treaty-client-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px 0;
+
+        .client-info-title {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 0 10px;
+          
+          button {
+            padding: 0 10px;
+            background-color: #FFFFFF;
+          }
+        }
+
+        .client-info {
+          padding: 5px 10px;
+          width: 100%;
+          display: flex;
+          border: 1px solid #333333;
+          background-color: #FFFFFF;
+        }
+      }
+
+      .btn-box {
+        display: flex;
+        justify-content: center;
+        gap: 0 40px;
+
+        button {
+          padding: 0 10px;
+          background-color: #FFFFFF;
+        }
+        
+        .change-btn {
+          margin-left: auto;
+        }
+      }
+    
     }
-
-    .btn-box {
+    
+    .right-side {
+      padding-left: 30px;
       display: flex;
-      justify-content: center;
-      gap: 0 40px;
+      flex-direction: column;
+      
+      .treaty-employee-info {
+        min-width: 350px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px 0;
+        
+        .employee-info-title {
+          display: flex;
+          align-items: center;
+          gap: 0 10px;
+          justify-content: space-between;
 
-      button {
-        padding: 0 10px;
-        background-color: #FFFFFF;
+          button {
+            padding: 0 10px;
+            background-color: #FFFFFF;
+          }
+        }
+        
+        .employee-info {
+          padding: 5px 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 5px 0;
+          border: 1px solid #333333;
+          background-color: #FFFFFF;
+        }
+        
+        
       }
     }
-  }
 
-  .error-text-box {
-    width: 100%;
-
-    .error-text {
-      color: #cf1d00;
-    }
   }
 `;

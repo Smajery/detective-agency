@@ -25,15 +25,17 @@ const ChiefProfile = () => {
     const [currentMenu, setCurrentMenu] = useState({});
     const [currentMenuContent, setCurrentMenuContent] = useState([]);
 
-    const [sortingValue, setSortingValue] = useState(null)
+    const [sortingValue, setSortingValue] = useState('')
 
     useEffect(() => {
         if (Object.keys(currentMenu).length === 0) return;
         if (typeof currentMenu.model.getAll !== 'function') {
             return setCurrentMenuContent([]);
         }
+
         setIsLoading(true);
-        currentMenu.model.getAll(sortingValue)
+        const currentSorting = sortingValue === '' ? null : sortingValue
+        currentMenu.model.getAll(currentSorting)
             .then(data => {
                 setCurrentMenuContent(data);
             })

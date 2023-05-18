@@ -26,6 +26,10 @@ export const StyledClientTreaty = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 10px 0;
+    
+    .title {
+      font-weight: bold;
+    }
 
     .status-text {
       ${(props) => {

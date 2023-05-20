@@ -42,19 +42,23 @@
   },
   "ServicesPage": {
     "title": "Послуги",
-    "description": "Ми любимо наших клієнтів"
-  },
-  "HelpPage": {
-    "title": "Допомога",
-    "description": "Ми раді Вам допомогти!"
-  },
-  "FeedbacksPage": {
-    "title": "Відгуки",
-    "description": "Наші відгуки"
-  },
-  "ContactsPage": {
-    "title": "Контакти",
-    "description": "Наші контакти"
+    "description": "Все про наші послуги",
+    "search": {
+      "title": "Пошук",
+      "description": "Про пошук"
+    },
+    "investigation": {
+      "title": "Розслідування",
+      "description": "Про розслідування"
+    },
+    "observation": {
+      "title": "Спостереження",
+      "description": "Про спостереження"
+    },
+    "adultery": {
+      "title": "Подружня зрада",
+      "description": "Про подружня зрада"
+    }
   },
   "SigninPage": {
     "title": "Вхід",
@@ -114,7 +118,7 @@
     "Odesa": "Одеса",
     "Kyiv": "Київ",
     "Donetsk": "Донецьк",
-    "Place is empty": "Ви не обрали місто",
+    "Place is empty": "Ви не вибрали місто",
     "Agree is empty": "Ви не ухвалили угоду",
     "Service is empty": "Ви не вибрали послуги",
     "Client info is empty": "Ви не ввели інформацію",
@@ -165,12 +169,25 @@
       "Paid": "Сплачено",
       "Not paid": "Платіж був відхилений",
       "To reject": "Відхилити",
-      "To pay": "Сплатити"
+      "To pay": "Сплатити",
+      "Your treaty is being handled": "Ваш договір обробляється",
+      "Your treaty has been fulffilled": "Ваш договір виконано",
+      "Create": "Створити"
+    },
+    "SeniorProfile": {
+      "title": "Профіль відповідального детективу",
+      "description": "Профіль для відповідального детективу",
+      "Employees": "Співробітники",
+      "Cases": "Справи",
+      "Documents": "Документи",
+      "Detectives lists": "Списки детективів",
+      "Files": "Файли"
     },
     "ChiefProfile": {
-      "title": "Профіль шефа",
-      "description": "Ваш профіль для керування",
+      "title": "Профіль начальника",
+      "description": "Профіль для начальника",
       "Treaties": "Договори",
+      "Treaties are empty": "Договорів немає",
       "Employees": "Співробітники",
       "Cases": "Справи",
       "Documents": "Документи",
@@ -178,12 +195,79 @@
       "Detectives lists": "Списки детективів",
       "Clients": "Клієнти",
       "Files": "Файли",
+      "Service": "Послуга:",
+      "City": "Місто:",
+      "Created at": "Створено:",
+      "Status": "Статус:",
+      "Payment": "Платіж:",
+      "Responsible detective": "Відповідальний детектив:",
+      "Select": "Виберіть",
+      "Price": "Ціна:",
+      "Pending payment": "Очікує платіж",
+      "Paid": "Оплачено",
+      "Not paid": "Платіж відхилений",
+      "pending": "очікує",
+      "fulffiled": "оплачений",
+      "rejected": "неоплачений",
+      "Information from a client": "Інформація від клієнта:",
+      "Treaty status": "Статус договору:",
+      "Client name": "Ім'я клієнта:",
+      "A client did not provide his name": "Клієнт не вказав свого імені",
+      "Information about the detective": "Інформація про детектива:",
+      "Full name": "Повне ім'я:",
+      "Job e-mail": "Робоча е-пошта:",
+      "Job phone number": "Робочий номер телефону:",
+      "Job experience": "Досвід роботи:",
+      "service": {
+        "Пошук": "Пошук",
+        "Розслідування": "Розслідування",
+        "Спостереження": "Спостереження",
+        "Подружня зрада": "Подружня зрада"
+      },
+      "city": {
+        "Одеса": "Одеса",
+        "Київ": "Київ",
+        "Донецьк": "Донецьк"
+      },
+      "sorting": {
+        "Sorting by": "Сортування за",
+        "Status": "Статусом",
+        "Descending date": "Даті спадної",
+        "Ascending date": "Даті зростаючої",
+        "Descending payment": "Платежу спадаючому",
+        "Ascending payment": "Платежу зростаючому"
+      },
+      "status-bd": {
+        "в очікуванні": "в очікуванні",
+        "виконано": "виконано",
+        "відхилено": "відхилено",
+        "схвалено": "схвалено"
+      },
       "status": {
         "Select": "Виберіть",
         "pending": "в очікуванні",
         "fulffiled": "виконано",
         "rejected": "відхилено",
         "approved": "схвалено"
+      },
+      "button": {
+        "Show": "Показати",
+        "Hide": "Приховати",
+        "Change": "Змінити",
+        "Confirm": "Підтвердити",
+        "Cancel": "Скасувати"
+      },
+      "error": {
+        "Price is empty": "Ціна порожня",
+        "Incorrect price": "Неправильна ціна",
+        "Cannot be changed to this status after the end of the treaty": "Неможливо змінити на цей статус після закінчення договору",
+        "Cannot be changed to this status after payment": "Неможливо змінити на цей статус після оплати",
+        "In this status, you cannot select a responsible detective": "У цьому статусі ви не можете вибрати відповідального детектива",
+        "You can not select a price in this status": "Ви не можете вибрати ціну в цьому статусі",
+        "Cannot be changed to this status until the price is specified": "Неможливо змінити на цей статус, поки ціна не вказана",
+        "You can not choose a responsible detective until the client has paid the treaty": "Не можна вибрати відповідального детектива, поки клієнт не оплатив договір",
+        "You can not choose this status until the client has paid the treaty": "Ви не можете вибрати цей статус, поки клієнт не оплатив договір",
+        "You cannot remove the responsible detective from a completed treaty": "Ви не можете видалити відповідального детектива із завершеного договору"
       }
     },
     "If you see this page, then something went wrong": "Якщо ви бачите цю сторінку, то щось пішло не так"
@@ -200,7 +284,8 @@
     "The treaty has been successfully created": "Договір було успішно створено",
     "Current treaty was deleted": "Вибраний договір був видалений",
     "The treaty successfully paid": "Договір успішно сплачено",
-    "The payment rejected": "Платіж відхилений"
+    "The payment rejected": "Платіж відхилений",
+    "The treaty has been successfully updated": "Договір був успішно оновлений"
   },
   "ConfirmModal": {
     "Confirm the payment": "Ви впевнені, що хочете підтвердити платіж?",

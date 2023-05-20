@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-export const StyledTreatiesList = styled.div`
+export const StyledCasesList = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   
-  .treaty-title {
+  .case-title {
     padding: 0 20px;
     height: 40px;
     display: flex;
@@ -14,17 +14,13 @@ export const StyledTreatiesList = styled.div`
     border-bottom: 2px solid #333333;
     background-color: #FFFFFF;
     color: #333333;
-    
+
     p {
       font-weight: bold;
     }
 
-    .service-item-title {
+    .number-item-title {
       width: 200px;
-    }
-
-    .place-item-title {
-      width: 130px;
     }
 
     .date-item-title {
@@ -34,27 +30,11 @@ export const StyledTreatiesList = styled.div`
     .status-item-title {
       width: 100px;
     }
-
-    .is-paid-item-title {
-      width: 120px;
-    }
+    
   }
   
-  .sorting-select-container {
-    padding: 0 20px;
-    height: 40px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    border-bottom: 1px solid #333333;
-  }
-  
-  .treaties {
+  .cases {
     display: flex;
     flex-direction: column;
-    
-    .treaties-empty-title {
-      margin: 20px auto 0;
-    }
   }
 `;

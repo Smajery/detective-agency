@@ -2,7 +2,7 @@ import {useTranslation} from 'react-i18next';
 
 import {StyledStatusSelect} from './StyledStatusSelect';
 
-const StatusSelect = ({status, setStatus, isEdit}) => {
+const StatusSelect = ({status, setStatus, isEdit, setCurrentStatusError, isPaid, completedAt}) => {
     const {t} = useTranslation();
 
     const statuses = [
@@ -13,7 +13,15 @@ const StatusSelect = ({status, setStatus, isEdit}) => {
     ];
 
     const handleSelectStatus = (e) => {
-        setStatus(e.target.value);
+        const statusInput = e.target.value
+        let newCurrentStatusError = ''
+        if (completedAt && statusInput !== 'виконано') {
+            newCurrentStatusError = 'Cannot be changed to this status after the end of the treaty';
+        } else if (isPaid && (statusInput === 'відхилено' || statusInput === 'в очікуванні')) {
+            newCurrentStatusError = 'Cannot be changed to this status after payment';
+        }
+        setCurrentStatusError(newCurrentStatusError)
+        setStatus(statusInput);
     };
     return (
         <StyledStatusSelect value={status}
@@ -21,11 +29,10 @@ const StatusSelect = ({status, setStatus, isEdit}) => {
                             disabled={!isEdit}
                             $isEdit={isEdit}
         >
-            <option value='в очікуванні'>
-                {t('ProfilePage.ChiefProfile.status.Select')}
-            </option>
             {statuses.map((status) => (
-                <option value={status.value}>
+                <option value={status.value}
+                        key={status.id}
+                >
                     {t(`ProfilePage.ChiefProfile.status.${status.title}`)}
                 </option>
             ))}

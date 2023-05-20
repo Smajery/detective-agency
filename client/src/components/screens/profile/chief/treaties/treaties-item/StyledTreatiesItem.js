@@ -1,10 +1,11 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const StyledTreatiesItem = styled.form`
   padding: 0 20px;
   min-height: 40px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   border-bottom: 1px solid #333333;
   background-color: #FFFFFF;
   color: #333333;
@@ -31,112 +32,204 @@ export const StyledTreatiesItem = styled.form`
     }
 
     .date-item {
-      width: 250px;
+      width: 200px;
     }
 
     .status-item {
       width: 100px;
     }
 
-    .btn-box {
-      width: 100px;
-      display: flex;
-      justify-content: flex-end;
+    .status-item {
+      ${(props) => {
+        switch (props.$status) {
+          case 'в очікуванні':
+            return css`
+              color: #ff8c00
+            `;
+          case 'схвалено':
+            return css`
+              color: #008000
+            `;
+          case 'виконано':
+            return css`
+              color: #0000ff
+            `;
+          case 'відхилено':
+            return css`
+              color: #cf1d00
+            `;
+          default:
+            return css`
+              color: inherit;
+            `;
+        }
+      }}
+    }
 
-      button {
-        padding: 0 10px;
-        background-color: #FFFFFF;
-      }
+    .is-paid-item-title {
+      width: 120px;
+      
+      ${(props) => {
+        switch (props.$isPaid) {
+          case null:
+            return css`
+              color: inherit;
+            `;
+          case true:
+            return css`
+              color: #008000
+            `;
+          case false:
+            return css`
+              color: #cf1d00
+            `;
+          default:
+            return css`
+              color: inherit;
+            `;
+        }
+      }}
     }
   }
 
   .treaty-content {
-    height: 0;
+    padding: 20px 0;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 20px 0;
-    overflow: hidden;
 
-    &.shown {
-      padding: 20px 0;
-      height: calc(100% - 40px);
-    }
-
-    .treaty-price-container {
-      display: flex;
-      align-items: center;
-      gap: 0 10px;
-
-      .treaty-price {
-        padding: 0 5px;
-        width: 70px;
-        border: none;
-        border-bottom: 1px solid #333333;
-        cursor: ${(props) => (props.$isEdit ? 'pointer' : 'default')};
-        outline: ${(props) => (props.$isEdit ? '' : 'none')};
-      }
-
-      .paid {
-        color: #008000;
-      }
-
-      .not-paid {
-        color: #cf1d00;
-      }
-    }
-
-    .treaty-employee-container {
-      display: flex;
-      align-items: center;
-      gap: 0 10px;
-    }
-    
-    .treaty-status-container {
-      display: flex;
-      align-items: center;
-      gap: 0 10px;
-    }
-
-    .treaty-client-info {
-      width: 320px;
+    .left-side {
+      max-width: 370px;
       display: flex;
       flex-direction: column;
-      gap: 10px 0;
+      gap: 20px 0;
 
-      .client-info-title {
+      .error-text-box {
+        width: 100%;
+
+        .error-text {
+          color: #cf1d00;
+        }
+      }
+      
+      .treaty-price-container {
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        gap: 0 10px;
+
+        .treaty-price {
+          padding: 0 5px;
+          width: 70px;
+          border: none;
+          border-bottom: 1px solid #333333;
+          cursor: ${(props) => (props.$isEdit ? 'pointer' : 'default')};
+          outline: ${(props) => (props.$isEdit ? '' : 'none')};
+        }
+
+        .paid {
+          color: #008000;
+        }
+
+        .not-paid {
+          color: #cf1d00;
+        }
+      }
+
+      .treaty-employee-container {
+        display: flex;
         align-items: center;
         gap: 0 10px;
       }
 
-      .client-info {
-        padding: 5px 10px;
-        width: 100%;
-        border: 1px solid #333333;
-        background-color: #FFFFFF;
-        display: none;
+      .treaty-status-container {
+        display: flex;
+        align-items: center;
+        gap: 0 10px;
+      }
 
-        &.shown {
+      .treaty-client-container {
+        display: flex;
+        align-items: center;
+        gap: 0 10px;
+      }
+
+      .treaty-client-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px 0;
+
+        .client-info-title {
           display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 0 10px;
+          
+          button {
+            padding: 0 10px;
+            background-color: #FFFFFF;
+          }
+        }
+
+        .client-info {
+          padding: 5px 10px;
+          width: 100%;
+          display: flex;
+          border: 1px solid #333333;
+          background-color: #FFFFFF;
         }
       }
 
-      button {
-        padding: 0 10px;
-        background-color: #FFFFFF;
-      }
-    }
+      .btn-box {
+        display: flex;
+        justify-content: center;
+        gap: 0 40px;
 
-    .btn-box {
+        button {
+          padding: 0 10px;
+          background-color: #FFFFFF;
+        }
+        
+        .change-btn {
+          margin-left: auto;
+        }
+      }
+    
+    }
+    
+    .right-side {
+      padding-left: 30px;
       display: flex;
-      justify-content: center;
-      gap: 0 40px;
+      flex-direction: column;
+      
+      .treaty-employee-info {
+        min-width: 350px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px 0;
+        
+        .employee-info-title {
+          display: flex;
+          align-items: center;
+          gap: 0 10px;
+          justify-content: space-between;
 
-      button {
-        padding: 0 10px;
-        background-color: #FFFFFF;
+          button {
+            padding: 0 10px;
+            background-color: #FFFFFF;
+          }
+        }
+        
+        .employee-info {
+          padding: 5px 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 5px 0;
+          border: 1px solid #333333;
+          background-color: #FFFFFF;
+        }
+        
+        
       }
     }
+
   }
 `;

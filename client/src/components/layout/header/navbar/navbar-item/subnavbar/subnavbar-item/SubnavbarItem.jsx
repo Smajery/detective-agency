@@ -7,7 +7,7 @@ const SubnavbarItem = ({subcategory, route}) => {
 
     return (
         <StyledSubnavbarItem className="subnavbar__item">
-            <Link href={`/services/#${subcategory.anchor}`}
+            <Link href={`${subcategory.path}`}
                   scroll={false}
                   className="subnavbar-a"
             >

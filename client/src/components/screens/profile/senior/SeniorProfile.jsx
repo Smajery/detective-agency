@@ -1,15 +1,12 @@
 import {useTranslation} from 'react-i18next';
-import {useEffect, useState} from 'react';
-import {format} from 'date-fns';
 
-import {StyledChiefProfile} from '@/components/screens/profile/chief/StyledChiefProfile';
+import {StyledSeniorProfile} from './StyledSeniorProfile';
 import Layout from '@/components/layout/Layout';
-import {chiefMenuList} from '@/utils/menu-list';
-import MessageModal from '@/components/ui/modals/message/MessageModal';
-import {isEmptyArr} from '@/utils/is-empty-arr';
-import TreatiesList from '@/components/screens/profile/chief/treaties/TreatiesList';
+import {useEffect, useState} from 'react';
+import {seniorMenuList} from '@/utils/menu-list';
+import CasesList from './cases/CasesList';
 
-const ChiefProfile = () => {
+const SeniorProfile = () => {
     const {t} = useTranslation();
 
     const [isLoading, setIsLoading] = useState();
@@ -25,8 +22,6 @@ const ChiefProfile = () => {
     const [currentMenu, setCurrentMenu] = useState({});
     const [currentMenuContent, setCurrentMenuContent] = useState([]);
 
-    const [sortingValue, setSortingValue] = useState('')
-
     useEffect(() => {
         if (Object.keys(currentMenu).length === 0) return;
         if (typeof currentMenu.model.getAll !== 'function') {
@@ -34,8 +29,7 @@ const ChiefProfile = () => {
         }
 
         setIsLoading(true);
-        const currentSorting = sortingValue === '' ? null : sortingValue
-        currentMenu.model.getAll(currentSorting)
+        currentMenu.model.getAll()
             .then(data => {
                 setCurrentMenuContent(data);
             })
@@ -47,46 +41,39 @@ const ChiefProfile = () => {
                 setIsLoading(false);
             });
 
-    }, [currentMenu, sortingValue]);
+    }, [currentMenu]);
 
     return (
-        <Layout title={t('ProfilePage.ChiefProfile.title')}
-                description={t('ProfilePage.ChiefProfile.description')}
+        <Layout title={t('ProfilePage.SeniorProfile.title')}
+                description={t('ProfilePage.SeniorProfile.description')}
         >
-            <StyledChiefProfile>
-                <div className='chief-menu-leftbar'>
+            <StyledSeniorProfile>
+                <div className='senior-menu-leftbar'>
                     <div className='leftbar-container'>
                         <div className='menu-list'>
-                            {chiefMenuList.map((menu) => (
+                            {seniorMenuList.map((menu) => (
                                 <div className='menu-title-text-box'
                                      key={menu.id}
                                      onClick={() => setCurrentMenu(menu)}
                                 >
                                     <p className={currentMenu.id === menu.id ? 'active' : ''}>
-                                        {t(`ProfilePage.ChiefProfile.${menu.title}`)}
+                                        {t(`ProfilePage.SeniorProfile.${menu.title}`)}
                                     </p>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </div>
-                <div className='chief-menu-rightbar'>
+                <div className='senior-menu-rightbar'>
                     <div className='rightbar-container'>
-                        {currentMenu.title === 'Treaties' && (
-                            <TreatiesList treaties={currentMenuContent}
-                                          sorting={sortingValue}
-                                          setSorting={setSortingValue}
-                            />
+                        {currentMenu.title === 'Cases' && (
+                            <CasesList cases={currentMenuContent} />
                         )}
                     </div>
                 </div>
-            </StyledChiefProfile>
-            <MessageModal child={messageModalText}
-                          isActive={isMessageModal}
-                          handleClose={handleCloseMessageModal}
-            />
+            </StyledSeniorProfile>
         </Layout>
     );
 };
 
-export default ChiefProfile;
+export default SeniorProfile;

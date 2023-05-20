@@ -10,7 +10,7 @@ import ConfirmModal from '@/components/ui/modals/confirm/ConfirmModal';
 
 const ClientTreaty = ({treaty, setTreaty}) => {
     const {t} = useTranslation();
-    
+
     const [isLoading, setIsLoading] = useState(false);
     const [isPaid, setIsPaid] = useState(null);
 
@@ -19,7 +19,7 @@ const ClientTreaty = ({treaty, setTreaty}) => {
 
     const handleCloseMessageModal = () => {
         setIsMessageModal(false);
-        setMessageModalText('')
+        setMessageModalText('');
     };
 
     const [isConfirmModal, setIsConfirmModal] = useState(false);
@@ -65,7 +65,7 @@ const ClientTreaty = ({treaty, setTreaty}) => {
             .then(() => {
                 setMessageModalText('Current treaty was deleted');
                 setIsMessageModal(true);
-                setTreaty({})
+                setTreaty({});
             })
             .catch(e => {
                 setMessageModalText(e.response.data.message);
@@ -80,18 +80,39 @@ const ClientTreaty = ({treaty, setTreaty}) => {
     return (
         <StyledClientTreaty $status={treaty.status}>
             <div className='treaty-title-box'>
-                <h3>{t('TreatyPage.Treaty')} № {treaty.id}</h3>
+                <h3>
+                    {t('TreatyPage.Treaty')} № {treaty.id}
+                </h3>
             </div>
             <div className='about-box'>
-                <p>{t('ProfilePage.ClientProfile.Information from you')} {treaty.clientInfo}</p>
-                <p>{t('ProfilePage.ClientProfile.Your chosen city')} {t(`ProfilePage.ClientProfile.city.${treaty.place}`)}</p>
-                <p>{t('ProfilePage.ClientProfile.Your chosen service')} {t(`ProfilePage.ClientProfile.service.${treaty.service}`)}</p>
                 <p>
-                    {t('ProfilePage.ClientProfile.Status')} <span className='status-text'>
-                                        {t(`ProfilePage.ClientProfile.status.${treaty.status}`)}
-                                        </span>
+                    <span className='title'>
+                        {t('ProfilePage.ClientProfile.Information from you')}
+                    </span><br />
+                    {treaty.clientInfo}
                 </p>
-                <p>{t('ProfilePage.ClientProfile.The treaty was created at')} {treaty.createdAt && format(new Date(treaty.createdAt), 'dd/MM/yyyy в HH:mm:ss')}</p>
+                <p>
+                    <span className='title'>
+                        {t('ProfilePage.ClientProfile.Your chosen city')}
+                    </span> {t(`ProfilePage.ClientProfile.city.${treaty.place}`)}
+                </p>
+                <p>
+                    <span className='title'>
+                        {t('ProfilePage.ClientProfile.Your chosen service')}
+                    </span> {t(`ProfilePage.ClientProfile.service.${treaty.service}`)}
+                </p>
+                <p>
+                    <span className='title'>
+                        {t('ProfilePage.ClientProfile.Status')}
+                    </span> <span className='status-text'>
+                        {t(`ProfilePage.ClientProfile.status.${treaty.status}`)}
+                    </span>
+                </p>
+                <p>
+                    <span className='title'>
+                        {t('ProfilePage.ClientProfile.The treaty was created at')}
+                    </span> {treaty.createdAt && format(new Date(treaty.createdAt), 'dd/MM/yyyy | HH:mm:ss')}
+                </p>
                 {(treaty.status === 'схвалено' || treaty.status === 'виконано') &&
                     <p className='price-text'>{t('ProfilePage.ClientProfile.Price')} {treaty.price} ₴</p>
                 }
@@ -116,6 +137,15 @@ const ClientTreaty = ({treaty, setTreaty}) => {
             {treaty.isPaid !== null && (
                 treaty.isPaid ? (
                     <div className='is-paid-status-box'>
+                        {treaty.employeeId && (
+                            <p>
+                                {treaty.status === 'виконано' ? (
+                                    t('ProfilePage.ClientProfile.Your treaty has been fulffilled')
+                                ) : (
+                                    t('ProfilePage.ClientProfile.Your treaty is being handled')
+                                )}
+                            </p>
+                        )}
                         <p className='is-paid-true'>
                             {t('ProfilePage.ClientProfile.Paid')}
                         </p>

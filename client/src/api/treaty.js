@@ -6,13 +6,17 @@ export const Treaty = {
         return data;
     },
 
-    async getAll() {
-        const {data} = await $api.get('treaty');
+    async getAll(sorting) {
+        const {data} = await $api.get('treaty', {
+            params: {
+                sorting: sorting
+            }
+        });
         return data;
     },
 
     async updateIsPaid(isPaid, id) {
-        const {data} = await $api.patch(`treaty/${id}`, {isPaid})
+        const {data} = await $api.patch(`treaty/pay/${id}`, {isPaid})
         return data
     },
 

@@ -1,15 +1,15 @@
 import {useTranslation} from 'react-i18next';
 import {useState} from 'react';
 
-import {StyledTreatyForm} from '@/components/screens/treaty/treaty-form/StyledTreatyForm';
+import {StyledTreatyForm} from '@/components/screens/profile/client/treaty-form/StyledTreatyForm';
 import ServiceSelect from './service-select/ServiceSelect';
-import CitySelect from '@/components/screens/treaty/treaty-form/city-select/CitySelect';
+import CitySelect from '@/components/screens/profile/client/treaty-form/city-select/CitySelect';
 import {Treaty} from '@/api/treaty';
 import Loader from '@/components/ui/loader/Loader';
 import MessageModal from '@/components/ui/modals/message/MessageModal';
 
 
-const TreatyForm = () => {
+const TreatyForm = ({handleCloseTreaty}) => {
     const {t} = useTranslation();
 
     const [service, setService] = useState('');
@@ -45,32 +45,30 @@ const TreatyForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (typeof window === 'undefined') return;
-
-        let clientInfoError = '';
-        let placeError = '';
-        let serviceError = '';
-        let isAgreeError = '';
+        let newClientInfoError = '';
+        let newPlaceError = '';
+        let newServiceError = '';
+        let newIsAgreeError = '';
 
         if (clientInfo === '') {
-            clientInfoError = 'Client info is empty';
+            newClientInfoError = 'Client info is empty';
         }
         if (place === '') {
-            placeError = 'Place is empty';
+            newPlaceError = 'Place is empty';
         }
         if (service === '') {
-            serviceError = 'Service is empty';
+            newServiceError = 'Service is empty';
         }
         if (!isAgree) {
-            isAgreeError = 'Agree is empty';
+            newIsAgreeError = 'Agree is empty';
         }
 
-        setClientInfoError(clientInfoError);
-        setPlaceError(placeError);
-        setServiceError(serviceError);
-        setIsAgreeError(isAgreeError)
+        setClientInfoError(newClientInfoError);
+        setPlaceError(newPlaceError);
+        setServiceError(newServiceError);
+        setIsAgreeError(newIsAgreeError)
 
-        if (isAgreeError !== '' && serviceError !== '' && clientInfoError !== '' && placeError !== '') return;
+        if (newIsAgreeError !== '' || newServiceError !== '' || newClientInfoError !== '' || newPlaceError !== '') return;
 
         setIsLoading(true);
         Treaty.create(service, clientInfo, place)
@@ -83,6 +81,7 @@ const TreatyForm = () => {
 
                 setMessageModalText('The treaty has been successfully created');
                 setIsMessageModal(true)
+                handleCloseTreaty()
             })
             .catch(e => {
                 setMessageModalText(e.response.data.message);

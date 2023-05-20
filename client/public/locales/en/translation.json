@@ -42,19 +42,23 @@
   },
   "ServicesPage": {
     "title": "Services",
-    "description": "We love our customers"
-  },
-  "HelpPage": {
-    "title": "Help",
-    "description": "We are glad to help you!"
-  },
-  "FeedbacksPage": {
-    "title": "Feedbacks",
-    "description": "Our feedbacks"
-  },
-  "ContactsPage": {
-    "title": "Contacts",
-    "description": "Our contacts"
+    "description": "All about our services",
+    "search": {
+      "title": "Search",
+      "description": "About search"
+    },
+    "investigation": {
+      "title": "Investigation",
+      "description": "About investigation"
+    },
+    "observation": {
+      "title": "Observation",
+      "description": "About observation"
+    },
+    "adultery": {
+      "title": "Adultery",
+      "description": "About adultery"
+    }
   },
   "SigninPage": {
     "title": "Sign in",
@@ -165,12 +169,25 @@
       "Paid": "Paid",
       "Not paid": "The payment was rejected",
       "To reject": "To reject",
-      "To pay": "To pay"
+      "To pay": "To pay",
+      "Your treaty is being handled": "Your treaty is being handled",
+      "Your treaty has been fulffilled": "Your treaty has been fulffilled",
+      "Create": "Create"
+    },
+    "SeniorProfile": {
+      "title": "Senior Profile",
+      "description": "Profile for senior",
+      "Employees": "Employees",
+      "Cases": "Cases",
+      "Documents": "Documents",
+      "Detectives lists": "Detectives lists",
+      "Files": "Files"
     },
     "ChiefProfile": {
       "title": "Chief Profile",
-      "description": "Your profile",
+      "description": "Profile for chief",
       "Treaties": "Treaties",
+      "Treaties are empty": "Treaties are empty",
       "Employees": "Employees",
       "Cases": "Cases",
       "Documents": "Documents",
@@ -178,12 +195,79 @@
       "Detectives lists": "Detectives lists",
       "Clients": "Clients",
       "Files": "Files",
+      "Service": "Service:",
+      "City": "City:",
+      "Created at": "Created at:",
+      "Status": "Status:",
+      "Payment": "Payment:",
+      "Responsible detective": "Responsible detective:",
+      "Select": "Select",
+      "Price": "Price:",
+      "Pending payment": "Pending payment",
+      "Paid": "Paid",
+      "Not paid": "The payment was rejected",
+      "pending": "pending",
+      "fulffiled": "paid",
+      "rejected": "unpaid",
+      "Information from a client": "Information from a client:",
+      "Treaty status": "Treaty status:",
+      "Client name": "Client name:",
+      "A client did not provide his name": "A client did not provide a name",
+      "Information about the detective": "Information about the detective:",
+      "Full name": "Full name:",
+      "Job e-mail": "Job e-mail:",
+      "Job phone number": "Job phone number:",
+      "Job experience": "Job experience:",
+      "sorting": {
+        "Sorting by": "Sorting by",
+        "Status": "Status",
+        "Descending date": "Descending date",
+        "Ascending date": "Ascending date",
+        "Descending payment": "Descending payment",
+        "Ascending payment": "Ascending payment"
+      },
+      "service": {
+        "Пошук": "Search",
+        "Розслідування": "Investigation",
+        "Спостереження": "Observation",
+        "Подружня зрада": "Adultery"
+      },
+      "city": {
+        "Одеса": "Odesa",
+        "Київ": "Kyiv",
+        "Донецьк": "Donetsk"
+      },
+      "status-bd": {
+        "в очікуванні": "pending",
+        "виконано": "fulffiled",
+        "відхилено": "rejected",
+        "схвалено": "approved"
+      },
       "status": {
         "Select": "Select",
         "pending": "pending",
         "fulffiled": "fulffiled",
         "rejected": "rejected",
         "approved": "approved"
+      },
+      "button": {
+        "Show": "Show",
+        "Hide": "Hide",
+        "Change": "Change",
+        "Confirm": "Confirm",
+        "Cancel": "Cancel"
+      },
+      "error": {
+        "Price is empty": "Price is empty",
+        "Incorrect price": "Incorrect price",
+        "Cannot be changed to this status after the end of the treaty": "Cannot be changed to this status after the end of the treaty",
+        "Cannot be changed to this status after payment": "Cannot be changed to this status after payment",
+        "In this status, you cannot select a responsible detective": "In this status, you cannot select a responsible detective",
+        "You can not select a price in this status": "You can not select a price in this status",
+        "Cannot be changed to this status until the price is specified": "Cannot be changed to this status until the price is specified",
+        "You can not choose a responsible detective until the client has paid the treaty": "You can not choose a responsible detective until the client has paid the treaty",
+        "You can not choose this status until the client has paid the treaty": "You can not choose this status until the client has paid the treaty",
+        "You cannot remove the responsible detective from a completed treaty": "You cannot remove the responsible detective from a completed treaty"
       }
     },
     "If you see this page, then something went wrong": "If you see this page, then something went wrong"
@@ -200,7 +284,8 @@
     "The treaty has been successfully created": "The treaty has been successfully created",
     "Current treaty was deleted": "Current treaty was deleted",
     "The treaty successfully paid": "The treaty successfully paid",
-    "The payment rejected": "The payment rejected"
+    "The payment rejected": "The payment rejected",
+    "The treaty has been successfully updated": "The treaty has been successfully updated"
   },
   "ConfirmModal": {
     "Confirm the payment": "Are you sure you want to confirm the payment?",

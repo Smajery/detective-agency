@@ -48,23 +48,17 @@ class treatyController {
 
     }
 
-    // async getOne(req, res, next) {
-    //     const { id } = req.params;
-    //     try {
-    //         const selectQuery = {
-    //             text: 'SELECT * FROM treaties WHERE id = $1',
-    //             values: [id]
-    //         }
-    //         const result = await chiefPool.query(selectQuery);
-    //         if (!result.rows[0]) {
-    //             return next(ApiError.NotFound(`ClientTreaty with id ${id} not found`));
-    //         }
-    //         return res.json(result.rows[0]);
-    //     } catch (e) {
-    //         next(e);
-    //     }
-    // }
-    //
+    async getOne(req, res, next) {
+        const { id } = req.params;
+        try {
+            const userData = req.user
+            const result = await treatyService.getOne(id, userData.id, userData.role)
+            return res.json(result);
+        } catch (e) {
+            next(e);
+        }
+    }
+
     async delete(req, res, next) {
         const { id } = req.params;
         try {

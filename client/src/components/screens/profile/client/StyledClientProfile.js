@@ -19,6 +19,28 @@ export const StyledClientProfile = styled.div`
       flex-direction: column;
       gap: 20px 0;
       color: #FFFFFF;
+      
+      .title-text-box {
+        display: flex;
+        align-items: center;
+        position: relative;
+        
+        .create-treaty-btn {
+          padding: 8px 10px 5px;
+          border: none;
+          position: absolute;
+          right: 20px;
+          font-size: 14px;
+          font-weight: bold;
+          text-transform: uppercase;
+          transition: color 0.4s ease;
+          color: #999999;
+          
+          &:hover {
+            color: #FFFFFF;
+          }
+        }
+      }
 
       .treaty-title-text-box {
 

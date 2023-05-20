@@ -1,5 +1,4 @@
 import React from 'react';
-import {format} from 'date-fns';
 import {useTranslation} from 'react-i18next';
 
 import {isEmptyArr} from '@/utils/is-empty-arr';
@@ -8,7 +7,7 @@ import TreatiesItem from './treaties-item/TreatiesItem';
 import SortingSelect from './sorting-select/SortingSelect';
 
 const TreatiesList = ({treaties, sorting, setSorting}) => {
-    const {t} = useTranslation()
+    const {t} = useTranslation();
 
     return (
         <StyledTreatiesList>
@@ -35,11 +34,13 @@ const TreatiesList = ({treaties, sorting, setSorting}) => {
                 </div>
             </div>
             <div className='treaties'>
-                {isEmptyArr(treaties) ? (treaties.map((treaty) => (
-                    <TreatiesItem treaty={treaty}
-                                  key={treaty.id}
-                    />
-                ))) : (
+                {isEmptyArr(treaties) ? (
+                    treaties.map((treaty) => (
+                        <TreatiesItem treaty={treaty}
+                                      key={treaty.id}
+                        />
+                    ))
+                ) : (
                     <h3 className='treaties-empty-title'>
                         {t('ProfilePage.ChiefProfile.Treaties are empty')}
                     </h3>

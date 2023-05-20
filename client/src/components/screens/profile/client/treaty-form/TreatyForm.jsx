@@ -1,15 +1,15 @@
 import {useTranslation} from 'react-i18next';
 import {useState} from 'react';
 
-import {StyledTreatyForm} from '@/components/screens/treaty/treaty-form/StyledTreatyForm';
+import {StyledTreatyForm} from '@/components/screens/profile/client/treaty-form/StyledTreatyForm';
 import ServiceSelect from './service-select/ServiceSelect';
-import CitySelect from '@/components/screens/treaty/treaty-form/city-select/CitySelect';
+import CitySelect from '@/components/screens/profile/client/treaty-form/city-select/CitySelect';
 import {Treaty} from '@/api/treaty';
 import Loader from '@/components/ui/loader/Loader';
 import MessageModal from '@/components/ui/modals/message/MessageModal';
 
 
-const TreatyForm = () => {
+const TreatyForm = ({handleCloseTreaty}) => {
     const {t} = useTranslation();
 
     const [service, setService] = useState('');
@@ -81,6 +81,7 @@ const TreatyForm = () => {
 
                 setMessageModalText('The treaty has been successfully created');
                 setIsMessageModal(true)
+                handleCloseTreaty()
             })
             .catch(e => {
                 setMessageModalText(e.response.data.message);

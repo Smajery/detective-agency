@@ -7,7 +7,7 @@ import {useActions} from '@/hooks/UseActions';
 import {routes} from '@/routes/routes';
 
 const AuthProvider = ({children}) => {
-    const {pathname} = useRouter();
+    const {asPath} = useRouter();
     const {checkAuth, setIsAuth} = useActions();
 
     const [isRoleCorrect, setIsRoleCorrect] = useState(false);
@@ -33,14 +33,14 @@ const AuthProvider = ({children}) => {
     }, []);
 
     useEffect(() => {
-        const currentPage = routes.find(route => route.path === pathname);
+        const currentPage = routes.find(route => route.path === `/${asPath.split('/')[1]}`);
         if(!currentPage) return;
         if (currentPage.isDefault) {
             return setIsRoleCorrect(true)
         }
         const currentUser = localStorage.getItem('userRole') || sessionStorage.getItem('userRole');
         setIsRoleCorrect(currentPage.userRoles.includes(currentUser));
-    }, [pathname]);
+    }, [asPath]);
 
     if (!isRoleCorrect) return <NotFound />;
 

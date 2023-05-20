@@ -88,7 +88,8 @@ const ClientTreaty = ({treaty, setTreaty}) => {
                 <p>
                     <span className='title'>
                         {t('ProfilePage.ClientProfile.Information from you')}
-                    </span> {treaty.clientInfo}
+                    </span><br />
+                    {treaty.clientInfo}
                 </p>
                 <p>
                     <span className='title'>
@@ -139,7 +140,7 @@ const ClientTreaty = ({treaty, setTreaty}) => {
                         {treaty.employeeId && (
                             <p>
                                 {treaty.status === 'виконано' ? (
-                                    t('ProfilePage.ClientProfile.Your treaty has been fulfilled')
+                                    t('ProfilePage.ClientProfile.Your treaty has been fulffilled')
                                 ) : (
                                     t('ProfilePage.ClientProfile.Your treaty is being handled')
                                 )}

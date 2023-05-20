@@ -42,19 +42,23 @@
   },
   "ServicesPage": {
     "title": "Services",
-    "description": "We love our customers"
-  },
-  "HelpPage": {
-    "title": "Help",
-    "description": "We are glad to help you!"
-  },
-  "FeedbacksPage": {
-    "title": "Feedbacks",
-    "description": "Our feedbacks"
-  },
-  "ContactsPage": {
-    "title": "Contacts",
-    "description": "Our contacts"
+    "description": "All about our services",
+    "search": {
+      "title": "Search",
+      "description": "About search"
+    },
+    "investigation": {
+      "title": "Investigation",
+      "description": "About investigation"
+    },
+    "observation": {
+      "title": "Observation",
+      "description": "About observation"
+    },
+    "adultery": {
+      "title": "Adultery",
+      "description": "About adultery"
+    }
   },
   "SigninPage": {
     "title": "Sign in",
@@ -167,12 +171,21 @@
       "To reject": "To reject",
       "To pay": "To pay",
       "Your treaty is being handled": "Your treaty is being handled",
-      "Your treaty has been fulfilled": "Your treaty has been fulfilled"
+      "Your treaty has been fulffilled": "Your treaty has been fulffilled",
+      "Create": "Create"
+    },
+    "SeniorProfile": {
+      "title": "Senior Profile",
+      "description": "Profile for senior",
+      "Employees": "Employees",
+      "Cases": "Cases",
+      "Documents": "Documents",
+      "Detectives lists": "Detectives lists",
+      "Files": "Files"
     },
     "ChiefProfile": {
       "title": "Chief Profile",
-      "description": "Your profile",
-      "": "",
+      "description": "Profile for chief",
       "Treaties": "Treaties",
       "Treaties are empty": "Treaties are empty",
       "Employees": "Employees",
@@ -200,6 +213,11 @@
       "Treaty status": "Treaty status:",
       "Client name": "Client name:",
       "A client did not provide his name": "A client did not provide a name",
+      "Information about the detective": "Information about the detective:",
+      "Full name": "Full name:",
+      "Job e-mail": "Job e-mail:",
+      "Job phone number": "Job phone number:",
+      "Job experience": "Job experience:",
       "sorting": {
         "Sorting by": "Sorting by",
         "Status": "Status",

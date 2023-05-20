@@ -1,41 +1,12 @@
 const ApiError = require('../error/ApiError');
+const caseService = require('../service/case-service')
 
 class caseController {
-    async create(req, res, next) {
-        const {treatieId} = req.body
-        try {
-            const delo = await Case.create({treatieId})
-            return res.json(delo)
-        } catch (e) {
-            next(e)
-        }
-    }
-
     async getAll(req, res, next) {
         try {
-            const delo = await Case.findAll()
-            return res.json(delo)
-        } catch (e) {
-            next(e)
-        }
-    }
-
-    async getOne(req, res, next) {
-        const { id } = req.params;
-        try {
-            const delo = await Case.findOne({ where: { id } });
-            return res.json(delo);
-        } catch (e) {
-            next(e)
-        }
-    }
-
-    async delete(req, res, next) {
-        const { id } = req.params;
-        try {
-            const delo = await Case.findOne({ where: { id } });
-            await delo.destroy();
-            return res.json({ message: `Case with id ${id} was deleted.` });
+            const userData = req.user
+            const result = await caseService.getAll(userData.id)
+            return res.json(result)
         } catch (e) {
             next(e)
         }

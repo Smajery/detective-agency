@@ -25,7 +25,7 @@ class TreatyService {
 
     async getAll(userId, userRole, sorting) {
         if (userRole === 'CHIEF') {
-            let treatiesResult
+            let treatiesResult;
             if (sorting) {
                 treatiesResult = await chiefPool.query(`SELECT * FROM sorted_treaties_by_${sorting}`);
             } else {
@@ -54,32 +54,85 @@ class TreatyService {
             }
 
             return treaties;
-        }
+        } else if (userRole === 'CLIENT') {
+            const selectClientQuery = {
+                text: 'SELECT * FROM clients WHERE "userId" = $1',
+                values: [userId]
+            };
+            const client = await authPool.query(selectClientQuery);
+            if (!client.rows) {
+                throw ApiError.BadRequest('Something went wrong, please re-login');
+            }
+            const clientId = client.rows[0].id;
+            let selectTreatieQuery;
+            if (sorting) {
+                selectTreatieQuery = {
+                    text: `SELECT * FROM sorted_treaties_by_${sorting} WHERE "clientId" = $1`,
+                    values: [clientId]
+                };
+            } else {
+                selectTreatieQuery = {
+                    text: 'SELECT * FROM treaties WHERE "clientId" = $1',
+                    values: [clientId]
+                };
+            }
+            const result = await clientPool.query(selectTreatieQuery);
 
-        const selectClientQuery = {
-            text: 'SELECT * FROM clients WHERE "userId" = $1',
-            values: [userId]
-        };
-        const client = await authPool.query(selectClientQuery);
-        if (!client.rows) {
-            throw ApiError.BadRequest('Something went wrong, please re-login');
+            return result.rows;
         }
-        const clientId = client.rows[0].id;
-        let selectTreatieQuery
-        if (sorting) {
-            selectTreatieQuery = {
-                text: `SELECT * FROM sorted_treaties_by_${sorting} WHERE "clientId" = $1`,
+    }
+
+    async getOne(id, userId, userRole) {
+        if (userRole === 'CHIEF') {
+            const selectTretiesQuery = {
+                text: 'SELECT * FROM treaties WHERE "id" = $1',
+                values: [id]
+            };
+            const treatyResult = await chiefPool.query(selectTretiesQuery);
+            if (!treatyResult.rows[0]) {
+                throw ApiError.BadRequest('This treaty not found');
+            }
+            const treaty = treatyResult.rows[0];
+
+            const clientId = treaty.clientId;
+            const selectClientQuery = {
+                text: 'SELECT * FROM clients WHERE id = $1',
                 values: [clientId]
             };
-        } else {
-            selectTreatieQuery = {
-                text: 'SELECT * FROM treaties WHERE "clientId" = $1',
-                values: [clientId]
-            };
-        }
-        const result = await clientPool.query(selectTreatieQuery);
+            const clientResult = await chiefPool.query(selectClientQuery);
+            treaty.client = clientResult.rows[0];
 
-        return result.rows;
+            const employeeId = treaty.employeeId;
+            const selectEmployeeQuery = {
+                text: 'SELECT * FROM employees WHERE id = $1',
+                values: [employeeId]
+            };
+            const employeeResult = await chiefPool.query(selectEmployeeQuery);
+            if (!employeeResult) return;
+            treaty.employee = employeeResult.rows[0];
+
+            return treaty;
+        } else if (userRole === 'CLIENT') {
+            const selectClientQuery = {
+                text: 'SELECT * FROM clients WHERE "userId" = $1',
+                values: [userId]
+            };
+            const client = await authPool.query(selectClientQuery);
+            if (!client.rows) {
+                throw ApiError.BadRequest('Something went wrong, please re-login');
+            }
+            const clientId = client.rows[0].id;
+
+            const selectTreatyQuery = {
+                text: 'SELECT * FROM treaties WHERE "clientId" = $1 AND id = $2',
+                values: [clientId, id]
+            };
+            const treatyResult = await clientPool.query(selectTreatyQuery);
+            if(!treatyResult.rows[0]) {
+                throw ApiError.BadRequest('This treaty not found');
+            }
+            return treatyResult.rows[0];
+        }
     }
 
     async updateIsPaid(isPaid, id) {

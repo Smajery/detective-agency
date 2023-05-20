@@ -35,24 +35,26 @@ class TokenService {
             values: [userId]
         };
         const token = await authPool.query(selectQuery);
-        if (token.rows > 0) {
+
+        if (token.rows.length > 0) {
             const updateQuery = {
                 text: 'UPDATE tokens SET "refreshToken" = $1 WHERE "userId" = $2 RETURNING *',
                 values: [refreshToken, userId]
             };
             const updatedToken = await authPool.query(updateQuery);
             return updatedToken.rows[0];
+        } else {
+            const insertQuery = {
+                text: 'INSERT INTO tokens ("userId", "refreshToken") VALUES ($1, $2) RETURNING *',
+                values: [userId, refreshToken]
+            };
+            const result = await authPool.query(insertQuery);
+            const tokenData = result.rows[0]
+            if(!tokenData) {
+                throw ApiError.BadRequest('Token was not added')
+            }
+            return tokenData;
         }
-        const insertQuery = {
-            text: 'INSERT INTO tokens ("userId", "refreshToken", "createdAt", "updatedAt") VALUES ($1, $2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) RETURNING *',
-            values: [userId, refreshToken]
-        };
-        const result = await authPool.query(insertQuery);
-        const tokenData = result.rows[0]
-        if(!tokenData) {
-            throw ApiError.BadRequest('Token was not added')
-        }
-        return tokenData;
     }
 
     async removeToken(refreshToken) {
@@ -74,9 +76,8 @@ class TokenService {
             values: [refreshToken]
         };
         const result = await authPool.query(selectQuery);
-        console.log(result)
-        const tokenData = result.rows[0]
-        if(!tokenData) {
+        const tokenData = result.rows
+        if(tokenData.rows === 0) {
             throw ApiError.BadRequest('Token not found')
         }
         return tokenData;

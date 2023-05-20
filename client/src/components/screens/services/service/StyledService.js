@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-export const StyledHelp = styled.div`
+export const StyledService = styled.div`
   width: 100%;
-`;
+`

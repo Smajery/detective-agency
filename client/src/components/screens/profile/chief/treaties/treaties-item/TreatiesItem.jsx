@@ -365,7 +365,7 @@ const TreatiesItem = ({treaty}) => {
                         {Object.keys(currentEmployee).length !== 0 && (
                             <div className='treaty-employee-info'>
                                 <div className='employee-info-title'>
-                                    <p>Информация о детективе:</p>
+                                    <p>{t('ProfilePage.ChiefProfile.Information about the detective')}</p>
                                     {isEmployeeInfo ? (
                                         <button type='button'
                                                 onClick={handleHideEmployeeInfo}
@@ -382,10 +382,17 @@ const TreatiesItem = ({treaty}) => {
                                 </div>
                                 {isEmployeeInfo && (
                                     <div className='employee-info'>
-                                        <p>Полное имя: {currentEmployee.fullName}</p>
-                                        <p>Рабочий e-mail: {currentEmployee.email}</p>
-                                        <p>Рабочий номер телефона: {currentEmployee.phoneNumber}</p>
-                                        <p>Опыт работы: {calculateExperience(currentEmployee.employmentedAt)}</p>
+                                        <p>
+                                            {t('ProfilePage.ChiefProfile.Full name')} {currentEmployee.fullName}
+                                        </p>
+                                        <p>
+                                            {t('ProfilePage.ChiefProfile.Job e-mail')} {currentEmployee.email}</p>
+                                        <p>
+                                            {t('ProfilePage.ChiefProfile.Job phone number')} {currentEmployee.phoneNumber}
+                                        </p>
+                                        <p>
+                                            {t('ProfilePage.ChiefProfile.Job experience')} {calculateExperience(currentEmployee.employmentedAt)}
+                                        </p>
                                     </div>
                                 )}
                             </div>

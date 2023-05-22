@@ -1,5 +1,6 @@
 export const routes = [
-    {id: 1, path: '/', title: 'Home', isDefault: true, userRoles: ['USER', 'CLIENT']},
+    {id: 0, path: '/', title: 'Home', isDefault: true},
+    {id: 1, path: '/', title: 'Home', userRoles: ['USER', 'CLIENT']},
     {
         id: 2,
         path: '/services',

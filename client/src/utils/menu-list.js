@@ -15,8 +15,4 @@ export const chiefMenuList = [
 
 export const seniorMenuList = [
     {id: 1, title: 'Cases', model: Case},
-    {id: 2, title: 'Detectives lists', model: 'DetectivesList'},
-    {id: 3, title: 'Employees', model: 'Employer'},
-    {id: 4, title: 'Documents', model: 'Document'},
-    {id: 5, title: 'Files', model: 'File'},
 ]

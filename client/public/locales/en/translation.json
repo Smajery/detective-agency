@@ -34,7 +34,16 @@
   },
   "HomePage": {
     "title": "Home",
-    "description": "Hello, our lovely customers!"
+    "description": "Hello, our lovely customers!",
+    "about-text": {
+      "Welcome to «Dirk Gently's» Detective Agency": "Welcome to «Dirk Gently's» Detective Agency",
+      "We are a team of experienced and highly qualified detectives": "We are a team of experienced and highly skilled detectives ready to help you solve the most complex cases. Whether you need to uncover family secrets, resolve real estate matters, prove innocence, or find lost loved ones, we offer a full range of services to solve your problem.",
+      "Our agency is based on the principles of professionalism, confidentiality, and efficiency.": "Our agency is based on the principles of professionalism, confidentiality, and efficiency. We understand that each case is unique, and we approach it individually, employing advanced methods and technologies to ensure the best possible outcome for our clients.",
+      "Our team consists of professionals with extensive experience in law enforcement agencies, military services, and the private sector.": "Our team consists of professionals with extensive experience in law enforcement agencies, military services, and the private sector. We carefully select our employees to ensure your confidence in the professionalism and reliability of each member of our team.",
+      "When you come to us, you not only gain access to the experience and expertise of our team but also a partnership built on trust and understanding.": "When you come to us, you not only gain access to the experience and expertise of our team but also a partnership built on trust and understanding. We listen to you attentively, analyze your needs, and offer the best solutions to achieve your goals.",
+      "Our goal is to provide you with all the necessary information that will help you make informed decisions.": "Our goal is to provide you with all the necessary information that will help you make informed decisions. We guarantee complete confidentiality and absolute integrity in our work.",
+      "If you are looking for a reliable and professional detective agency": "If you are looking for a reliable and professional detective agency, turn to «Dirk Gently's» Detective Agency. With us, you will receive results you can rely on."
+    }
   },
   "DetectivesPage": {
     "title": "Detectives",
@@ -181,7 +190,45 @@
       "Cases": "Cases",
       "Documents": "Documents",
       "Detectives lists": "Detectives lists",
-      "Files": "Files"
+      "Files": "Files",
+      "Case number": "Case number:",
+      "Created at": "Created at:",
+      "Status": "Status:",
+      "Case": "Case",
+      "status-bd": {
+        "в процесі": "in process",
+        "виконано": "fulffiled",
+        "скасовано": "cancelled"
+      },
+      "Information from a treaty": "Information from a treaty:",
+      "Case documents": "Case documents:",
+      "button": {
+        "Show": "Show",
+        "Hide": "Hide",
+        "Change": "Change",
+        "Confirm": "Confirm",
+        "Cancel": "Cancel"
+      },
+      "Service": "Service:",
+      "City": "City:",
+      "Information from a client": "Information from a client:",
+      "Type": "Type:",
+      "type-bd": {
+        "Документ": "Document",
+        "Спостереження": "Observation",
+        "Експертиза": "Expertise"
+      },
+      "Result": "Result:",
+      "Case status": "Case status:",
+      "status": {
+        "in process": "in process",
+        "fulffiled": "fulffiled",
+        "cancelled": "cancelled"
+      },
+      "List of detectives": "List of detectives:",
+      "Full name": "Full name:",
+      "Email": "E-mail:",
+      "Phone number": "Phone number:"
     },
     "ChiefProfile": {
       "title": "Chief Profile",

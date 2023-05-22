@@ -15,25 +15,87 @@ class CaseService {
 
         const selectCasesQuery = {
             text: `SELECT cases.*, treaties."clientInfo", treaties."service", treaties."place"
-                   FROM cases
-                   JOIN treaties ON cases."treatyId" = treaties.id
-                   WHERE treaties."employeeId" = $1`,
+           FROM cases
+           JOIN treaties ON cases."treatyId" = treaties.id
+           WHERE treaties."employeeId" = $1`,
             values: [seniorEmployee.id]
         }
         const casesResult = await seniorPool.query(selectCasesQuery)
 
-        return casesResult.rows.map(row => {
+        const cases = casesResult.rows;
+        const caseIds = cases.map(row => row.id);
+
+        const selectDocumentsQuery = {
+            text: `SELECT documents.*
+             FROM documents
+             WHERE documents."caseId" IN (${caseIds.map((_, index) => `$${index + 1}`).join(',')})`,
+            values: caseIds
+        };
+        const documentsResult = await seniorPool.query(selectDocumentsQuery);
+        const documents = documentsResult.rows;
+
+        const documentIds = documents.map(doc => doc.id);
+
+        const selectFilesQuery = {
+            text: `SELECT * FROM files WHERE "documentId" = ANY($1)`,
+            values: [documentIds]
+        };
+
+        const filesResult = await seniorPool.query(selectFilesQuery);
+        const files = filesResult.rows;
+
+        const filesByDocumentId = {};
+
+        for (const file of files) {
+            if (!filesByDocumentId[file.documentId]) {
+                filesByDocumentId[file.documentId] = [];
+            }
+            filesByDocumentId[file.documentId].push(file);
+        }
+
+        const selectDetectivesQuery = {
+            text: `SELECT employees.*
+           FROM employees
+           JOIN detectives_lists ON employees.id = ANY(detectives_lists."employeeIds")
+           WHERE detectives_lists."caseId" = ANY($1)`,
+            values: [caseIds],
+        };
+
+        const detectivesResult = await seniorPool.query(selectDetectivesQuery);
+        const detectivesByCaseId = {};
+
+        for (const detective of detectivesResult.rows) {
+            const caseId = detective.detectivesListId;
+            if (!detectivesByCaseId[caseId]) {
+                detectivesByCaseId[caseId] = [];
+            }
+            detectivesByCaseId[caseId].push(detective);
+        }
+
+        return cases.map(caseRow => {
             const treaty = {
-                clientInfo: row.clientInfo,
-                service: row.service,
-                place: row.place,
+                clientInfo: caseRow.clientInfo,
+                service: caseRow.service,
+                place: caseRow.place
             };
-            delete row.clientInfo;
-            delete row.service;
-            delete row.place;
+            delete caseRow.clientInfo;
+            delete caseRow.service;
+            delete caseRow.place;
+
+            const caseDetectives = detectivesByCaseId[caseRow.id] || [];
+
+            const caseDocuments = documents.filter(doc => doc.caseId === caseRow.id);
+
+            const documentsWithFiles = caseDocuments.map(doc => ({
+                ...doc,
+                files: filesByDocumentId[doc.id] || []
+            }));
+
             return {
-                ...row,
+                ...caseRow,
                 treaty,
+                detectives: caseDetectives,
+                documents: documentsWithFiles
             };
         });
     }

@@ -201,14 +201,20 @@
         "скасовано": "cancelled"
       },
       "Information from a treaty": "Information from a treaty:",
+      "Cases are empty": "Cases are empty",
+      "Documents are empty": "Documents are empty",
+      "Detectives are empty": "Detectives are empty",
       "Case documents": "Case documents:",
       "button": {
         "Show": "Show",
         "Hide": "Hide",
         "Change": "Change",
         "Confirm": "Confirm",
-        "Cancel": "Cancel"
+        "Cancel": "Cancel",
+        "Add": "Add",
+        "Remove": "Remove"
       },
+      "Your control panel": "Your control panel:",
       "Service": "Service:",
       "City": "City:",
       "Information from a client": "Information from a client:",
@@ -233,8 +239,10 @@
     "ChiefProfile": {
       "title": "Chief Profile",
       "description": "Profile for chief",
+      "": "",
       "Treaties": "Treaties",
       "Treaties are empty": "Treaties are empty",
+      "Your control panel": "Your control panel:",
       "Employees": "Employees",
       "Cases": "Cases",
       "Documents": "Documents",
@@ -318,6 +326,16 @@
       }
     },
     "If you see this page, then something went wrong": "If you see this page, then something went wrong"
+  },
+  "ResetPage": {
+    "title": "Reset password",
+    "description": "Password Reset Page",
+    "Email": "E-mail",
+    "Don't remember your password": "Don't remember your password?",
+    "Let us know where we should send the password reset link.": "Let us know where we should send the password reset link.",
+    "Or return to": "Or return to",
+    "login page": "login page",
+    "Remind password": "Remind password"
   },
   "MessageModal": {
     "Login success": "Login completed successfully!",

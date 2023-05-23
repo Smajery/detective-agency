@@ -201,6 +201,9 @@
         "скасовано": "скасовано"
       },
       "Information from a treaty": "Інформація з договору:",
+      "Cases are empty": "Справ немає",
+      "Documents are empty": "Документів немає",
+      "Detectives are empty": "Детективів немає",
       "Case documents": "Документи у справі:",
       "Service": "Послуга:",
       "City": "Місто:",
@@ -210,8 +213,11 @@
         "Hide": "Приховати",
         "Change": "Змінити",
         "Confirm": "Підтвердити",
-        "Cancel": "Скасувати"
+        "Cancel": "Скасувати",
+        "Add": "Додати",
+        "Remove": "Прибрати"
       },
+      "Your control panel": "Ваша панель керування:",
       "Type": "Тип:",
       "type-bd": {
         "Документ": "Документ",
@@ -232,9 +238,11 @@
     },
     "ChiefProfile": {
       "title": "Профіль начальника",
+      "": "",
       "description": "Профіль для начальника",
       "Treaties": "Договори",
       "Treaties are empty": "Договорів немає",
+      "Your control panel": "Ваша панель керування:",
       "Employees": "Співробітники",
       "Cases": "Справи",
       "Documents": "Документи",
@@ -318,6 +326,17 @@
       }
     },
     "If you see this page, then something went wrong": "Якщо ви бачите цю сторінку, то щось пішло не так"
+  },
+  "ResetPage": {
+    "title": "Скидання пароля",
+    "description": "Сторінка для скидання пароля",
+    "Email": "Е-пошта",
+    "Don't remember your password": "Не пам'ятаєте свій пароль?",
+    "Let us know where we should send the password reset link.": "Повідомте нам, куди ми повинні надіслати посилання для зміни пароля.",
+    "Or return to": "Або повернутися на",
+    "login page": "сторінку входу",
+    "Remind password": "Нагадати пароль"
+
   },
   "MessageModal": {
     "Login success": "Вхід успішно завершено!",

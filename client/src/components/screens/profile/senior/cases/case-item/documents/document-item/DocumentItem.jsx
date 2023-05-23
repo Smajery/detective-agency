@@ -4,6 +4,7 @@ import {useTranslation} from 'react-i18next';
 
 import {StyledDocumentItem} from './StyledDocumentItem';
 import {isEmptyArr} from '@/utils/is-empty-arr';
+import Link from 'next/link';
 
 const DocumentItem = ({doc}) => {
     const {t} = useTranslation()
@@ -117,7 +118,9 @@ const DocumentItem = ({doc}) => {
                                     <div className='file'
                                          key={file.id}
                                     >
-                                        <p>{file.name}</p>
+                                        <Link href={'#'}>
+                                            {file.name}
+                                        </Link>
                                     </div>
                                 ))}
                             </div>

@@ -28,7 +28,7 @@ const CasesList = ({cases}) => {
             <div className='cases'>
                 {isEmptyArr(cases) ? (
                     cases.map((c) => (
-                        <CaseItem currentCase={c}
+                        <CaseItem c={c}
                                   key={c.id}
                         />
                     ))

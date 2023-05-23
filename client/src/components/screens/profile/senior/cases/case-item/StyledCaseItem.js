@@ -6,13 +6,11 @@ export const StyledCaseItem = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: 1px solid #333333;
-  background-color: #FFFFFF;
-  color: #333333;
+  border-bottom: 1px solid ${props => props.theme.foregroundColor};
 
   &:hover, &.active {
-    background-color: #EBEBEB;
-    border-bottom: 2px solid #333333;
+    background-color: ${props => props.theme.hoverBackgroundColor};
+    border-bottom: 2px solid ${props => props.theme.foregroundColor};
   }
 
   .case-title-info {
@@ -86,7 +84,7 @@ export const StyledCaseItem = styled.form`
 
           button {
             padding: 0 10px;
-            background-color: #FFFFFF;
+            background-color: ${props => props.theme.backgroundColor};
           }
         }
 
@@ -108,8 +106,8 @@ export const StyledCaseItem = styled.form`
               padding: 5px 10px;
               width: 100%;
               display: flex;
-              border: 1px solid #333333;
-              background-color: #FFFFFF;
+              border: 1px solid ${props => props.theme.foregroundColor};
+              background-color: ${props => props.theme.backgroundColor};
             }
           }
         }
@@ -122,6 +120,22 @@ export const StyledCaseItem = styled.form`
         
         p{
           font-weight: bold;
+        }
+      }
+
+      .btn-box {
+        margin-top: auto;
+        display: flex;
+        justify-content: center;
+        gap: 0 40px;
+
+        button {
+          padding: 0 10px;
+          background-color: ${props => props.theme.backgroundColor};
+        }
+
+        .change-btn {
+          margin-left: auto;
         }
       }
     }
@@ -149,7 +163,7 @@ export const StyledCaseItem = styled.form`
 
           button {
             padding: 0 10px;
-            background-color: #FFFFFF;
+            background-color: ${props => props.theme.backgroundColor};
           }
         }
       }
@@ -168,7 +182,7 @@ export const StyledCaseItem = styled.form`
           }
           button {
             padding: 0 10px;
-            background-color: #FFFFFF;
+            background-color: ${props => props.theme.backgroundColor};
           }
         }
       }

@@ -11,9 +11,7 @@ export const StyledCasesList = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #333333;
-    background-color: #FFFFFF;
-    color: #333333;
+    border-bottom: 2px solid ${props => props.theme.foregroundColor};
 
     p {
       font-weight: bold;
@@ -36,5 +34,10 @@ export const StyledCasesList = styled.div`
   .cases {
     display: flex;
     flex-direction: column;
+  }
+  
+  .cases-empty-title {
+    display: flex;
+    justify-content: center;
   }
 `;

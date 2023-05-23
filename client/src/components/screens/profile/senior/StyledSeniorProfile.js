@@ -20,14 +20,31 @@ export const StyledSeniorProfile = styled.div`
       gap: 20px 0;
       color: #FFFFFF;
 
-      .menu-title-text-box {
+      .menu-list {
+        display: flex;
+        flex-direction: column;
 
-        p {
-          padding: 5px 10px 5px 20px;
-          cursor: pointer;
+        .menu-title {
+          height: 40px;
+          display: flex;
+          align-items: center;
+          
+          & > p {
+            font-weight: bold;
+          }
+        }
 
-          &:hover, &.active {
-            text-decoration: underline;
+        .menu-title-text-box {
+          display: flex;
+          align-items: center;
+
+          p {
+            padding: 5px 10px 5px 20px;
+            cursor: pointer;
+
+            &:hover, &.active {
+              text-decoration: underline;
+            }
           }
         }
       }
@@ -40,6 +57,7 @@ export const StyledSeniorProfile = styled.div`
     justify-content: flex-start;
 
     .rightbar-container {
+      padding: 10px 0;
       width: 920px;
       display: flex;
       flex-direction: column;

@@ -4,12 +4,14 @@ export const StyledDocumentItem = styled.div`
   padding: 0 10px;
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #333333;
+  background-color: ${props => props.theme.backgroundColor};
+  border: 1px solid ${props => props.theme.foregroundColor};
+  border-top-width: 0;
   gap: 10px 0;
 
   &:hover, &.active {
-    background-color: #EBEBEB;
-    border-bottom: 2px solid #333333;
+    background-color: ${props => props.theme.hoverBackgroundColor};
+    border-bottom: 2px solid ${props => props.theme.foregroundColor};
   }
 
   .document-title {
@@ -45,15 +47,15 @@ export const StyledDocumentItem = styled.div`
         
         button {
           padding: 0 10px;
-          background-color: #FFFFFF;
+          background-color: ${props => props.theme.backgroundColor};
         }
       }
       
       .result-content {
         padding: 5px 10px;
         display: flex;
-        background-color: #FFFFFF;
-        border: 1px solid #333333;
+        background-color: ${props => props.theme.backgroundColor};
+        border: 1px solid ${props => props.theme.foregroundColor};
       }
     }
     
@@ -68,7 +70,7 @@ export const StyledDocumentItem = styled.div`
 
         button {
           padding: 0 10px;
-          background-color: #FFFFFF;
+          background-color: ${props => props.theme.backgroundColor};
         }
       }
       
@@ -79,6 +81,12 @@ export const StyledDocumentItem = styled.div`
         
         .file {
           display: flex;
+          
+          a {
+            &:hover {
+              text-decoration: underline;
+            }
+          }
         }
       }
     }

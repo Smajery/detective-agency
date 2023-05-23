@@ -1,15 +1,30 @@
 import {useTranslation} from 'react-i18next';
 import {format} from 'date-fns';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import {StyledCaseItem} from './StyledCaseItem';
 import {isEmptyArr} from '@/utils/is-empty-arr';
 import DocumentsList from './documents/DocumentsList';
 import StatusSelect from './status-select/StatusSelect';
 import DetectivesList from './detectives/DetectivesList';
+import Loader from '@/components/ui/loader/Loader';
+import MessageModal from '@/components/ui/modals/message/MessageModal';
+import {Case} from '@/api/case';
 
-const CaseItem = ({currentCase}) => {
+const CaseItem = ({c}) => {
     const {t} = useTranslation();
+
+    const [isLoading, setIsLoading] = useState(false)
+
+    const [currentCase, setCurrentCase] = useState(c || {})
+
+    const [isMessageModal, setIsMessageModal] = useState(false);
+    const [messageModalText, setMessageModalText] = useState('');
+
+    const handleCloseMessageModal = () => {
+        setIsMessageModal(false);
+        setMessageModalText('');
+    };
 
     const [treaty, setTreaty] = useState(currentCase.treaty);
     const [documents, setDocuments] = useState(currentCase?.documents || []);
@@ -22,6 +37,7 @@ const CaseItem = ({currentCase}) => {
     const [isDetectivesInfo, setIsDetectivesInfo] = useState(false);
 
     const [currentStatus, setCurrentStatus] = useState(currentCase?.status || null);
+    const [employeeIds, setEmployeeIds] = useState('{}')
 
     const handleShowContent = (e) => {
         e.stopPropagation();
@@ -44,6 +60,7 @@ const CaseItem = ({currentCase}) => {
 
         setIsTreatyInfo(false);
         setIsDocumentsInfo(false);
+        setIsDetectivesInfo(false);
 
         setIsEdit(false);
     };
@@ -78,8 +95,43 @@ const CaseItem = ({currentCase}) => {
         setIsDocumentsInfo(false);
     };
 
+    useEffect(() => {
+        if(!detectives) return;
+
+        let ids = detectives.map(detective => detective.id);
+        const detectiveIds = `{${ids.join(', ')}}`;
+        setEmployeeIds(detectiveIds)
+    }, [detectives])
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        setIsLoading(true)
+        Case.update(currentCase.id, currentStatus, employeeIds, currentCase.detectivesListId)
+            .then(data => {
+                const updatedCase = {
+                    ...currentCase,
+                    status: data.status
+                }
+                setCurrentCase(updatedCase)
+                setDetectives(data.detectives)
+
+                setMessageModalText('Дело успешно изменено')
+                setIsMessageModal(true)
+            })
+            .catch(
+                e => {
+                    setMessageModalText(e.response.data.message)
+                    setIsMessageModal(true)
+                }
+            )
+            .finally(() => {
+                setIsLoading(false)
+
+                setTimeout(() => {
+                    setIsMessageModal(false)
+                }, 5 * 1000)
+            })
+
     };
 
     return (
@@ -161,7 +213,33 @@ const CaseItem = ({currentCase}) => {
                             </p>
                             <StatusSelect status={currentStatus}
                                           setStatus={setCurrentStatus}
+                                          isEdit={isEdit}
                             />
+                        </div>
+                        <div className='btn-box'>
+                            {isEdit ? (
+                                <>
+                                    <button type='button'
+                                            onClick={handleCancelEditContent}
+                                    >
+                                        {t('ProfilePage.SeniorProfile.button.Cancel')}
+                                    </button>
+                                    <button type='submit'>
+                                        {isLoading ? (
+                                            <Loader />
+                                        ) : (
+                                            t('ProfilePage.SeniorProfile.button.Confirm')
+                                        )}
+                                    </button>
+                                </>
+                            ) : (
+                                <button className='change-btn'
+                                        type='button'
+                                        onClick={handleEditContent}
+                                >
+                                    {t('ProfilePage.SeniorProfile.button.Change')}
+                                </button>
+                            )}
                         </div>
                     </div>
                     <div className='right-side'>
@@ -208,12 +286,19 @@ const CaseItem = ({currentCase}) => {
                                 )}
                             </div>
                             {isDetectivesInfo && (
-                                <DetectivesList detectives={detectives} />
+                                <DetectivesList detectives={detectives}
+                                                setDetectives={setDetectives}
+                                                detectivesListId={currentCase.detectivesListId}
+                                                isEdit={isEdit} />
                             )}
                         </div>
                     </div>
                 </div>
             )}
+            <MessageModal child={messageModalText}
+                          isActive={isMessageModal}
+                          handleClose={handleCloseMessageModal}
+            />
         </StyledCaseItem>
     );
 };

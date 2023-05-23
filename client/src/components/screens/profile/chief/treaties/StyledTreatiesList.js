@@ -11,9 +11,8 @@ export const StyledTreatiesList = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #333333;
-    background-color: #FFFFFF;
-    color: #333333;
+    border-bottom: 2px solid ${props => props.theme.foregroundColor};
+    background-color: ${props => props.theme.backgroundColor};
     
     p {
       font-weight: bold;
@@ -46,7 +45,7 @@ export const StyledTreatiesList = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    border-bottom: 1px solid #333333;
+    border-bottom: 1px solid ${props => props.theme.foregroundColor};
   }
   
   .treaties {

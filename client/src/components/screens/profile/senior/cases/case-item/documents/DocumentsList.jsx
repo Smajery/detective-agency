@@ -5,7 +5,7 @@ import {StyledDocumentsList} from './StyledDocumentsList';
 import DocumentItem from './document-item/DocumentItem';
 
 const DocumentsList = ({documents}) => {
-    const {t} = useTranslation()
+    const {t} = useTranslation();
     return (
         <StyledDocumentsList>
             <div className='document-info-title'>
@@ -20,11 +20,18 @@ const DocumentsList = ({documents}) => {
                     </p>
                 </div>
             </div>
-            {isEmptyArr(documents) && documents.map((doc) => (
-                <DocumentItem key={doc.id}
-                              doc={doc}
-                />
-            ))}
+            {isEmptyArr(documents) ? (
+                documents.map((doc) => (
+                    <DocumentItem key={doc.id}
+                                  doc={doc}
+                    />
+                ))) : (
+                <div className='documents-empty-title'>
+                    <p>
+                        {t('ProfilePage.SeniorProfile.Documents are empty')}
+                    </p>
+                </div>
+            )}
         </StyledDocumentsList>
     );
 };

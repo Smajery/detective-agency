@@ -58,6 +58,9 @@ const SignupForm = () => {
             })
             .finally(() => {
                 setIsLoading(false);
+                setTimeout(() => {
+                    setIsAuthModal(false)
+                }, 5 * 1000)
             });
 
     };

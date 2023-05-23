@@ -6,4 +6,11 @@ export const Case = {
         return data;
     },
 
+    async update(caseId, status, employeeIds, detectivesListId) {
+        const {data} = await $api.patch(`case/${caseId}`, {
+            status, employeeIds, detectivesListId
+        });
+        return data;
+    },
+
 };

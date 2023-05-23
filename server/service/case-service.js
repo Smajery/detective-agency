@@ -9,18 +9,19 @@ class CaseService {
         };
         const employeeResult = await seniorPool.query(selectEmployeeQuery);
         if (employeeResult.rows.length === 0) {
-            throw ApiError.BadRequest('Employee not found')
+            throw ApiError.BadRequest('Employee not found');
         }
         const seniorEmployee = employeeResult.rows[0];
 
         const selectCasesQuery = {
-            text: `SELECT cases.*, treaties."clientInfo", treaties."service", treaties."place"
+            text: `SELECT cases.*, treaties."clientInfo", treaties."service", treaties."place", detectives_lists.id as "detectivesListId"
            FROM cases
            JOIN treaties ON cases."treatyId" = treaties.id
+           JOIN detectives_lists ON detectives_lists."caseId" = cases.id
            WHERE treaties."employeeId" = $1`,
             values: [seniorEmployee.id]
-        }
-        const casesResult = await seniorPool.query(selectCasesQuery)
+        };
+        const casesResult = await seniorPool.query(selectCasesQuery);
 
         const cases = casesResult.rows;
         const caseIds = cases.map(row => row.id);
@@ -98,6 +99,34 @@ class CaseService {
                 documents: documentsWithFiles
             };
         });
+    }
+
+    async update(caseId, status, employeeIds, detectivesListId) {
+        const updateCaseQuery = {
+            text: 'UPDATE cases SET "status" = $1 WHERE id = $2 RETURNING *',
+            values: [status, caseId]
+        };
+        const caseResult = await seniorPool.query(updateCaseQuery);
+        if (caseResult.rows.length === 0) {
+            throw ApiError.BadRequest('No such case was found');
+        }
+
+        const updateDetectivesListQuery = {
+            text: 'UPDATE detectives_lists SET "employeeIds" = $1 WHERE id = $2 RETURNING *',
+            values: [employeeIds, detectivesListId]
+        };
+        const detectivesListResult = await seniorPool.query(updateDetectivesListQuery);
+
+        const selectEmployeeeQuery = {
+            text: 'SELECT * FROM employees WHERE id = ANY($1)',
+            values: [detectivesListResult.rows[0].employeeIds]
+        };
+        const employeesResult = await seniorPool.query(selectEmployeeeQuery);
+
+        return {
+            ...caseResult.rows[0],
+            detectives: employeesResult.rows || [],
+        };
     }
 
 }

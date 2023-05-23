@@ -3,16 +3,15 @@ import styled from 'styled-components';
 export const StyledDocumentsList = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #FFFFFF;
-  border: 1px solid #333333;
-  border-bottom-width: 0;
 
   .document-info-title {
     padding: 5px 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 2px solid #333333;
+    background-color: ${props => props.theme.backgroundColor};
+    border: 1px solid ${props => props.theme.foregroundColor};
+    border-bottom-width: 2px;
 
     p {
       font-weight: bold;
@@ -25,5 +24,14 @@ export const StyledDocumentsList = styled.div`
     .date-item-title {
       width: 157px;
     }
+  }
+  
+  .documents-empty-title {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    background-color: ${props => props.theme.backgroundColor};
+    border: 1px solid ${props => props.theme.foregroundColor};
+    border-top-width: 0;
   }
 `;

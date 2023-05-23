@@ -2,7 +2,7 @@ import {useTranslation} from 'react-i18next';
 
 import {StyledStatusSelect} from './StyledStatusSelect';
 
-const StatusSelect = ({status, setStatus}) => {
+const StatusSelect = ({status, setStatus, isEdit}) => {
     const {t} = useTranslation()
 
     const statuses = [
@@ -18,6 +18,8 @@ const StatusSelect = ({status, setStatus}) => {
     return (
         <StyledStatusSelect value={status}
                             onChange={handleSelectStatus}
+                            $isEdit={isEdit}
+                            disabled={!isEdit}
         >
             {statuses.map((status) => (
                 <option value={status.value}

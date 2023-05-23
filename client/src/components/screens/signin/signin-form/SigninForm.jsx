@@ -77,12 +77,15 @@ const SigninForm = () => {
             })
             .finally(() => {
                 setIsLoading(false);
+                setTimeout(() => {
+                    setIsMessageModal(false)
+                }, 5 * 1000)
             });
     };
 
     return (
         <StyledSigninForm onSubmit={handleSubmit}>
-            <input type="text"
+            <input type='text'
                    placeholder={t('SignupPage.Email')}
                    disabled={isLoading}
                    value={emailValue}
@@ -90,13 +93,13 @@ const SigninForm = () => {
                    className={emailErrorValue !== '' ? 'input-item input-item_error' : 'input-item'}
             />
             {emailErrorValue !== '' &&
-                <div className="error-text-container">
+                <div className='error-text-container'>
                     <p className={'text'}>
                         {t(`SigninPage.${emailErrorValue}`)}
                     </p>
                 </div>
             }
-            <div className="input-password-box">
+            <div className='input-password-box'>
                 <input type={isHiddenPassword ? 'password' : 'text'}
                        placeholder={t('SigninPage.Password')}
                        disabled={isLoading}
@@ -104,9 +107,9 @@ const SigninForm = () => {
                        onChange={handlePasswordChange}
                        className={passwordErrorValue !== '' ? 'input-item input-item_error' : 'input-item'}
                 />
-                <button className="password-security-btn"
+                <button className='password-security-btn'
                         disabled={isLoading}
-                        type="button"
+                        type='button'
                         onClick={() => setIsHiddenPassword(!isHiddenPassword)}
                 >
                     <Image src={isHiddenPassword ? hiddenPasswordImg : shownPasswordImg}
@@ -117,37 +120,37 @@ const SigninForm = () => {
                 </button>
             </div>
             {passwordErrorValue !== '' &&
-                <div className="error-text-container">
+                <div className='error-text-container'>
                     <p className={'text'}>
                         {t(`SigninPage.${passwordErrorValue}`)}
                     </p>
                 </div>
             }
-            <button className="signin-btn"
-                    type="submit"
+            <button className='signin-btn'
+                    type='submit'
                     disabled={isLoading}
             >
                 {isLoading ? (
-                    <Loader type="auth" />
+                    <Loader type='auth' />
                 ) : (
                     t('SigninPage.Sign in')
                 )}
             </button>
-            <div className="signin-options">
+            <div className='signin-options'>
                 <label className={isKeepLoggedIn ? 'keep-log-text active' : 'keep-log-text'}>
-                    <input type="checkbox"
-                           name="keepLoggedIn"
-                           value="true"
+                    <input type='checkbox'
+                           name='keepLoggedIn'
+                           value='true'
                            defaultChecked={isKeepLoggedIn}
                            onChange={e => setIsKeepLoggedIn(e.target.checked)}
                     />
                     {t('SigninPage.Keep me logged in')}
                 </label>
-                <a href={'/'}
-                   className={'forgot-pass-text'}
+                <Link href={'/reset'}
+                      className={'forgot-pass-text'}
                 >
                     {t('SigninPage.Forgot password')}
-                </a>
+                </Link>
             </div>
             <div className={'ask-signup-container'}>
                 <p className={'text'}>

@@ -31,7 +31,7 @@ export const StyledSignupForm = styled.form`
     background-color: #f3f3f3;
     color: #333333;
 
-    &:hover {
+    &:hover, &:focus {
       background-color: #EBEBEB;
 
     }

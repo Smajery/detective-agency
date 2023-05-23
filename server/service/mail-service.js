@@ -35,6 +35,14 @@ class MailService {
             console.error(e);
         }
     }
+
+    async sendResetPasswordMail(to, link) {
+        try {
+
+        } catch (e) {
+            console.error(e);
+        }
+    }
 }
 
 module.exports = new MailService();

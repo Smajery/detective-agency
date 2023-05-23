@@ -57,6 +57,11 @@ const ChiefProfile = () => {
                 <div className='chief-menu-leftbar'>
                     <div className='leftbar-container'>
                         <div className='menu-list'>
+                            <div className='menu-title'>
+                                <p>
+                                    {t('ProfilePage.ChiefProfile.Your control panel')}
+                                </p>
+                            </div>
                             {chiefMenuList.map((menu) => (
                                 <div className='menu-title-text-box'
                                      key={menu.id}

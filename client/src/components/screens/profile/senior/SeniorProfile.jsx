@@ -16,7 +16,7 @@ const SeniorProfile = () => {
 
     const handleCloseMessageModal = () => {
         setIsMessageModal(false);
-        setMessageModalText('')
+        setMessageModalText('');
     };
 
     const [currentMenu, setCurrentMenu] = useState({});
@@ -51,6 +51,11 @@ const SeniorProfile = () => {
                 <div className='senior-menu-leftbar'>
                     <div className='leftbar-container'>
                         <div className='menu-list'>
+                            <div className='menu-title'>
+                                <p>
+                                    {t('ProfilePage.SeniorProfile.Your control panel')}
+                                </p>
+                            </div>
                             {seniorMenuList.map((menu) => (
                                 <div className='menu-title-text-box'
                                      key={menu.id}

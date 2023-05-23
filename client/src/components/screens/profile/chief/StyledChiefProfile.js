@@ -20,14 +20,31 @@ export const StyledChiefProfile = styled.div`
       gap: 20px 0;
       color: #FFFFFF;
       
-      .menu-title-text-box {
-        
-        p {
-          padding: 5px 10px 5px 20px;
-          cursor: pointer;
-          
-          &:hover, &.active {
-            text-decoration: underline;
+      .menu-list {
+        display: flex;
+        flex-direction: column;
+
+        .menu-title {
+          height: 40px;
+          display: flex;
+          align-items: center;
+
+          & > p {
+            font-weight: bold;
+          }
+        }
+
+        .menu-title-text-box {
+          display: flex;
+          flex-direction: column;
+
+          p {
+            padding: 5px 10px 5px 20px;
+            cursor: pointer;
+
+            &:hover, &.active {
+              text-decoration: underline;
+            }
           }
         }
       }

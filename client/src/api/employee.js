@@ -11,6 +11,13 @@ export const Employee = {
         return data;
     },
 
+    async updateDetectivesListId(id, detectivesListId) {
+        const {data} = await $api.patch(`employee/list/${id}`, {
+            detectivesListId
+        });
+        return data;
+    },
+
     // async delete(id) {
     //     const {data} = await $api.delete(`treaty/${id}`)
     //     return data

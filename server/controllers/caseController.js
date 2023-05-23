@@ -11,6 +11,16 @@ class caseController {
             next(e)
         }
     }
+    async update(req, res, next) {
+        const {id} = req.params
+        const {status, employeeIds, detectivesListId} = req.body;
+        try {
+            const result = await caseService.update(id, status, employeeIds, detectivesListId)
+            return res.json(result)
+        } catch (e) {
+            next(e)
+        }
+    }
 }
 
 module.exports = new caseController()

@@ -11,24 +11,24 @@ const CasesList = ({cases}) => {
             <div className='case-title'>
                 <div className='number-item-title'>
                     <p>
-                        Номер дела
+                        {t('ProfilePage.SeniorProfile.Case number')}
                     </p>
                 </div>
                 <div className='date-item-title'>
                     <p>
-                        {t('ProfilePage.ChiefProfile.Created at')}
+                        {t('ProfilePage.SeniorProfile.Created at')}
                     </p>
                 </div>
                 <div className='status-item-title'>
                     <p>
-                        {t('ProfilePage.ChiefProfile.Status')}
+                        {t('ProfilePage.SeniorProfile.Status')}
                     </p>
                 </div>
             </div>
             <div className='cases'>
                 {isEmptyArr(cases) ? (
                     cases.map((c) => (
-                        <CaseItem currentCase={c}
+                        <CaseItem c={c}
                                   key={c.id}
                         />
                     ))

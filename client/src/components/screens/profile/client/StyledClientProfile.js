@@ -17,13 +17,17 @@ export const StyledClientProfile = styled.div`
       width: 320px;
       display: flex;
       flex-direction: column;
-      gap: 20px 0;
+      gap: 10px 0;
       color: #FFFFFF;
       
       .title-text-box {
         display: flex;
         align-items: center;
         position: relative;
+        
+        & > p {
+          font-weight: bold;
+        }
         
         .create-treaty-btn {
           padding: 8px 10px 5px;

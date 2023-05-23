@@ -34,7 +34,16 @@
   },
   "HomePage": {
     "title": "Додому",
-    "description": "Вітаю, наші любі клієнти!"
+    "description": "Вітаю, наші любі клієнти!",
+    "about-text": {
+      "Welcome to «Dirk Gently's» Detective Agency": "Ласкаво просимо до Детективного агентства «Дірка Джентлі».",
+      "We are a team of experienced and highly qualified detectives": "Ми — команда досвідчених та висококваліфікованих детективів, готових допомогти вам вирішити найскладніші справи. Незалежно від того, чи потрібно вам розкрити родинні таємниці, розібратися в справах нерухомості, довести невинність або знайти загублених близьких, ми пропонуємо повний спектр послуг для вирішення вашої проблеми.",
+      "Our agency is based on the principles of professionalism, confidentiality, and efficiency.": "Наше агентство базується на принципах професіоналізму, конфіденційності та ефективності. Ми розуміємо, що кожна справа є унікальною, і підходимо до неї індивідуально, застосовуючи передові методи та технології, щоб забезпечити найкращий результат для наших клієнтів.",
+      "Our team consists of professionals with extensive experience in law enforcement agencies, military services, and the private sector.": "Наша команда складається з фахівців з великим досвідом роботи в правоохоронних органах, військових службах та приватному секторі. Ми ретельно відбираємо наших співробітників, щоб ви мали впевненість у професіоналізмі та надійності кожного члена нашої команди.",
+      "When you come to us, you not only gain access to the experience and expertise of our team but also a partnership built on trust and understanding.": "Коли ви звертаєтесь до нас, ви отримуєте не лише доступ до досвіду та експертизи нашої команди, а й партнерство, що ґрунтується на довірі та розумінні. Ми уважно слухаємо вас, аналізуємо ваші потреби і пропонуємо найкращі рішення для досягнення ваших цілей.",
+      "Our goal is to provide you with all the necessary information that will help you make informed decisions.": "Наша мета — забезпечити вас всією необхідною інформацією, що допоможе вам прийняти обґрунтовані рішення. Ми гарантуємо повну конфіденційність та абсолютну добросовісність у нашій роботі.",
+      "If you are looking for a reliable and professional detective agency": "Якщо ви шукаєте надійне і професійне детективне агентство, зверніться до Детективного агентства «Дірка Джентлі». З нами ви отримаєте результати, на які можете покластися."
+    }
   },
   "DetectivesPage": {
     "title": "Детективи",
@@ -181,13 +190,59 @@
       "Cases": "Справи",
       "Documents": "Документи",
       "Detectives lists": "Списки детективів",
-      "Files": "Файли"
+      "Files": "Файли",
+      "Case number": "Номер справи:",
+      "Created at": "Створено:",
+      "Status": "Статус:",
+      "Case": "Справа",
+      "status-bd": {
+        "в процесі": "в процесі",
+        "виконано": "виконано",
+        "скасовано": "скасовано"
+      },
+      "Information from a treaty": "Інформація з договору:",
+      "Cases are empty": "Справ немає",
+      "Documents are empty": "Документів немає",
+      "Detectives are empty": "Детективів немає",
+      "Case documents": "Документи у справі:",
+      "Service": "Послуга:",
+      "City": "Місто:",
+      "Information from a client": "Інформація від клієнта:",
+      "button": {
+        "Show": "Показати",
+        "Hide": "Приховати",
+        "Change": "Змінити",
+        "Confirm": "Підтвердити",
+        "Cancel": "Скасувати",
+        "Add": "Додати",
+        "Remove": "Прибрати"
+      },
+      "Your control panel": "Ваша панель керування:",
+      "Type": "Тип:",
+      "type-bd": {
+        "Документ": "Документ",
+        "Спостереження": "Спостереження",
+        "Експертиза": "Експертиза"
+      },
+      "Result": "Результат:",
+      "Case status": "Статус справи:",
+      "status": {
+        "in process": "в процесі",
+        "fulffiled": "виконано",
+        "cancelled": "скасовано"
+      },
+      "List of detectives": "Список детективів:",
+      "Full name": "Повне ім'я:",
+      "Email": "Е-пошта:",
+      "Phone number": "Номер телефону:"
     },
     "ChiefProfile": {
       "title": "Профіль начальника",
+      "": "",
       "description": "Профіль для начальника",
       "Treaties": "Договори",
       "Treaties are empty": "Договорів немає",
+      "Your control panel": "Ваша панель керування:",
       "Employees": "Співробітники",
       "Cases": "Справи",
       "Documents": "Документи",
@@ -271,6 +326,17 @@
       }
     },
     "If you see this page, then something went wrong": "Якщо ви бачите цю сторінку, то щось пішло не так"
+  },
+  "ResetPage": {
+    "title": "Скидання пароля",
+    "description": "Сторінка для скидання пароля",
+    "Email": "Е-пошта",
+    "Don't remember your password": "Не пам'ятаєте свій пароль?",
+    "Let us know where we should send the password reset link.": "Повідомте нам, куди ми повинні надіслати посилання для зміни пароля.",
+    "Or return to": "Або повернутися на",
+    "login page": "сторінку входу",
+    "Remind password": "Нагадати пароль"
+
   },
   "MessageModal": {
     "Login success": "Вхід успішно завершено!",

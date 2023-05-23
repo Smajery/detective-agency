@@ -1,4 +1,4 @@
-const {chiefPool} = require('../db');
+const {chiefPool, seniorPool} = require('../db');
 const ApiError = require('../error/ApiError');
 const tokenService = require('./token-service');
 
@@ -23,13 +23,33 @@ class EmployeeService {
     //     return result.rows[0];
     // }
 
-    async getAll() {
-        const selectEmployeeQuery = {
-            text: 'SELECT * FROM employees',
-        };
-        const employees = await chiefPool.query('SELECT * FROM employees');
+    async getAll(role) {
+        if (role === 'CHIEF') {
+            const selectEmployeeQuery = {
+                text: 'SELECT * FROM employees',
+            };
+            const employees = await chiefPool.query('SELECT * FROM employees');
 
-        return employees.rows;
+            return employees.rows;
+        } else if (role === 'SENIOR') {
+            const selectEmployeeQuery = {
+                text: 'SELECT * FROM employees WHERE "detectivesListId" IS NULL',
+            };
+            const employees = await seniorPool.query('SELECT * FROM employees WHERE "detectivesListId" IS NULL');
+
+            return employees.rows;
+        }
+
+    }
+
+    async updateDetectivesListId(id, detectivesListId) {
+        const updateEmployeeQuery = {
+            text: 'UPDATE employees SET "detectivesListId" = $1 WHERE id = $2 RETURNING *',
+            values: [detectivesListId, id]
+        }
+        const employeeResult = await seniorPool.query(updateEmployeeQuery)
+
+        return employeeResult.rows[0]
     }
 
     // async delete(id) {

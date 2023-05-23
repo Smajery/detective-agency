@@ -3,6 +3,7 @@ export const theme = {
         backgroundColor: '#333333',
         foregroundColor: '#FFFFFF',
         strongBackgroundColor: '#272727',
+        hoverBackgroundColor: '#444444',
 
         color: '#FFFFFF',
         foreColor: '#333333',
@@ -21,6 +22,7 @@ export const theme = {
         backgroundColor: '#FFFFFF',
         foregroundColor: '#333333',
         strongBackgroundColor: '#333333',
+        hoverBackgroundColor: '#EBEBEB',
 
         color: '#333333',
         foreColor: '#FFFFFF',

@@ -11,7 +11,7 @@ const SortingSelect = ({sorting, setSorting}) => {
         {id: 2, title: 'Descending date', value: 'created_at_desc'},
         {id: 3, title: 'Ascending date', value: 'created_at_asc'},
         {id: 4, title: 'Descending payment', value: 'payment_desc'},
-        {id: 4, title: 'Ascending payment', value: 'payment_asc'},
+        {id: 5, title: 'Ascending payment', value: 'payment_asc'},
     ]
 
     const handleSortingChange = (e) => {

@@ -53,9 +53,9 @@ const ClientProfile = () => {
                 <div className='treaties-list-leftbar'>
                     <div className='leftbar-container'>
                         <div className='title-text-box'>
-                            <h3 className='title-text'>
+                            <p className='title-text'>
                                 {t('ProfilePage.ClientProfile.Treaties are not empty')}
-                            </h3>
+                            </p>
                             <button className='create-treaty-btn'
                                     onClick={handleCreateTreaty}
                             >
@@ -90,13 +90,13 @@ const ClientProfile = () => {
                                               setTreaty={setCurrentTreaty}
                                 />
                             ) : (
-                                <h3>
+                                <p>
                                     {isEmptyArr(clientTreaties) ? (
                                         t('ProfilePage.ClientProfile.You have not chosen a treaty')
                                     ) : (
                                         t('ProfilePage.ClientProfile.Treaties are empty')
                                     )}
-                                </h3>
+                                </p>
                             )
                         )}
                     </div>

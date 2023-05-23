@@ -3,7 +3,7 @@ import {useTranslation} from 'react-i18next';
 
 import Layout from '@/components/layout/Layout';
 import {StyledNotFound} from '@/components/screens/404/StyledNotFound';
-import NotFoundImg from '@/static/404.jpeg';
+import NotFoundImg from '@/static/404.png';
 
 const NotFound = () => {
     const {t} = useTranslation();

@@ -6,13 +6,12 @@ export const StyledTreatiesItem = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: 1px solid #333333;
-  background-color: #FFFFFF;
-  color: #333333;
+  border-bottom: 1px solid ${props => props.theme.foregroundColor};
+  background-color: ${props => props.theme.backgroundColor};
 
   &:hover, &.active {
-    background-color: #EBEBEB;
-    border-bottom: 2px solid #333333;
+    background-color: ${props => props.theme.hoverBackgroundColor};
+    border-bottom: 2px solid ${props => props.theme.foregroundColor};
   }
 
   .treaty-title-info {
@@ -165,7 +164,7 @@ export const StyledTreatiesItem = styled.form`
           
           button {
             padding: 0 10px;
-            background-color: #FFFFFF;
+            background-color: ${props => props.theme.backgroundColor};
           }
         }
 
@@ -173,8 +172,8 @@ export const StyledTreatiesItem = styled.form`
           padding: 5px 10px;
           width: 100%;
           display: flex;
-          border: 1px solid #333333;
-          background-color: #FFFFFF;
+          border: 1px solid ${props => props.theme.foregroundColor};
+          background-color: ${props => props.theme.backgroundColor};
         }
       }
 
@@ -185,7 +184,7 @@ export const StyledTreatiesItem = styled.form`
 
         button {
           padding: 0 10px;
-          background-color: #FFFFFF;
+          background-color: ${props => props.theme.backgroundColor};
         }
         
         .change-btn {
@@ -214,7 +213,7 @@ export const StyledTreatiesItem = styled.form`
 
           button {
             padding: 0 10px;
-            background-color: #FFFFFF;
+            background-color: ${props => props.theme.backgroundColor};
           }
         }
         
@@ -223,8 +222,8 @@ export const StyledTreatiesItem = styled.form`
           display: flex;
           flex-direction: column;
           gap: 5px 0;
-          border: 1px solid #333333;
-          background-color: #FFFFFF;
+          border: 1px solid ${props => props.theme.foregroundColor};
+          background-color: ${props => props.theme.backgroundColor};
         }
         
         

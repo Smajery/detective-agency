@@ -73,7 +73,7 @@ class UserService {
         if (!isPassEquals) {
             throw ApiError.BadRequest('Invalid password');
         }
-        if(!user.isActivated) {
+        if (!user.isActivated) {
             throw ApiError.BadRequest('Link is not activated');
         }
 
@@ -131,6 +131,18 @@ class UserService {
         } catch (e) {
             console.error(`Error removing inactive users: ${e.message}`);
         }
+    }
+
+    async resetPassword(email) {
+        const selectQuery = {
+            text: 'SELECT * FROM users WHERE email = $1',
+            values: [email]
+        };
+        const userResult = await authPool.query(selectQuery);
+        if (userResult.rows.length === 0) {
+            throw ApiError.BadRequest('This user does not exist');
+        }
+
     }
 }
 

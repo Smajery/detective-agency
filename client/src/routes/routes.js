@@ -14,7 +14,7 @@ export const routes = [
         userRoles: ['USER', 'CLIENT']
     },
     {id: 3, path: '/signin', title: 'Sign in', userRoles: ['USER']},
-    {id: 4, path: '/profile', title: 'Profile', userRoles: ['CLIENT', 'CHIEF', 'SENIOR']},
+    {id: 4, path: '/profile', title: 'Profile', userRoles: ['CLIENT', 'CHIEF', 'SENIOR', 'DETECTIVE']},
     {id: 5, path: '/signup', title: 'Sign up', isDefault: true},
     {id: 6, path: '/reset', title: 'Reset password', isDefault: true},
     {id: 7, path: '/message', title: 'Message', isDefault: true},

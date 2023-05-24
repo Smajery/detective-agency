@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const StyledSeniorProfile = styled.div`
+export const StyledDetectiveProfile = styled.div`
   width: 100%;
   display: flex;
 
-  .senior-menu-leftbar {
+  .detective-menu-leftbar {
     width: calc(50% - 300px);
     height: 100%;
     display: flex;
@@ -28,7 +28,7 @@ export const StyledSeniorProfile = styled.div`
           height: 40px;
           display: flex;
           align-items: center;
-          
+
           & > p {
             font-weight: bold;
           }
@@ -54,7 +54,7 @@ export const StyledSeniorProfile = styled.div`
     }
   }
 
-  .senior-menu-rightbar {
+  .detective-menu-rightbar {
     width: calc(50% + 300px);
     display: flex;
     justify-content: flex-start;

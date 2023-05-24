@@ -41,9 +41,12 @@ export const StyledChiefProfile = styled.div`
           p {
             padding: 5px 10px 5px 20px;
             cursor: pointer;
+            transition: color 0.4s ease;
+            color: #999999;
 
             &:hover, &.active {
               text-decoration: underline;
+              color: #FFFFFF;
             }
           }
         }

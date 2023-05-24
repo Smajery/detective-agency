@@ -5,7 +5,7 @@ class caseController {
     async getAll(req, res, next) {
         try {
             const userData = req.user
-            const result = await caseService.getAll(userData.id)
+            const result = await caseService.getAll(userData.id, userData.role)
             return res.json(result)
         } catch (e) {
             next(e)

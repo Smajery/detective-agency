@@ -9,3 +9,7 @@ export const chiefMenuList = [
 export const seniorMenuList = [
     {id: 1, title: 'Cases', model: Case},
 ]
+
+export const detectiveMenuList = [
+    {id: 1, title: 'Cases', model: Case},
+]

@@ -78,7 +78,7 @@ export const StyledDocumentItem = styled.div`
         display: flex;
         flex-direction: column;
         gap: 5px 0;
-
+        
         .empty-files-title {
           display: flex;
           justify-content: center;
@@ -86,11 +86,11 @@ export const StyledDocumentItem = styled.div`
         
         .file {
           display: flex;
+          cursor: pointer;
           
-          a {
-            &:hover {
-              text-decoration: underline;
-            }
+          p {
+            color: #0000FF;
+            text-decoration: underline;
           }
         }
       }

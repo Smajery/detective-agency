@@ -6,7 +6,7 @@ import {StyledDocumentItem} from './StyledDocumentItem';
 import {isEmptyArr} from '@/utils/is-empty-arr';
 
 const DocumentItem = ({doc}) => {
-    const {t} = useTranslation()
+    const {t} = useTranslation();
 
     const [isDocumentInfo, setIsDocumentInfo] = useState(false);
     const [isResultInfo, setIsResultInfo] = useState(false);
@@ -22,8 +22,8 @@ const DocumentItem = ({doc}) => {
     const handleHideDocumentInfo = (e) => {
         e.stopPropagation();
 
-        setIsFilesInfo(false)
-        setIsResultInfo(false)
+        setIsFilesInfo(false);
+        setIsResultInfo(false);
 
         setIsDocumentInfo(false);
     };
@@ -51,7 +51,6 @@ const DocumentItem = ({doc}) => {
     const handleOpenFile = (fileUrl) => {
         window.open(fileUrl, '_blank');
     };
-
 
     return (
         <StyledDocumentItem className={isDocumentInfo ? 'active' : ''}>
@@ -123,7 +122,9 @@ const DocumentItem = ({doc}) => {
                                              key={file.id}
                                              onClick={() => handleOpenFile(`http://localhost:7000/${file.name}`)}
                                         >
+                                            <p>
                                                 {file.name}
+                                            </p>
                                         </div>
                                     ))
                                 ) : (

@@ -5,6 +5,7 @@ import Layout from '@/components/layout/Layout';
 import ClientProfile from '@/components/screens/profile/client/ClientProfile';
 import ChiefProfile from '@/components/screens/profile/chief/ChiefProfile';
 import SeniorProfile from '@/components/screens/profile/senior/SeniorProfile';
+import DetectiveProfile from '@/components/screens/profile/detective/DetectiveProfile';
 
 const Profile = () => {
     const {t} = useTranslation();
@@ -18,6 +19,8 @@ const Profile = () => {
             return <ChiefProfile />;
         case 'SENIOR':
             return <SeniorProfile />;
+        case 'DETECTIVE':
+            return <DetectiveProfile />;
         default:
             return (
                 <Layout title={t('ProfilePage.title')}

@@ -5,7 +5,6 @@ const $api = axios.create({
     baseURL: process.env.API_URL
 })
 
-// Перехватывает запрос и помещает в его header токен
 const authInterceptorRequest = (config) => {
     config.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`
     return config

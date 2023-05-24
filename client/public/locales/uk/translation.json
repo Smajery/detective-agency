@@ -183,6 +183,24 @@
       "Your treaty has been fulffilled": "Ваш договір виконано",
       "Create": "Створити"
     },
+    "DetectiveProfile": {
+      "title": "Профіль детективу",
+      "description": "Профіль для детективу",
+      "Your control panel": "Ваша панель керування:",
+      "Cases": "Справи",
+      "Files are empty": "Файлів немає",
+      "type": {
+        "Select": "Виберіть:",
+        "Document": "Документ",
+        "Observation": "Спостереження",
+        "Expertise": "Експертиза"
+      },
+      "error": {
+        "Type is empty": "Ви не вибрали тип документа",
+        "Result is empty": "Ви не ввели інформацію",
+        "Files are empty": "Ви не додали файли"
+      }
+    },
     "SeniorProfile": {
       "title": "Профіль відповідального детективу",
       "description": "Профіль для відповідального детективу",
@@ -195,6 +213,7 @@
       "Created at": "Створено:",
       "Status": "Статус:",
       "Case": "Справа",
+      "Files are empty": "Файлів немає",
       "status-bd": {
         "в процесі": "в процесі",
         "виконано": "виконано",
@@ -336,7 +355,6 @@
     "Or return to": "Або повернутися на",
     "login page": "сторінку входу",
     "Remind password": "Нагадати пароль"
-
   },
   "MessageModal": {
     "Login success": "Вхід успішно завершено!",

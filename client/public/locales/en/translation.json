@@ -183,12 +183,31 @@
       "Your treaty has been fulffilled": "Your treaty has been fulffilled",
       "Create": "Create"
     },
+    "DetectiveProfile": {
+      "title": "Detective Profile",
+      "description": "Profile for a detective",
+      "Cases": "Cases",
+      "Your control panel": "Your control panel:",
+      "Files are empty": "Files are empty",
+      "type": {
+        "Select": "Select:",
+        "Document": "Document",
+        "Observation": "Observation",
+        "Expertise": "Expertise"
+      },
+      "error": {
+        "Type is empty": "Type is empty",
+        "Result is empty": "Result is empty",
+        "Files are empty": "Files are empty"
+      }
+    },
     "SeniorProfile": {
       "title": "Senior Profile",
-      "description": "Profile for senior",
+      "description": "Profile for a senior",
       "Employees": "Employees",
       "Cases": "Cases",
       "Documents": "Documents",
+      "Files are empty": "Files are empty",
       "Detectives lists": "Detectives lists",
       "Files": "Files",
       "Case number": "Case number:",
@@ -238,7 +257,7 @@
     },
     "ChiefProfile": {
       "title": "Chief Profile",
-      "description": "Profile for chief",
+      "description": "Profile for a chief",
       "": "",
       "Treaties": "Treaties",
       "Treaties are empty": "Treaties are empty",

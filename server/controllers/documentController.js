@@ -39,31 +39,6 @@ class documentController {
         }
 
     }
-
-    // async delete(req, res, next) {
-    //     const {id} = req.params;
-    //     try {
-    //         const document = await Document.findOne({where: {id}});
-    //
-    //         const unlinkFile = async (file) => {
-    //             const filePath = path.resolve(__dirname, '..', 'static', file.name);
-    //             try {
-    //                 await fs.promises.unlink(filePath);
-    //                 console.log(`Deleted file: ${file.name}`);
-    //             } catch (err) {
-    //                 console.log(err);
-    //             }
-    //         };
-    //
-    //         const files = await File.findAll({ where: { documentId: id } });
-    //         await Promise.all(files.map(file => unlinkFile(file)));
-    //
-    //         await Document.destroy({where: {id}});
-    //         return res.json({message: `Document with id ${id} was deleted.`});
-    //     } catch (e) {
-    //         next(e)
-    //     }
-    // }
 }
 
 module.exports = new documentController();

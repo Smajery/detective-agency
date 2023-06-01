@@ -370,7 +370,8 @@
     "The treaty successfully paid": "Договір успішно сплачено",
     "The payment rejected": "Платіж відхилений",
     "The treaty has been successfully updated": "Договір був успішно оновлений",
-    "Something went wrong, we're sorry, please try logging in later": "Щось пішло не так, просимо вибачення, спробуйте увійти пізніше"
+    "Something went wrong, we're sorry, please try logging in later": "Щось пішло не так, просимо вибачення, спробуйте увійти пізніше",
+    "Case changed successfully": "Справа успішно змінена"
   },
   "ConfirmModal": {
     "Confirm the payment": "Ви впевнені, що хочете підтвердити платіж?",

@@ -26,6 +26,8 @@ const CaseItem = ({c}) => {
         setMessageModalText('');
     };
 
+    console.log(currentCase)
+
     const [treaty, setTreaty] = useState(currentCase.treaty);
     const [documents, setDocuments] = useState(currentCase?.documents || []);
     const [detectives, setDetectives] = useState(currentCase?.detectives || []);
@@ -37,7 +39,7 @@ const CaseItem = ({c}) => {
     const [isDetectivesInfo, setIsDetectivesInfo] = useState(false);
 
     const [currentStatus, setCurrentStatus] = useState(currentCase?.status || null);
-    const [employeeIds, setEmployeeIds] = useState('{}')
+    const [employeeIds, setEmployeeIds] = useState(null)
 
     const handleShowContent = (e) => {
         e.stopPropagation();
@@ -115,7 +117,7 @@ const CaseItem = ({c}) => {
                 setCurrentCase(updatedCase)
                 setDetectives(data.detectives)
 
-                setMessageModalText('Дело успешно изменено')
+                setMessageModalText('Case changed successfully')
                 setIsMessageModal(true)
             })
             .catch(

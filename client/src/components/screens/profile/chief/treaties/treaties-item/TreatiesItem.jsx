@@ -132,6 +132,10 @@ const TreatiesItem = ({treaty}) => {
         let newPriceValueError = '';
         let newCurrentStatusError = '';
 
+        if (Number(priceValue) <= 0) {
+            newPriceValueError = 'Incorrect price'
+        }
+
         if (currentTreaty.completedAt && currentStatus !== 'виконано') {
             newCurrentStatusError = 'Cannot be changed to this status after the end of the treaty';
             return setCurrentStatusError(newCurrentStatusError);

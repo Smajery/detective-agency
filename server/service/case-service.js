@@ -84,7 +84,7 @@ class CaseService {
                 delete caseRow.service;
                 delete caseRow.place;
 
-                const caseDetectives = detectivesByCaseId[caseRow.id] || [];
+                const caseDetectives = detectivesByCaseId[caseRow.detectivesListId] || [];
 
                 const caseDocuments = documents.filter(doc => doc.caseId === caseRow.id);
 
@@ -182,7 +182,7 @@ class CaseService {
                 delete caseRow.service;
                 delete caseRow.place;
 
-                const caseDetectives = detectivesByCaseId[caseRow.id] || [];
+                const caseDetectives = detectivesByCaseId[caseRow.detectivesListId] || [];
 
                 const caseDocuments = documents.filter(doc => doc.caseId === caseRow.id);
 

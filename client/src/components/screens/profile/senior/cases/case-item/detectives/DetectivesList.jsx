@@ -11,9 +11,12 @@ import {Employee} from '@/api/employee';
 const DetectivesList = ({detectives, setDetectives, isEdit, detectivesListId}) => {
     const {t} = useTranslation();
 
-    const [employee, setEmployee] = useState({});
+    const [employee, setEmployee] = useState(null);
 
     const handleAddEmployee = () => {
+        if (employee === null) {
+            return;
+        }
         Employee.updateDetectivesListId(employee.id, detectivesListId)
             .then(data => {
                 const updatedDetectives = [

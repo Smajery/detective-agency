@@ -53,7 +53,7 @@ const SignupForm = () => {
                 setIsAuthModal(true);
             })
             .catch(e => {
-                setAuthModalText(e.response.data.message);
+                setAuthModalText(e.response?.data.message || 'Something went wrong, we\'re sorry, please try logging in later');
                 setIsAuthModal(true);
             })
             .finally(() => {

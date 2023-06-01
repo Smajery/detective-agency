@@ -72,7 +72,7 @@ const SigninForm = () => {
 
             })
             .catch(e => {
-                setMessageModalText(e.response.data.message);
+                setMessageModalText(e.response?.data.message || 'Something went wrong, we\'re sorry, please try logging in later');
                 setIsMessageModal(true);
             })
             .finally(() => {

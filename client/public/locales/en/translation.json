@@ -369,7 +369,8 @@
     "Current treaty was deleted": "Current treaty was deleted",
     "The treaty successfully paid": "The treaty successfully paid",
     "The payment rejected": "The payment rejected",
-    "The treaty has been successfully updated": "The treaty has been successfully updated"
+    "The treaty has been successfully updated": "The treaty has been successfully updated",
+    "Something went wrong, we're sorry, please try logging in later": "Something went wrong, we're sorry, please try logging in later"
   },
   "ConfirmModal": {
     "Confirm the payment": "Are you sure you want to confirm the payment?",

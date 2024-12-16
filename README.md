@@ -5,16 +5,14 @@ My third project. This is a single page app was created for my university course
 In the development of the backend it was allowed to use only "pure" SQL-queries to the database.
 
 ### Front-end:
-- HTML
-- CSS
-- Styled components
-- JavaScript
-- Date-fns
-- Lodash.js
-- React
-- Axios
-- Redux
-- Next.js
+- JavaScript;
+- React;
+- Next.js;
+- Redux;
+- Axios;
+- Styled components;
+- Date-fns;
+- Lodash;
 
 ### Back-end: 
 - Node.js

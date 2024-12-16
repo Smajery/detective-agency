@@ -15,6 +15,6 @@ In the development of the backend it was allowed to use only "pure" SQL-queries 
 - Lodash;
 
 ### Back-end: 
-- Node.js
-- Express.js
-- PostgreSQL
+- Node.js;
+- Express.js;
+- PostgreSQL;
